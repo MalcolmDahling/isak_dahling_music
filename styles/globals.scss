@@ -1,0 +1,47 @@
+@font-face {
+    font-family: Rubik;
+    src: url('/fonts/Rubik-VariableFont_wght.ttf');
+}
+
+body{
+    background-color:black;
+    color:white;
+    font-family: Rubik;
+}
+
+
+//##### SLICK #####
+.carousel{
+
+    .slick-prev{
+        z-index:1;
+        top:110% !important;
+        left:48.5% !important;
+
+        display:none !important;
+    }
+    
+    .slick-next{
+        z-index:1;
+        top:110% !important;
+        right:48.5% !important;
+
+        display:none !important;
+    }
+
+    .slick-slide{
+        transform:scale(0.8);
+        transition:transform 0.5s;
+    }
+    
+    /* slide when active (when play first to last) */
+    .slick-center {
+        transform:scale(1);
+    }
+    
+    /* slide when active (when play last to first) */ 
+    .slick-slide[aria-hidden="true"]:not([tabindex="-1"]) + .slick-cloned[aria-hidden="true"]  {
+        transform:scale(0.8);
+    }
+}
+//##### SLICK #####
