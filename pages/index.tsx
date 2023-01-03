@@ -1,30 +1,25 @@
 import Head from "next/head";
-import { styled } from "../stitches.config";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Carousel from "../components/carousel";
 import { Song } from "../models/song";
 import { ProfilePicture } from "../models/profilePicture";
-
-const H1 = styled('h1', {
-
-    margin:0,
-    marginTop:50,
-    textAlign:'center',
-    fontSize:72
-});
+import Splash from "../components/splash";
+import { useBreakpoint } from "use-breakpoint";
+import { BREAKPOINTS } from "../variables/breakpoints";
+import VerticalLine from "../components/verticalLine";
+import { styled } from "../stitches.config";
 
 const Section = styled('section', {
 
-    height:'100vh',
+    position:'relative'
 });
-
-
 
 export default function Home() {
 
     const [songs, setSongs] = useState<Song[]>([]);
     const [profilePictures, setProfilePictures] = useState<ProfilePicture[]>([]);
+    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
 
     async function getSongs(){
 
@@ -53,7 +48,11 @@ export default function Home() {
             </Head>
 
             <Section>
-                <H1>ISAK DAHLING MUSIC</H1>
+                <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC"></VerticalLine>
+                <Splash image={breakpoint == "desktop" ? profilePictures[1]?.fields.image.fields.file.url : profilePictures[0]?.fields.image.fields.file.url}></Splash>
+            </Section>
+
+            <Section>
                 <Carousel songs={songs}></Carousel>
             </Section>
         </>

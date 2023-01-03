@@ -1,0 +1,1 @@
+export const BREAKPOINTS = {mobile:1, tablet:481, desktop:769}; //min width

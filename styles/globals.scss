@@ -1,12 +1,14 @@
 @font-face {
-    font-family: Rubik;
-    src: url('/fonts/Rubik-VariableFont_wght.ttf');
+    font-family: NeueHaas;
+    src: url('/fonts/NeueHaasDisplayRoman.ttf');
 }
 
 body{
+    margin:0px;
+
     background-color:black;
     color:white;
-    font-family: Rubik;
+    font-family: NeueHaas;
 }
 
 
