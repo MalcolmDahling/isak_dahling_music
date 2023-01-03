@@ -4,9 +4,9 @@ import { styled } from "../stitches.config";
 const Div = styled('div', {
 
     position:'absolute',
-    left:20,
-    top:10,
+    top:0,
     bottom:0,
+    left:20,
 
     display:'flex',
     flexDirection:'column',
@@ -17,6 +17,11 @@ const Div = styled('div', {
         top:{
             true:{
                 top:20,
+            }
+        },
+        bottom:{
+            true:{
+                bottom:20,
             }
         }
     }
@@ -49,6 +54,7 @@ interface props{
     textElement:string;
     text:string;
     top?:boolean;
+    bottom?:boolean;
 }
 
 export default function VerticalLine(props:props){
@@ -56,14 +62,17 @@ export default function VerticalLine(props:props){
     const ref = useRef<any>();
 
     return(
-        <Div top={props.top}>
+        <Div top={props.top} bottom={props.bottom}>
+
+            <Line style={{marginLeft: - ref.current?.offsetWidth + 26 /*26 is font size(24) + 2*/}}></Line>
+
             {props.textElement === "h1" ?
                 <H1 ref={ref} style={{height: ref.current?.offsetWidth}}>{props.text}</H1> 
                 :
                 <H2 ref={ref} style={{height: ref.current?.offsetWidth}}>{props.text}</H2>
             }
 
-            <Line style={{marginLeft: - ref.current?.offsetWidth + 26 /*24 is font size +2*/}}></Line>
+            <Line style={{marginLeft: - ref.current?.offsetWidth + 26 /*26 is font size(24) + 2*/}}></Line>
         </Div>
     );
 }

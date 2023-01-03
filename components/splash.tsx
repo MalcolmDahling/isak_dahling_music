@@ -9,7 +9,8 @@ const Img = styled('img', {
 
     maxWidth:1920,
     width:'100%',
-    margin:'auto'
+    margin:'auto',
+    objectFit:'cover'
 });
 
 interface props{

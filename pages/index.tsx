@@ -8,18 +8,13 @@ import Splash from "../components/splash";
 import { useBreakpoint } from "use-breakpoint";
 import { BREAKPOINTS } from "../variables/breakpoints";
 import VerticalLine from "../components/verticalLine";
-import { styled } from "../stitches.config";
-
-const Section = styled('section', {
-
-    position:'relative'
-});
+import Section from "../components/section";
 
 export default function Home() {
 
     const [songs, setSongs] = useState<Song[]>([]);
     const [profilePictures, setProfilePictures] = useState<ProfilePicture[]>([]);
-    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
+    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'bigDesktop');
 
     async function getSongs(){
 
@@ -41,15 +36,16 @@ export default function Home() {
         getProfilePictures();
     }, []);
 
+    //################### set bottom={true} on last VerticalLine when done ###################
     return (
         <>
             <Head>
                 <title>Isak Dahling Music</title>
             </Head>
 
-            <Section>
+            <Section paddingBottom={250}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
-                <Splash image={breakpoint == "desktop" ? profilePictures[1]?.fields.image.fields.file.url : profilePictures[0]?.fields.image.fields.file.url}></Splash>
+                <Splash image={breakpoint === "smallDesktop" || breakpoint === "bigDesktop" ? profilePictures[1]?.fields.image.fields.file.url : profilePictures[0]?.fields.image.fields.file.url}></Splash>
             </Section>
 
             <Section>

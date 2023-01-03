@@ -9,6 +9,15 @@ const StyledSlider = styled(Slider, {
 
     margin:'auto',
     paddingTop:100,
+    
+
+    '@bp0':{
+        width:'95%',
+    },
+
+    '@bp1':{
+        width:'80%'
+    },
 });
 
 const ButtonContainer = styled('div', {
@@ -63,6 +72,16 @@ export default function Carousel(props:props){
         centerPadding:'0px',
         draggable:false,
         infinite:true,
+
+        mobileFirst:true,
+        responsive:[
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+              }
+            },
+        ]
 
         // autoplay:true,
         // autoplaySpeed:3000,
