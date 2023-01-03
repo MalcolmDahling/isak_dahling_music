@@ -8,7 +8,7 @@ import { useRef } from "react";
 const StyledSlider = styled(Slider, {
 
     margin:'auto',
-    marginTop:50,
+    paddingTop:100,
 });
 
 const ButtonContainer = styled('div', {

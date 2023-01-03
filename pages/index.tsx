@@ -48,11 +48,12 @@ export default function Home() {
             </Head>
 
             <Section>
-                <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC"></VerticalLine>
+                <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
                 <Splash image={breakpoint == "desktop" ? profilePictures[1]?.fields.image.fields.file.url : profilePictures[0]?.fields.image.fields.file.url}></Splash>
             </Section>
 
             <Section>
+                <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
                 <Carousel songs={songs}></Carousel>
             </Section>
         </>
