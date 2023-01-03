@@ -12,7 +12,7 @@ const StyledSlider = styled(Slider, {
     
 
     '@bp0':{
-        width:'95%',
+        width:'75%',
     },
 
     '@bp1':{
