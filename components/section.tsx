@@ -4,19 +4,16 @@ const StyledSection = styled('section', {
 
     position:'relative',
     paddingLeft:26,
+    overflowX:'hidden',
 
     variants:{
-        paddingBottom:{
-            250:{
-                '@bp0':{
-                    paddingBottom:250
-                }
-                
+        paddingTop:{
+            200:{
+                paddingTop:200
             }
         },
-
-        height:{
-            100:{
+        viewHeight100:{
+            true:{
                 height:'100vh'
             }
         }
@@ -25,14 +22,14 @@ const StyledSection = styled('section', {
 
 interface props{
     children:React.ReactNode;
-    paddingBottom?:250;
-    height?:100;
+    paddingTop?:200;
+    viewHeight100?:boolean;
 }
 
 export default function Section(props:props){
 
     return(
-        <StyledSection paddingBottom={props.paddingBottom} height={props.height}>
+        <StyledSection paddingTop={props.paddingTop} viewHeight100={props.viewHeight100}>
             {props.children}
         </StyledSection>
     );

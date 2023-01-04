@@ -1,26 +1,31 @@
-import { styled } from "../stitches.config";
+import { keyframes, styled } from "../stitches.config";
 
 const Outer = styled('div', {
 
-    height:200,
+    height:150,
 
     position:'absolute',
     transform:'translate(-50%)',
     left:'50%',
-    bottom:'0%'
+    bottom:'0%',
+});
+
+const ArrowAnim = keyframes({
+    '0%':{transform:'translateY(0%)'},
+    '50%':{transform:'translateY(100%)'},
+    '100%':{transform:'translateY(0%)'}
 });
 
 const Inner = styled('div', {
 
-    position:'sticky',
-    top:0,
+    animation:`${ArrowAnim} 2000ms infinite ease-in-out`
 });
 
 const Arrow = styled('img', {
 
     width:25,
     display:'block',
-    marginBottom:-10,
+    marginBottom:-20,
 
     transform:'rotate(90deg)',
     filter:'brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%)',

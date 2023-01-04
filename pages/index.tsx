@@ -43,12 +43,12 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            <Section height={100}>
+            <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
-                <Splash image={breakpoint === "smallDesktop" || breakpoint === "bigDesktop" ? profilePictures[1]?.fields.image.fields.file.url : profilePictures[0]?.fields.image.fields.file.url}></Splash>
+                <Splash image={breakpoint === "smallDesktop" || breakpoint === "bigDesktop" ? profilePictures[0]?.fields.image.fields.file.url : profilePictures[3]?.fields.image.fields.file.url}></Splash>
             </Section>
 
-            <Section>
+            <Section paddingTop={200}>
                 <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
                 <Carousel songs={songs}></Carousel>
             </Section>

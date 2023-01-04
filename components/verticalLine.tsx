@@ -7,6 +7,7 @@ const Div = styled('div', {
     top:0,
     bottom:0,
     left:20,
+    zIndex:1,
 
     display:'flex',
     flexDirection:'column',
@@ -16,12 +17,12 @@ const Div = styled('div', {
     variants:{
         top:{
             true:{
-                top:20,
+                top:35,
             }
         },
         bottom:{
             true:{
-                bottom:20,
+                bottom:35,
             }
         }
     }

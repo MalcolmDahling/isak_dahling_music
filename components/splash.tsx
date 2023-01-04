@@ -3,14 +3,15 @@ import ScrollDown from "./ScrollDown";
 
 const Div = styled('div', {
 
-    display:'flex',
 });
 
 const Img = styled('img', {
 
-    maxWidth:1920,
-    width:'100%',
-    margin:'auto',
+    position:'absolute',
+    height:'100vh',
+    left:'50%',
+    transform:'translateX(-50%)',
+    
 });
 
 interface props{
