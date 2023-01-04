@@ -1,4 +1,5 @@
 import { styled } from "../stitches.config";
+import ScrollDown from "./ScrollDown";
 
 const Div = styled('div', {
 
@@ -10,7 +11,6 @@ const Img = styled('img', {
     maxWidth:1920,
     width:'100%',
     margin:'auto',
-    objectFit:'cover'
 });
 
 interface props{
@@ -22,6 +22,7 @@ export default function Splash(props:props){
     return(
         <Div>
             <Img src={props.image}></Img>
+            <ScrollDown></ScrollDown>
         </Div>
     );
 }

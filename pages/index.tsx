@@ -1,14 +1,14 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Carousel from "../components/carousel";
-import { Song } from "../models/song";
-import { ProfilePicture } from "../models/profilePicture";
-import Splash from "../components/splash";
+import Carousel from "../components/Carousel";
+import { Song } from "../models/Song";
+import { ProfilePicture } from "../models/ProfilePicture";
+import Splash from "../components/Splash";
 import { useBreakpoint } from "use-breakpoint";
 import { BREAKPOINTS } from "../variables/breakpoints";
-import VerticalLine from "../components/verticalLine";
-import Section from "../components/section";
+import VerticalLine from "../components/VerticalLine";
+import Section from "../components/Section";
 
 export default function Home() {
 
@@ -43,7 +43,7 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            <Section paddingBottom={250}>
+            <Section height={100}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
                 <Splash image={breakpoint === "smallDesktop" || breakpoint === "bigDesktop" ? profilePictures[1]?.fields.image.fields.file.url : profilePictures[0]?.fields.image.fields.file.url}></Splash>
             </Section>

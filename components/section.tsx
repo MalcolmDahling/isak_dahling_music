@@ -13,19 +13,26 @@ const StyledSection = styled('section', {
                 }
                 
             }
+        },
+
+        height:{
+            100:{
+                height:'100vh'
+            }
         }
     }
 });
 
 interface props{
     children:React.ReactNode;
-    paddingBottom?:number;
+    paddingBottom?:250;
+    height?:100;
 }
 
 export default function Section(props:props){
 
     return(
-        <StyledSection>
+        <StyledSection paddingBottom={props.paddingBottom} height={props.height}>
             {props.children}
         </StyledSection>
     );

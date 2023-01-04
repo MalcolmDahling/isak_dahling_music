@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import { Song } from "../models/song";
+import { Song } from "../models/Song";
 import { styled } from "../stitches.config";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -8,8 +8,6 @@ import { useRef } from "react";
 const StyledSlider = styled(Slider, {
 
     margin:'auto',
-    paddingTop:100,
-    
 
     '@bp0':{
         width:'75%',
