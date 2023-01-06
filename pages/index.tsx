@@ -10,6 +10,7 @@ import { BREAKPOINTS } from "../variables/breakpoints";
 import VerticalLine from "../components/VerticalLine";
 import Section from "../components/Section";
 import Start from "../components/Start";
+import Hamburger from "../components/Hamburger";
 
 export default function Home() {
 
@@ -51,6 +52,8 @@ export default function Home() {
             </Head>
 
             { showStart &&<Start></Start> }
+
+            <Hamburger></Hamburger>
 
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>

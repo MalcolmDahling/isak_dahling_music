@@ -14,6 +14,8 @@ const Div = styled('div', {
     alignItems:'center',
     gap:10,
 
+    userSelect:'none',
+
     variants:{
         top:{
             true:{
