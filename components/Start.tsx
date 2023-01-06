@@ -57,7 +57,7 @@ const Div = styled('div', {
     gap:20,
 
     animation:`${fadeOutTextAndLine} 1000ms cubic-bezier(.55,.085,.68,.53) forwards`,
-    animationDelay:'5000ms',
+    animationDelay:'4500ms',
 
     '@tablet':{
         gap:10
@@ -107,7 +107,7 @@ const Line = styled('div', {
     backgroundColor:'$white',
 
     animation:`${ExtendLine} 2000ms ease-in-out forwards`,
-    animationDelay:'2500ms'
+    animationDelay:'2000ms'
 });
 
 export default function Start(){

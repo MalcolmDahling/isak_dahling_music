@@ -10,14 +10,13 @@ import { BREAKPOINTS } from "../variables/breakpoints";
 import VerticalLine from "../components/VerticalLine";
 import Section from "../components/Section";
 import Start from "../components/Start";
-import Hamburger from "../components/Hamburger";
 
 export default function Home() {
 
     const [songs, setSongs] = useState<Song[]>([]);
     const [profilePictures, setProfilePictures] = useState<ProfilePicture[]>([]);
     const [showStart, setShowStart] = useState(true);
-    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'bigDesktop');
+    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
 
     async function getSongs(){
 
@@ -38,6 +37,13 @@ export default function Home() {
         getSongs();
         getProfilePictures();
 
+        document.body.style.overflowY = 'hidden';
+
+        setTimeout(() => {
+
+            document.body.style.overflowY = 'auto';
+        }, 6000);
+
         setTimeout(() => {
 
             setShowStart(false);
@@ -51,13 +57,11 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            { showStart &&<Start></Start> }
-
-            <Hamburger></Hamburger>
+            { showStart && <Start></Start> }
 
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
-                <Splash image={breakpoint === "smallDesktop" || breakpoint === "bigDesktop" ? profilePictures[0]?.fields.image.fields.file.url : profilePictures[3]?.fields.image.fields.file.url}></Splash>
+                <Splash image={breakpoint === "desktop" ? profilePictures[0]?.fields.image.fields.file.url : profilePictures[3]?.fields.image.fields.file.url}></Splash>
             </Section>
 
             <Section paddingTop={200}>

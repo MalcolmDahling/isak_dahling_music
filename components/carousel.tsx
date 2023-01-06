@@ -9,11 +9,11 @@ const StyledSlider = styled(Slider, {
 
     margin:'auto',
 
-    '@bp0':{
+    '@desktop':{
         width:'75%',
     },
 
-    '@bp1':{
+    '@tablet':{
         width:'80%'
     },
 });
