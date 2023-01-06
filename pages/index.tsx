@@ -9,11 +9,13 @@ import { useBreakpoint } from "use-breakpoint";
 import { BREAKPOINTS } from "../variables/breakpoints";
 import VerticalLine from "../components/VerticalLine";
 import Section from "../components/Section";
+import Start from "../components/Start";
 
 export default function Home() {
 
     const [songs, setSongs] = useState<Song[]>([]);
     const [profilePictures, setProfilePictures] = useState<ProfilePicture[]>([]);
+    const [showStart, setShowStart] = useState(true);
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'bigDesktop');
 
     async function getSongs(){
@@ -34,6 +36,11 @@ export default function Home() {
 
         getSongs();
         getProfilePictures();
+
+        setTimeout(() => {
+
+            setShowStart(false);
+        }, 7000);
     }, []);
 
     //################### set bottom={true} on last VerticalLine when done ###################
@@ -42,6 +49,8 @@ export default function Home() {
             <Head>
                 <title>Isak Dahling Music</title>
             </Head>
+
+            { showStart &&<Start></Start> }
 
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>

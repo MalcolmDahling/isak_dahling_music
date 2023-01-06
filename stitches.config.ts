@@ -20,8 +20,8 @@ export const {
 
     media:{
 
-        bp0:'(min-width:769px)',
-        bp1:'(max-width:768px)',
-        bp2:'(max-width:480px)', 
+        desktop:'(min-width:769px)',
+        tablet:'(max-width:768px)',
+        mobile:'(max-width:480px)', 
     }
 });
