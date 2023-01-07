@@ -83,6 +83,7 @@ const H1 = styled('h1', {
     opacity:0,
     fontSize:'6vw',
     whiteSpace:'nowrap',
+    textShadow:'2px 2px 10px rgba(255,255,255,0.5)',
     
     animation:`${fadeInText} 1500ms cubic-bezier(.55,.085,.68,.53) forwards`,
     animationDelay:'500ms'
@@ -105,6 +106,7 @@ const Line = styled('div', {
     height:'0.8vw',
 
     backgroundColor:'$white',
+    boxShadow:'2px 2px 10px rgba(255,255,255,0.5)',
 
     animation:`${ExtendLine} 2000ms ease-in-out forwards`,
     animationDelay:'2000ms'
