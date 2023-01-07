@@ -11,43 +11,29 @@ import VerticalLine from "../components/VerticalLine";
 import Section from "../components/Section";
 import Start from "../components/Start";
 
-export default function Home() {
+interface props{
+    songs:Song[];
+    profilePictures:ProfilePicture[];
+}
 
-    const [songs, setSongs] = useState<Song[]>([]);
-    const [profilePictures, setProfilePictures] = useState<ProfilePicture[]>([]);
+export default function Home(props:props) {
+
     const [showStart, setShowStart] = useState(true);
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
 
-    async function getSongs(){
-
-        let res = await axios.get('http://localhost:3000/api/songs')
-        console.log('songs:', res.data); 
-        setSongs(res.data.items);
-    }
-
-    async function getProfilePictures(){
-
-        let res = await axios.get('http://localhost:3000/api/profilePictures');
-        console.log('profilePictures:', res.data);
-        setProfilePictures(res.data.items);
-    }
-
     useEffect(() => {
 
-        getSongs();
-        getProfilePictures();
+        // document.body.style.overflowY = 'hidden';
 
-        document.body.style.overflowY = 'hidden';
+        // setTimeout(() => {
 
-        setTimeout(() => {
-
-            document.body.style.overflowY = 'auto';
-        }, 6000);
+        //     document.body.style.overflowY = 'auto';
+        // }, 4000);
 
         setTimeout(() => {
 
             setShowStart(false);
-        }, 7000);
+        }, 5000);
     }, []);
 
     //################### set bottom={true} on last VerticalLine when done ###################
@@ -57,16 +43,16 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            {/* { showStart && <Start></Start> } */}
+            { showStart && <Start></Start> }
 
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
-                <Splash image={breakpoint === "desktop" ? profilePictures[0]?.fields.image.fields.file.url : profilePictures[3]?.fields.image.fields.file.url}></Splash>
+                <Splash image={breakpoint === "desktop" ? props.profilePictures[2]?.fields.image.fields.file.url : props.profilePictures[1]?.fields.image.fields.file.url}></Splash>
             </Section>
 
             <Section paddingTop={200}>
                 <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
-                <Carousel songs={songs}></Carousel>
+                <Carousel songs={props.songs}></Carousel>
             </Section>
         </>
     )

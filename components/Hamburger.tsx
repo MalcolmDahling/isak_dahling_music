@@ -3,6 +3,32 @@ import { ToggleMenu } from "../atoms/ToggleMenu";
 import { keyframes, styled } from "../stitches.config";
 import { useState } from "react";
 
+const FadeOut = keyframes({
+
+    '0%':{
+        filter:'blur(0)',
+        opacity:1
+    },
+
+    '100%':{
+        filter:'blur(12px)',
+        opacity:0
+    }
+});
+
+const FadeIn = keyframes({
+
+    '0%':{
+        filter:'blur(12px)',
+        opacity:0
+    },
+
+    '100%':{
+        filter:'blur(0)',
+        opacity:1
+    }
+});
+
 const Div = styled('div', {
 
     position:'fixed',
@@ -15,18 +41,6 @@ const Div = styled('div', {
     gap:8,
     justifyContent:'center',
     alignItems:'center',
-
-    cursor:'pointer',
-
-    // '&:hover .topLine':{
-        
-    //     transform:'rotate(90deg) translateX(13px)'
-    // },
-
-    // '&:hover .bottomLine':{
-        
-    //     transform:'rotate(90deg) translateX(-13px)'
-    // }
 });
 
 const LineContainer = styled('div', {
@@ -36,6 +50,7 @@ const LineContainer = styled('div', {
     gap:8,
 
     transition:'all 500ms',
+    cursor:'pointer',
 
     variants:{
         rotate:{
@@ -75,35 +90,11 @@ const Line = styled('div', {
     }
 });
 
-const FadeOut = keyframes({
-
-    '0%':{
-        filter:'blur(0)',
-        opacity:1
-    },
-
-    '100%':{
-        filter:'blur(12px)',
-        opacity:0
-    }
-});
-
-const FadeIn = keyframes({
-
-    '0%':{
-        filter:'blur(12px)',
-        opacity:0
-    },
-
-    '100%':{
-        filter:'blur(0)',
-        opacity:1
-    }
-});
-
 const Text = styled('p', {
 
     margin:0,
+
+    userSelect:'none',
 
     variants:{
         show:{
@@ -137,9 +128,9 @@ export default function Hamburger(){
     }
 
     return(
-        <Div onClick={() => {setToggleMenu(!toggleMenu);}} onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
+        <Div>
 
-            <LineContainer rotate={toggleMenu}>
+            <LineContainer rotate={toggleMenu} onClick={() => {setToggleMenu(!toggleMenu);}} onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
                 <Line rotateTop={rotate}></Line>
                 <Line></Line>
                 <Line rotateBottom={rotate}></Line>
