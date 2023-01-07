@@ -34,14 +34,16 @@ const H1 = styled('h1', {
 
     margin:0,
     transform:'rotate(-90deg)',
-    whiteSpace:'nowrap'
+    whiteSpace:'nowrap',
+    fontSize:24
 });
 
 const H2 = styled('h1', {
 
     margin:0,
     transform:'rotate(-90deg)',
-    whiteSpace:'nowrap'
+    whiteSpace:'nowrap',
+    fontSize:24
 });
 
 const Line = styled('div', {
@@ -67,15 +69,12 @@ export default function VerticalLine(props:props){
     return(
         <Div top={props.top} bottom={props.bottom}>
 
-            <Line style={{marginLeft: - ref.current?.offsetWidth + 26 /*26 is font size(24) + 2*/}}></Line>
+            <Line style={{marginLeft: - ref.current?.offsetWidth + 26 || 0 /*26 is font size(24) + 2*/}}></Line>
 
-            {props.textElement === "h1" ?
-                <H1 ref={ref} style={{height: ref.current?.offsetWidth}}>{props.text}</H1> 
-                :
-                <H2 ref={ref} style={{height: ref.current?.offsetWidth}}>{props.text}</H2>
-            }
+            {props.textElement === "h1" && <H1 ref={ref} style={{height: ref.current?.offsetWidth}}>{props.text}</H1>}
+            {props.textElement === "h2" && <H2 ref={ref} style={{height: ref.current?.offsetWidth}}>{props.text}</H2>} 
 
-            <Line style={{marginLeft: - ref.current?.offsetWidth + 26 /*26 is font size(24) + 2*/}}></Line>
+            <Line style={{marginLeft: - ref.current?.offsetWidth + 26 || 0 /*26 is font size(24) + 2*/}}></Line>
         </Div>
     );
 }

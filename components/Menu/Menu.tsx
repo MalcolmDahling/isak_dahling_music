@@ -1,7 +1,8 @@
 import { useRecoilState } from "recoil";
-import { ToggleMenu } from "../atoms/ToggleMenu";
-import { keyframes, styled } from "../stitches.config";
+import { ToggleMenu } from "../../atoms/ToggleMenu";
+import { keyframes, styled } from "../../stitches.config";
 import { useState, useEffect } from "react";
+import VerticalLine from "../VerticalLine";
 
 const FadeOut = keyframes({
 
@@ -29,7 +30,7 @@ const FadeIn = keyframes({
     }
 });
 
-const Div = styled('div', {
+const BackgroundDiv = styled('div', {
 
     position:'fixed',
     inset:'0',
@@ -48,7 +49,6 @@ const Div = styled('div', {
         }
     }
 });
-
 
 
 export default function Menu(){
@@ -76,10 +76,11 @@ export default function Menu(){
     return(
         <>
             { showMenu && 
-                <Div fade={toggleMenu}>
+                <BackgroundDiv fade={toggleMenu}>
                     
+                    <VerticalLine textElement="h2" text="MENU" top={true} bottom={true}></VerticalLine>
                     
-                </Div>
+                </BackgroundDiv>
             }
         </>
     );

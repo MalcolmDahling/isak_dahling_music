@@ -57,7 +57,7 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            { showStart && <Start></Start> }
+            {/* { showStart && <Start></Start> } */}
 
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
