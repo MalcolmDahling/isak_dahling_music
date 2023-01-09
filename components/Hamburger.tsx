@@ -51,7 +51,7 @@ const LineContainer = styled('div', {
     flexDirection:'column',
     gap:8,
 
-    transition:'all 500ms',
+    transition:'transform 500ms, opacity 250ms',
     cursor:'pointer',
 
     variants:{

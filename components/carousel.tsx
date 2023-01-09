@@ -41,6 +41,7 @@ const Button = styled('button', {
     border:'none',
     opacity:0.5,
     cursor:'pointer',
+    transition:'all 250ms',
 
     '&:hover':{
         opacity:1,
