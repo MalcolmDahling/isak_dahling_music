@@ -32,8 +32,8 @@ const FadeIn = keyframes({
 const Div = styled('div', {
 
     position:'fixed',
-    top:20,
-    right:20,
+    top:30,
+    right:30,
     zIndex:3,
 
     display:'flex',
@@ -67,7 +67,7 @@ const LineContainer = styled('div', {
 
 const Line = styled('div', {
 
-    width:40,
+    width:44.86,
     height:5,
 
     transition:'250ms',

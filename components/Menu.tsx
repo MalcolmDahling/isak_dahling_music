@@ -4,6 +4,8 @@ import { keyframes, styled } from "../stitches.config";
 import { useState, useEffect } from "react";
 import { ProfilePicture } from "../models/ProfilePicture";
 import Link from "next/link";
+import { useBreakpoint } from "use-breakpoint";
+import { BREAKPOINTS } from "../variables/breakpoints";
 
 const FadeOut = keyframes({
 
@@ -75,20 +77,35 @@ const Nav = styled('nav', {
     display:'flex',
     flexDirection:'column',
     justifyContent:'space-between',
+
+    pointerEvents:'none',
+
+    '&:hover > *':{
+        opacity:0.5
+    },
+
 });
 
 const LinkDiv = styled('div', {
 
     paddingLeft:20,
+    paddingBottom:10,
 
-    borderBottom:'1px solid white'
+    borderBottom:'1px solid white',
+    pointerEvents:'auto',
+
+    transition:'opacity 500ms',
+
+    '&:hover':{
+        opacity:1
+    }
 });
 
 const StyledLink = styled(Link, {
 
     fontSize:50,
     color:'$white',
-    textDecoration:'none', 
+    textDecoration:'none',
 });
 
 interface props{
@@ -100,6 +117,7 @@ export default function Menu(props:props){
 
     const [toggleMenu, setToggleMenu] = useRecoilState(ToggleMenu);
     const [showMenu, setShowMenu] = useState(false);
+    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'desktopBig');
 
     useEffect(() => {
 
@@ -118,17 +136,24 @@ export default function Menu(props:props){
         
     }, [toggleMenu]);
 
+
+
+
     return(
         <>
             { showMenu && 
                 <BackgroundDiv fade={toggleMenu}>
             
                     <Inner>
-                        <Img src={props.profilePictures[0]?.fields.image.fields.file.url}></Img>
+                        {breakpoint === "desktopBig" && <Img src={props.profilePictures[0]?.fields.image.fields.file.url} draggable={false}></Img>}
 
                         <Nav>
                             <LinkDiv>
                                 <StyledLink href="#">HOME</StyledLink>
+                            </LinkDiv>
+
+                            <LinkDiv>
+                                <StyledLink href="#">MUSIC</StyledLink>
                             </LinkDiv>
                             
                             <LinkDiv>
@@ -136,7 +161,7 @@ export default function Menu(props:props){
                             </LinkDiv>
                             
                             <LinkDiv>
-                                <StyledLink href="#">MUSIC</StyledLink>
+                                <StyledLink href="#">ABOUT</StyledLink>
                             </LinkDiv>
                             
                             <LinkDiv>

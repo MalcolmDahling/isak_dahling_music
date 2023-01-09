@@ -94,7 +94,7 @@ export default function Carousel(props:props){
                     {
                         props.songs.map(cover => {
                             return(
-                                <img src={cover.fields.image.fields.file.url} key={cover.fields.title}></img>
+                                <img src={cover.fields.image.fields.file.url} key={cover.fields.title} alt={cover.fields.title}></img>
                             );
                         })
                     }

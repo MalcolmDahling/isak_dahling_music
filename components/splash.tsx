@@ -22,7 +22,7 @@ export default function Splash(props:props){
 
     return(
         <Div>
-            <Img src={props.image}></Img>
+            <Img src={props.image} draggable={false}></Img>
             <ScrollDown></ScrollDown>
         </Div>
     );

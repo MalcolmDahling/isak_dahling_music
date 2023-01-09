@@ -112,7 +112,7 @@ const Line = styled('div', {
     animationDelay:'2000ms'
 });
 
-export default function Start(){
+export default function Intro(){
 
     return(
         <Background>

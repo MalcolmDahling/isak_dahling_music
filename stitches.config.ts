@@ -22,7 +22,8 @@ export const {
 
     media:{
 
-        desktop:'(min-width:769px)',
+        desktopBig:'(min-width:1001px)',
+        desktopSmall:'(max-width:1000px)',
         tablet:'(max-width:768px)',
         mobile:'(max-width:480px)', 
     }

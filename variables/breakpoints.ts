@@ -1,1 +1,1 @@
-export const BREAKPOINTS = {mobile:1, tablet:481, desktop:769}; //min width
+export const BREAKPOINTS = {mobile:1, tablet:481, desktopSmall:769, desktopBig:1001}; //min width
