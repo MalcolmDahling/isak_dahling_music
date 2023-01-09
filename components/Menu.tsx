@@ -66,46 +66,62 @@ const Inner = styled('div', {
 
 const Img = styled('img', {
 
-    height:'60vh'
+    height:'60vh',
+    maxHeight:600
 });
 
 const Nav = styled('nav', {
 
-    width:'40vw',
-    maxWidth:'30vw',
+    width:'30vw',
+    maxWidth:650,
+    minWidth:300,
 
     display:'flex',
     flexDirection:'column',
     justifyContent:'space-between',
+    // pointerEvents:'none',
 
-    pointerEvents:'none',
+    // '&:hover > div':{
+    //     opacity:0.3
+    // }
 
-    '&:hover > *':{
-        opacity:0.5
-    },
-
-});
-
-const LinkDiv = styled('div', {
-
-    paddingLeft:20,
-    paddingBottom:10,
-
-    borderBottom:'1px solid white',
-    pointerEvents:'auto',
-
-    transition:'opacity 500ms',
-
-    '&:hover':{
-        opacity:1
+    '&:hover a':{
+        color:'rgba(255,255,255,0.5)'
     }
+
 });
 
 const StyledLink = styled(Link, {
 
+    position:'relative',
+    paddingBottom:10,
+    paddingLeft:20,
+
+    borderBottom:'1px solid rgba(255,255,255,0.5)',
     fontSize:50,
     color:'$white',
     textDecoration:'none',
+    transition:'all 500ms',
+
+    '&:hover':{
+        color:'rgba(255,255,255,1) !important'
+    },
+
+    '&:hover div':{
+        width:'100%'
+    }
+});
+
+const ExpandingLine = styled('div', {
+
+    position:'absolute',
+    bottom:-1,
+    left:0,
+    height:1,
+    width:0,
+    transition:'all 500ms',
+    
+    backgroundColor:'$white'
 });
 
 interface props{
@@ -117,7 +133,9 @@ export default function Menu(props:props){
 
     const [toggleMenu, setToggleMenu] = useRecoilState(ToggleMenu);
     const [showMenu, setShowMenu] = useState(false);
-    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'desktopBig');
+    const { breakpoint } = useBreakpoint(BREAKPOINTS, 'desktop');
+
+    const menuOptions = ['HOME', 'MUSIC', 'NEWS', 'ABOUT', 'CONTACT'];
 
     useEffect(() => {
 
@@ -136,37 +154,26 @@ export default function Menu(props:props){
         
     }, [toggleMenu]);
 
-
-
-
     return(
         <>
             { showMenu && 
                 <BackgroundDiv fade={toggleMenu}>
             
                     <Inner>
-                        {breakpoint === "desktopBig" && <Img src={props.profilePictures[0]?.fields.image.fields.file.url} draggable={false}></Img>}
+                        {breakpoint === "desktop" && <Img src={props.profilePictures[0]?.fields.image.fields.file.url} draggable={false}></Img>}
 
                         <Nav>
-                            <LinkDiv>
-                                <StyledLink href="#">HOME</StyledLink>
-                            </LinkDiv>
+                            {
+                                menuOptions.map(option => {
 
-                            <LinkDiv>
-                                <StyledLink href="#">MUSIC</StyledLink>
-                            </LinkDiv>
-                            
-                            <LinkDiv>
-                                <StyledLink href="#">NEWS</StyledLink>
-                            </LinkDiv>
-                            
-                            <LinkDiv>
-                                <StyledLink href="#">ABOUT</StyledLink>
-                            </LinkDiv>
-                            
-                            <LinkDiv>
-                                <StyledLink href="#">CONTACT</StyledLink>
-                            </LinkDiv>
+                                    return (
+                                        <StyledLink href="#" key={option}>
+                                            {option}
+                                            <ExpandingLine></ExpandingLine>
+                                        </StyledLink>
+                                        );
+                                })
+                            }
                         </Nav>
                     </Inner>
 

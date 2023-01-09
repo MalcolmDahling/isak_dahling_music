@@ -1,14 +1,14 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import Carousel from "../components/Carousel";
 import { Song } from "../models/Song";
 import { ProfilePicture } from "../models/ProfilePicture";
-import Splash from "../components/Splash";
 import { useBreakpoint } from "use-breakpoint";
 import { BREAKPOINTS } from "../variables/breakpoints";
 import VerticalLine from "../components/VerticalLine";
 import Section from "../components/Section";
 import Intro from "../components/Intro";
+import Splash from "../components/splash";
+import Carousel from "../components/carousel";
 
 interface props{
     songs:Song[];
@@ -18,7 +18,7 @@ interface props{
 export default function Home(props:props) {
 
     const [showStart, setShowStart] = useState(true);
-    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktopBig');
+    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
 
     useEffect(() => {
 
@@ -46,7 +46,7 @@ export default function Home(props:props) {
 
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
-                <Splash image={(breakpoint === "desktopSmall" || breakpoint === "desktopBig") ? props.profilePictures[2]?.fields.image.fields.file.url : props.profilePictures[1]?.fields.image.fields.file.url}></Splash>
+                <Splash image={breakpoint === "desktop" ? props.profilePictures[2]?.fields.image.fields.file.url : props.profilePictures[1]?.fields.image.fields.file.url}></Splash>
             </Section>
 
             <Section paddingTop={200}>

@@ -45,6 +45,8 @@ const Div = styled('div', {
 
 const LineContainer = styled('div', {
 
+    width:'100%',
+
     display:'flex',
     flexDirection:'column',
     gap:8,
@@ -61,13 +63,21 @@ const LineContainer = styled('div', {
             false:{
                 transform:'rotate(0deg)'
             }
+        },
+
+        opacity:{
+            true:{
+                '&:not(:hover)':{
+                    opacity:0.5
+                }
+            }
         }
-    }
+    },
 });
 
 const Line = styled('div', {
 
-    width:44.86,
+    width:'100%',
     height:5,
 
     transition:'250ms',
@@ -130,10 +140,18 @@ export default function Hamburger(){
     return(
         <Div>
 
-            <LineContainer rotate={toggleMenu} onClick={() => {setToggleMenu(!toggleMenu);}} onMouseEnter={handleOnMouseEnter} onMouseLeave={handleOnMouseLeave}>
+            <LineContainer 
+                rotate={toggleMenu}
+                opacity={toggleMenu}
+                onClick={() => {setToggleMenu(!toggleMenu);}}
+                onMouseEnter={handleOnMouseEnter}
+                onMouseLeave={handleOnMouseLeave}
+            >
+
                 <Line rotateTop={rotate}></Line>
                 <Line></Line>
                 <Line rotateBottom={rotate}></Line>
+                
             </LineContainer>
 
             <Text show={toggleMenu}>MENU</Text>
