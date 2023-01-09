@@ -66,8 +66,7 @@ const Inner = styled('div', {
 
 const Img = styled('img', {
 
-    height:'60vh',
-    maxHeight:600
+    height:600
 });
 
 const Nav = styled('nav', {
@@ -171,7 +170,7 @@ export default function Menu(props:props){
                                             {option}
                                             <ExpandingLine></ExpandingLine>
                                         </StyledLink>
-                                        );
+                                    );
                                 })
                             }
                         </Nav>
