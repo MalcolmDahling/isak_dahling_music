@@ -63,7 +63,7 @@ const OuterDiv = styled('div', {
 
     '@tablet':{
         width:'80%'
-    },
+    }
 });
 
 const InnerDiv = styled('div', {
