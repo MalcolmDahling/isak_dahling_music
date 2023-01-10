@@ -16,7 +16,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
     async function getSongs(){
 
-        // let res = await axios.get('http://localhost:3000/api/songs');
         let res = await axios.get('api/songs');
         console.log('songs:', res.data); 
         setSongs(res.data.items);
@@ -24,7 +23,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
     async function getProfilePictures(){
 
-        // let res = await axios.get('http://localhost:3000/api/profilePictures');
         let res = await axios.get('api/profilePictures');
         console.log('profilePictures:', res.data);
         setProfilePictures(res.data.items);

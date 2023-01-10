@@ -30,7 +30,7 @@ const StyledNav = styled('nav', {
         
         width:'100%',
 
-        gap:40,
+        gap:20,
     }
 });
 
@@ -55,7 +55,8 @@ const StyledLink = styled(Link, {
     },
 
     '@tablet':{
-        fontSize:35
+        paddingBottom:0,
+        fontSize:35,
     }
 });
 
