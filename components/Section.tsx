@@ -4,6 +4,7 @@ const StyledSection = styled('section', {
 
     position:'relative',
     paddingLeft:26,
+    paddingRight:26,
     overflowX:'hidden',
 
     variants:{

@@ -15,11 +15,6 @@ const Div = styled('div', {
 
     '&:hover a':{
         opacity:0.5
-    },
-
-    '@menu':{
-        paddingLeft:60,
-        paddingRight:60
     }
 });
 

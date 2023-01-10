@@ -8,7 +8,8 @@ import VerticalLine from "../components/VerticalLine";
 import Section from "../components/Section";
 import Intro from "../components/Intro";
 import Splash from "../components/Splash";
-import Carousel from "../components/carousel";
+import Carousel from "../components/Carousel";
+import Releases from "../components/Releases/Releases";
 
 interface props{
     songs:Song[];
@@ -49,9 +50,14 @@ export default function Home(props:props) {
                 <Splash image={breakpoint === "desktop" ? props.profilePictures[2]?.fields.image.fields.file.url : props.profilePictures[1]?.fields.image.fields.file.url}></Splash>
             </Section>
 
-            <Section paddingTop={200}>
+            {/* <Section paddingTop={200}>
                 <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
                 <Carousel songs={props.songs}></Carousel>
+            </Section> */}
+
+            <Section>
+                <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
+                <Releases songs={props.songs}></Releases>
             </Section>
         </>
     )
