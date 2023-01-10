@@ -73,7 +73,7 @@ const InnerDiv = styled('div', {
     gap:20,
 
     '@tablet':{
-    }
+    },
 });
 
 const Img = styled('img', {
