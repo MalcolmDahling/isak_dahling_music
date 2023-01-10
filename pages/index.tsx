@@ -7,7 +7,7 @@ import { BREAKPOINTS } from "../variables/breakpoints";
 import VerticalLine from "../components/VerticalLine";
 import Section from "../components/Section";
 import Intro from "../components/Intro";
-import Splash from "../components/splash";
+import Splash from "../components/Splash";
 import Carousel from "../components/carousel";
 
 interface props{
@@ -42,7 +42,7 @@ export default function Home(props:props) {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            {/* { showStart && <Intro></Intro> } */}
+            { showStart && <Intro></Intro> }
 
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
