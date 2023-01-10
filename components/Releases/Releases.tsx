@@ -1,10 +1,11 @@
 import { Song } from "../../models/Song";
 import { styled } from "../../stitches.config";
-import Card from "./Card";
+import Card from "./Card/Card";
 
 const Div = styled('div', {
 
     maxWidth:1000,
+    paddingBottom:20,
     paddingLeft:40,
     margin:'auto',
 
@@ -17,7 +18,8 @@ const Div = styled('div', {
 const H2 = styled('h2', {
 
     textAlign:'center',
-    fontSize:100
+    fontSize:100,
+    userSelect:'none'
 });
 
 interface props{
@@ -36,7 +38,7 @@ export default function Releases(props:props){
 
                         return(
 
-                            <Card title={song.fields.title} releaseDate={song.fields.releaseDate} image={song.fields.image.fields.file.url}></Card>
+                            <Card title={song.fields.title} releaseDate={song.fields.releaseDate} image={song.fields.image.fields.file.url} key={song.fields.title}></Card>
                         );
                     })
                 }

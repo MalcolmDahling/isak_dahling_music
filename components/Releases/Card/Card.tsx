@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { styled } from "../../stitches.config";
+import { styled } from "../../../stitches.config";
+import styles from "./Card.module.scss";
 
 const Article = styled('article', {
 
@@ -10,7 +11,7 @@ const Article = styled('article', {
 
     backgroundSize:'cover',
     userSelect:'none',
-    border:'1px solid white',
+    border:'1px solid $white',
     transition:'all 200ms',
     cursor:'pointer',
 
@@ -19,11 +20,18 @@ const Article = styled('article', {
     }
 });
 
+const DivBorderAnimation = styled('div', {
+
+    position:'absolute',
+    inset:0
+});
+
 const BottomDiv = styled('div', {
 
     width:'calc(100% - 40px)',
     position:'absolute',
     bottom:20,
+    left:20,
 
     display:'flex',
     justifyContent:'space-between'
@@ -66,14 +74,17 @@ export default function Card(props:props){
     return(
         <Article style={{backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%), url(${props.image})`}}>
             
-            <BottomDiv>
-                <div>
-                    <Title>{props.title}</Title>
-                    <ReleaseDate>{releaseDate}</ReleaseDate>
-                </div>
-                <Img src="/images/icons/play.svg"></Img>
-            </BottomDiv>
+            <DivBorderAnimation className={styles.borderAnimation}>
 
+                <BottomDiv>
+                    <div>
+                        <Title>{props.title}</Title>
+                        <ReleaseDate>{releaseDate}</ReleaseDate>
+                    </div>
+                    <Img src="/images/icons/play.svg"></Img>
+                </BottomDiv>
+                
+            </DivBorderAnimation>
         </Article>
     );
 }
