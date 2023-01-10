@@ -16,14 +16,14 @@ export default function App({ Component, pageProps }: AppProps) {
 
     async function getSongs(){
 
-        let res = await axios.get('https://localhost:3000/api/songs')
+        let res = await axios.get('http://localhost:3000/api/songs')
         console.log('songs:', res.data); 
         setSongs(res.data.items);
     }
 
     async function getProfilePictures(){
 
-        let res = await axios.get('https://localhost:3000/api/profilePictures');
+        let res = await axios.get('http://localhost:3000/api/profilePictures');
         console.log('profilePictures:', res.data);
         setProfilePictures(res.data.items);
     }
