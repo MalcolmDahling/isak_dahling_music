@@ -27,8 +27,6 @@ export const {
         tablet:'(max-width:768px)',
         mobile:'(max-width:480px)', 
 
-        menuBig:'(max-width:500px)',
-        menuMedium:'(max-width:419px)',
-        menuSmall:'(max-width:339px)',
+        menu:'(max-width:442px)'
     }
 });

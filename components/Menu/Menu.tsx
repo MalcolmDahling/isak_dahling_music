@@ -43,7 +43,6 @@ const BackgroundDiv = styled('div', {
 
     display:'flex',
     justifyContent:'center',
-    alignItems:'center',
 
     backgroundColor:'$black',
 
@@ -56,6 +55,14 @@ const BackgroundDiv = styled('div', {
                 animation:`${FadeOut} 500ms forwards`
             }
         }
+    },
+
+    '@desktop':{
+        alignItems:'center',
+    },
+
+    '@tablet':{
+        paddingTop:50
     }
 });
 

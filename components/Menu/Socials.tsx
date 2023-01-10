@@ -17,19 +17,9 @@ const Div = styled('div', {
         opacity:0.5
     },
 
-    '@menuBig':{
-        paddingLeft:70,
-        paddingRight:70
-    },
-
-    '@menuMedium':{
-        paddingLeft:30,
-        paddingRight:30
-    },
-
-    '@menuSmall':{
-        paddingLeft:10,
-        paddingRight:10
+    '@menu':{
+        paddingLeft:60,
+        paddingRight:60
     }
 });
 
@@ -51,6 +41,11 @@ const Img = styled('img', {
 
     width:70,
     height:70,
+
+    '@tablet':{
+        width:40,
+        height:40,
+    }
 });
 
 const P = styled('p', {
