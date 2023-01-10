@@ -2,11 +2,11 @@ import { useRecoilState } from "recoil";
 import { ToggleMenu } from "../../atoms/ToggleMenu";
 import { keyframes, styled } from "../../stitches.config";
 import { useState, useEffect } from "react";
-import { ProfilePicture } from "../../models/ProfilePicture";
 import { useBreakpoint } from "use-breakpoint";
 import { BREAKPOINTS } from "../../variables/breakpoints";
 import Nav from "./Nav";
 import Socials from "./Socials";
+import { ProfilePicture } from "../../models/ProfilePicture";
 
 const FadeOut = keyframes({
 
