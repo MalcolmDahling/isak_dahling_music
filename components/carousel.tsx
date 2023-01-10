@@ -69,7 +69,7 @@ export default function Carousel(props:props){
         centerMode:true,
         slidesToShow:3,
         centerPadding:'0px',
-        draggable:false,
+        draggable:true,
         infinite:true,
 
         mobileFirst:true,
