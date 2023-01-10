@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { RecoilRoot } from 'recoil';
 import Hamburger from '../components/Hamburger';
-import Menu from '../components/Menu';
+import Menu from '../components/Menu/Menu';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Song } from '../models/Song';
