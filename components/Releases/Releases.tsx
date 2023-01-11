@@ -4,8 +4,8 @@ import Card from "./Card/Card";
 
 const Div = styled('div', {
 
-    maxWidth:1000,
-    paddingBottom:20,
+    maxWidth:1920,
+    paddingBottom:200,
     paddingLeft:40,
     margin:'auto',
 
@@ -17,9 +17,14 @@ const Div = styled('div', {
 
 const H2 = styled('h2', {
 
+    marginTop:200,
+    marginBottom:50,
+    paddingLeft:40,
+
+    textShadow:'0px 0px 50px rgba(0, 0, 0, 1)',
     textAlign:'center',
-    fontSize:100,
-    userSelect:'none'
+    fontSize:'calc(30px + 5vw)',
+    userSelect:'none',
 });
 
 interface props{
@@ -42,6 +47,8 @@ export default function Releases(props:props){
                         );
                     })
                 }
+
+                {/* <Card title={props.songs[0].fields.title} releaseDate={"asdf"} image={props.songs[0].fields.image.fields.file.url}></Card> */}
             </Div>
         </>
     );

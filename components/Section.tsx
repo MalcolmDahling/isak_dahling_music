@@ -21,6 +21,10 @@ const StyledSection = styled('section', {
     }
 });
 
+const BackgroundImage = styled('img', {
+
+});
+
 interface props{
     children:React.ReactNode;
     paddingTop?:200;

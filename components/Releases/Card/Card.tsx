@@ -1,37 +1,79 @@
 import { useEffect, useState } from "react";
-import { styled } from "../../../stitches.config";
+import { keyframes, styled } from "../../../stitches.config";
 import styles from "./Card.module.scss";
 
-const Article = styled('article', {
+const ShineAnim = keyframes({
+
+    '0%':{
+        top:'50%',
+        left:'-100%',
+    },
+
+    '100%':{
+        left:'120%',
+        top:'-120%',
+    }
+})
+
+const Div = styled('div', {
 
     position:'relative',
-    width:400,
-    height:400,
-    padding:20,
+    maxWidth:400,
 
     backgroundSize:'cover',
     userSelect:'none',
-    border:'1px solid $white',
-    transition:'all 200ms',
+    border:'2px solid $white',
+    transition:'all 500ms',
     cursor:'pointer',
+    overflow:'hidden',
+    borderRadius:15,
 
     '&:hover':{
         transform:'scale(1.05)'
+    },
+
+    '&:hover .glass':{
+        animation:`${ShineAnim} 750ms`
     }
 });
 
-const DivBorderAnimation = styled('div', {
+const Overlay = styled('div', {
 
     position:'absolute',
-    inset:0
+    inset:0,
+
+    backgroundImage:'linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%)'
+});
+
+const Img = styled('img',{
+
+    width:'100%',
+    height:'100%'
+});
+
+const Glass = styled('div', {
+
+    position:'absolute',
+    top:'50%',
+    left:'-100%',
+    width:'100%',
+    height:'200%',
+    zIndex:1,
+    pointerEvents:'none',
+    
+    transform:'rotate(-45deg)',
+    background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%)',
+    opacity:0.2,
+    backdropFilter: 'blur(6px)',
+    '-webkit-backdrop-filter': 'blur(6px)',
 });
 
 const BottomDiv = styled('div', {
 
-    width:'calc(100% - 40px)',
     position:'absolute',
     bottom:20,
     left:20,
+    right:20,
 
     display:'flex',
     justifyContent:'space-between'
@@ -49,7 +91,7 @@ const ReleaseDate = styled('p', {
     margin:0,
 });
 
-const Img = styled('img', {
+const Icon = styled('img', {
 
     width:50,
 });
@@ -72,19 +114,22 @@ export default function Card(props:props){
     }, []);
 
     return(
-        <Article style={{backgroundImage: `linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 100%), url(${props.image})`}}>
-            
-            <DivBorderAnimation className={styles.borderAnimation}>
+        <Div>
+ 
+            <Glass className="glass"></Glass>
 
-                <BottomDiv>
-                    <div>
-                        <Title>{props.title}</Title>
-                        <ReleaseDate>{releaseDate}</ReleaseDate>
-                    </div>
-                    <Img src="/images/icons/play.svg"></Img>
-                </BottomDiv>
-                
-            </DivBorderAnimation>
-        </Article>
+            <Overlay></Overlay> 
+            
+            <Img src={props.image} alt={props.title}></Img>
+
+            <BottomDiv>
+                <div>
+                    <Title>{props.title}</Title>
+                    <ReleaseDate>{releaseDate}</ReleaseDate>
+                </div>
+                <Icon src="/images/icons/play.svg"></Icon>
+            </BottomDiv>
+
+        </Div>
     );
 }

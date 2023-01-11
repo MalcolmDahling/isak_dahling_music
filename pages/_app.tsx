@@ -13,12 +13,19 @@ export default function App({ Component, pageProps }: AppProps) {
 
     const [songs, setSongs] = useState<Song[]>([]);
     const [profilePictures, setProfilePictures] = useState<ProfilePicture[]>([]);
+    const [backgroundImages, setBackgroundImages] = useState();
 
     async function getSongs(){
 
         let res = await axios.get('api/songs');
-        console.log('songs:', res.data); 
-        setSongs(res.data.items);
+        console.log('songs:', res.data);
+
+        let sortedArr = res.data.items.sort((a:Song, b:Song) => {
+
+            return new Date(b.fields.releaseDate).getTime() - new Date(a.fields.releaseDate).getTime();
+        });
+
+        setSongs(sortedArr);
     }
 
     async function getProfilePictures(){
@@ -28,10 +35,18 @@ export default function App({ Component, pageProps }: AppProps) {
         setProfilePictures(res.data.items);
     }
 
+    async function getBackgroundImages(){
+
+        let res = await axios.get('api/backgroundImages');
+        console.log('backgroundImages:', res.data.items);
+        setBackgroundImages(res.data.items);
+    }
+
     useEffect(() => {
 
         getSongs();
         getProfilePictures();
+        getBackgroundImages();
     }, []);
 
     return (
@@ -45,7 +60,7 @@ export default function App({ Component, pageProps }: AppProps) {
             <Hamburger></Hamburger>
             <Menu profilePictures={profilePictures}></Menu>
             
-            <Component {...pageProps} songs={songs} profilePictures={profilePictures}/>
+            <Component {...pageProps} songs={songs} profilePictures={profilePictures} backgroundImages={backgroundImages}/>
         </RecoilRoot>
     );
 }
