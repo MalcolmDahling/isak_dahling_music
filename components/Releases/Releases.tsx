@@ -1,25 +1,34 @@
 import { Song } from "../../models/Song";
 import { styled } from "../../stitches.config";
-import Card from "./Card/Card";
+import Card from "./Card";
 
 const Div = styled('div', {
 
-    maxWidth:1920,
-    paddingBottom:200,
     paddingLeft:40,
+    paddingBottom:200,
+});
+
+const CardContainer = styled('div', {
+
+    maxWidth:1920,
     margin:'auto',
 
     display:'flex',
     flexWrap:'wrap',
     justifyContent:'center',
-    gap:40
+    gap:40,
+
+    pointerEvents:'none',
+
+    '&:hover > div':{
+        filter:'blur(2px) grayscale(1)'
+    }
 });
 
 const H2 = styled('h2', {
 
     marginTop:200,
     marginBottom:50,
-    paddingLeft:40,
 
     textShadow:'0px 0px 50px rgba(0, 0, 0, 1)',
     textAlign:'center',
@@ -34,10 +43,10 @@ interface props{
 export default function Releases(props:props){
     
     return(
-        <>
+        <Div>
             <H2>RELEASES</H2>
 
-            <Div>
+            <CardContainer>
                 {
                     props.songs.map(song => {
 
@@ -49,7 +58,7 @@ export default function Releases(props:props){
                 }
 
                 {/* <Card title={props.songs[0].fields.title} releaseDate={"asdf"} image={props.songs[0].fields.image.fields.file.url}></Card> */}
-            </Div>
-        </>
+            </CardContainer>
+        </Div>
     );
 }

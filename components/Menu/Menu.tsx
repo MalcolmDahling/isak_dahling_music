@@ -24,7 +24,7 @@ const FadeOut = keyframes({
 const FadeIn = keyframes({
 
     '0%':{
-        filter:'blur(12px)',
+        filter:'blur(6px)',
         opacity:0
     },
 
@@ -44,7 +44,8 @@ const BackgroundDiv = styled('div', {
     display:'flex',
     justifyContent:'center',
 
-    backgroundColor:'$black',
+    backgroundColor:'rgba(0,0,0,0.75)',
+    backdropFilter:'blur(12px)',
 
     variants:{
         fade:{

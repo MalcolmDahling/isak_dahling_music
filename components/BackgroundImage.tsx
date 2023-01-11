@@ -26,8 +26,6 @@ export default function BackgroundImage(){
 
 
     return(
-        <Div>
-            
-        </Div>
+        <Div></Div>
     );
 }

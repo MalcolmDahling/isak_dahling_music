@@ -1,19 +1,5 @@
 import { useEffect, useState } from "react";
-import { keyframes, styled } from "../../../stitches.config";
-import styles from "./Card.module.scss";
-
-const ShineAnim = keyframes({
-
-    '0%':{
-        top:'50%',
-        left:'-100%',
-    },
-
-    '100%':{
-        left:'120%',
-        top:'-120%',
-    }
-})
+import { styled } from "../../stitches.config";
 
 const Div = styled('div', {
 
@@ -27,13 +13,11 @@ const Div = styled('div', {
     cursor:'pointer',
     overflow:'hidden',
     borderRadius:15,
+    pointerEvents:'auto',
 
     '&:hover':{
-        transform:'scale(1.05)'
-    },
-
-    '&:hover .glass':{
-        animation:`${ShineAnim} 750ms`
+        transform:'scale(1.1)',
+        filter:'blur(0px) grayscale(0) !important',
     }
 });
 
@@ -51,23 +35,6 @@ const Img = styled('img',{
     height:'100%'
 });
 
-const Glass = styled('div', {
-
-    position:'absolute',
-    top:'50%',
-    left:'-100%',
-    width:'100%',
-    height:'200%',
-    zIndex:1,
-    pointerEvents:'none',
-    
-    transform:'rotate(-45deg)',
-    background: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 100%)',
-    opacity:0.2,
-    backdropFilter: 'blur(6px)',
-    '-webkit-backdrop-filter': 'blur(6px)',
-});
-
 const BottomDiv = styled('div', {
 
     position:'absolute',
@@ -82,7 +49,6 @@ const BottomDiv = styled('div', {
 const Title = styled('h3', {
 
     margin:0,
-
     fontSize:25,
 });
 
@@ -115,11 +81,7 @@ export default function Card(props:props){
 
     return(
         <Div>
- 
-            <Glass className="glass"></Glass>
-
             <Overlay></Overlay> 
-            
             <Img src={props.image} alt={props.title}></Img>
 
             <BottomDiv>
@@ -129,7 +91,6 @@ export default function Card(props:props){
                 </div>
                 <Icon src="/images/icons/play.svg"></Icon>
             </BottomDiv>
-
         </Div>
     );
 }
