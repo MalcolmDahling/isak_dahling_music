@@ -22,8 +22,7 @@ const Div = styled('div', {
 });
 
 
-export default function BackgroundImage(){
-
+export default function SvgBackground(){
 
     return(
         <Div></Div>

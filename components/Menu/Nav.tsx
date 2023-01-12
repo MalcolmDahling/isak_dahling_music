@@ -1,15 +1,15 @@
-import Link from "next/link";
 import { styled } from "../../stitches.config";
+import MenuLink from "./StyledLink";
 
 const StyledNav = styled('nav', {
 
-    
     maxWidth:650,
-    minWidth:300,
+    minWidth:250,
+    paddingRight:20,
 
     display:'flex',
     flexDirection:'column',
-    justifyContent:'space-between',
+    
     // pointerEvents:'none',
 
     // '&:hover > div':{
@@ -24,53 +24,19 @@ const StyledNav = styled('nav', {
     '@desktop':{
 
         width:'30vw',
+        
+        justifyContent:'space-between',
     },
 
     '@tablet':{
         
         width:'100%',
+        marginTop:50,
 
-        gap:20,
+        gap:40,
     }
 });
 
-const StyledLink = styled(Link, {
-
-    position:'relative',
-    paddingBottom:10,
-    paddingLeft:20,
-
-    borderBottom:'1px solid $whiteHalfOpacity',
-    fontSize:50,
-    color:'$white',
-    textDecoration:'none',
-    transition:'all 500ms',
-
-    '&:hover':{
-        color:'$white !important'
-    },
-
-    '&:hover div':{
-        width:'100%'
-    },
-
-    '@tablet':{
-        paddingBottom:0,
-        fontSize:35,
-    }
-});
-
-const ExpandingLine = styled('div', {
-
-    position:'absolute',
-    bottom:-1,
-    left:0,
-    height:1,
-    width:0,
-    transition:'all 500ms',
-    
-    backgroundColor:'$white'
-});
 
 export default function Nav(){
 
@@ -79,13 +45,10 @@ export default function Nav(){
     return(
         <StyledNav>
             {
-                menuOptions.map(option => {
+                menuOptions.map((option, i:any) => {
 
                     return (
-                        <StyledLink href="#" key={option}>
-                            {option}
-                            <ExpandingLine></ExpandingLine>
-                        </StyledLink>
+                        <MenuLink url="#" animationDelay={i} option={option} key={option}></MenuLink>
                     );
                 })
             }

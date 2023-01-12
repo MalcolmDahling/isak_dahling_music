@@ -1,4 +1,4 @@
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { ToggleMenu } from "../../atoms/ToggleMenu";
 import { keyframes, styled } from "../../stitches.config";
 import { useState, useEffect } from "react";
@@ -6,7 +6,7 @@ import { useBreakpoint } from "use-breakpoint";
 import { BREAKPOINTS } from "../../variables/breakpoints";
 import Nav from "./Nav";
 import Socials from "./Socials";
-import { ProfilePicture } from "../../models/ProfilePicture";
+import { ProfilePictures } from "../../atoms/ProfilePictures";
 
 const FadeOut = keyframes({
 
@@ -16,7 +16,7 @@ const FadeOut = keyframes({
     },
 
     '100%':{
-        filter:'blur(12px)',
+        filter:'blur(6px)',
         opacity:0
     }
 });
@@ -89,15 +89,11 @@ const Img = styled('img', {
     height:600
 });
 
-interface props{
+export default function Menu(){
 
-    profilePictures:ProfilePicture[];
-};
-
-export default function Menu(props:props){
-
-    const [toggleMenu, setToggleMenu] = useRecoilState(ToggleMenu);
+    const toggleMenu = useRecoilValue(ToggleMenu);
     const [showMenu, setShowMenu] = useState(false);
+    const profilePictures = useRecoilValue(ProfilePictures);
     const { breakpoint } = useBreakpoint(BREAKPOINTS, 'desktop');
 
     useEffect(() => {
@@ -124,7 +120,7 @@ export default function Menu(props:props){
             
                     <OuterDiv>
                         <InnerDiv>
-                            {breakpoint === "desktop" && <Img src={props.profilePictures[0]?.fields.image.fields.file.url} draggable={false}></Img>}
+                            {breakpoint === "desktop" && <Img src={profilePictures[0]?.fields.image.fields.file.url} draggable={false}></Img>}
                             <Nav></Nav>
                             
                         </InnerDiv>

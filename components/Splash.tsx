@@ -11,7 +11,6 @@ const Img = styled('img', {
     height:'100vh',
     left:'50%',
     transform:'translateX(-50%)',
-    
 });
 
 interface props{

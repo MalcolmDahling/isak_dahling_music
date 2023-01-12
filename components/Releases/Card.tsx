@@ -15,9 +15,12 @@ const Div = styled('div', {
     borderRadius:15,
     pointerEvents:'auto',
 
-    '&:hover':{
-        transform:'scale(1.1)',
-        filter:'blur(0px) grayscale(0) !important',
+    '@desktop':{
+
+        '&:hover':{
+            transform:'scale(1.1)',
+            filter:'blur(0px) grayscale(0) !important',
+        }
     }
 });
 
@@ -76,7 +79,7 @@ export default function Card(props:props){
     useEffect(() => {
 
         let date = new Date(props.releaseDate);
-        setReleaseDate(String(date.getFullYear())); 
+        setReleaseDate(date.getFullYear().toString()); 
     }, []);
 
     return(

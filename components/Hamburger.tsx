@@ -11,7 +11,7 @@ const FadeOut = keyframes({
     },
 
     '100%':{
-        filter:'blur(12px)',
+        filter:'blur(6px)',
         opacity:0
     }
 });
@@ -19,7 +19,7 @@ const FadeOut = keyframes({
 const FadeIn = keyframes({
 
     '0%':{
-        filter:'blur(12px)',
+        filter:'blur(6px)',
         opacity:0
     },
 
@@ -137,13 +137,21 @@ export default function Hamburger(){
         }
     }
 
+    function handleClick(e:React.MouseEvent){
+
+        if(!e.detail || e.detail == 1){ //prevents double clicking
+
+            setToggleMenu(!toggleMenu);
+        }
+    }
+
     return(
         <Div>
 
             <LineContainer 
                 rotate={toggleMenu}
                 opacity={toggleMenu}
-                onClick={() => {setToggleMenu(!toggleMenu);}}
+                onClick={handleClick}
                 onMouseEnter={handleOnMouseEnter}
                 onMouseLeave={handleOnMouseLeave}
             >

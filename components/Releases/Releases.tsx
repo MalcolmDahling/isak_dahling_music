@@ -1,3 +1,5 @@
+import { useRecoilValue } from "recoil";
+import { Songs } from "../../atoms/Songs";
 import { Song } from "../../models/Song";
 import { styled } from "../../stitches.config";
 import Card from "./Card";
@@ -20,8 +22,11 @@ const CardContainer = styled('div', {
 
     pointerEvents:'none',
 
-    '&:hover > div':{
-        filter:'blur(2px) grayscale(1)'
+    '@desktop':{
+
+        '&:hover > div':{
+            filter:'blur(2px) grayscale(1)'
+        }
     }
 });
 
@@ -36,11 +41,9 @@ const H2 = styled('h2', {
     userSelect:'none',
 });
 
-interface props{
-    songs:Song[];
-}
+export default function Releases(){
 
-export default function Releases(props:props){
+    const songs = useRecoilValue(Songs);
     
     return(
         <Div>
@@ -48,7 +51,7 @@ export default function Releases(props:props){
 
             <CardContainer>
                 {
-                    props.songs.map(song => {
+                    songs.map(song => {
 
                         return(
 
@@ -56,8 +59,6 @@ export default function Releases(props:props){
                         );
                     })
                 }
-
-                {/* <Card title={props.songs[0].fields.title} releaseDate={"asdf"} image={props.songs[0].fields.image.fields.file.url}></Card> */}
             </CardContainer>
         </Div>
     );

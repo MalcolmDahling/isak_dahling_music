@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import { Song } from "../models/Song";
-import { ProfilePicture } from "../models/ProfilePicture";
 import { useBreakpoint } from "use-breakpoint";
 import { BREAKPOINTS } from "../variables/breakpoints";
 import VerticalLine from "../components/VerticalLine";
@@ -9,28 +8,55 @@ import Section from "../components/Section";
 import Intro from "../components/Intro";
 import Splash from "../components/Splash";
 import Releases from "../components/Releases/Releases";
-import { IBackgroundImage } from "../models/IBackgroundImage";
-import BackgroundImage from "../components/BackgroundImage";
+import { useRecoilState } from "recoil";
+import { Songs } from "../atoms/Songs";
+import axios from "axios";
+import Hamburger from "../components/Hamburger";
+import Menu from "../components/Menu/Menu";
+import { ProfilePictures } from "../atoms/ProfilePictures";
+import SvgBackground from "../components/SvgBackground";
 
-interface props{
-    songs:Song[];
-    profilePictures:ProfilePicture[];
-    backgroundImages:IBackgroundImage[];
-}
+export default function Home() {
 
-export default function Home(props:props) {
+    const [songs, setSongs] = useRecoilState(Songs);
+    const [profilePictures, setProfilePictures] = useRecoilState(ProfilePictures);
+    const [backgroundImages, setBackgroundImages] = useState();
 
     const [showStart, setShowStart] = useState(true);
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
 
+    async function getSongs(){
+
+        let res = await axios.get('api/songs');
+        console.log('songs:', res.data);
+
+        let sortedArr = res.data.items.sort((a:Song, b:Song) => {
+
+            return new Date(b.fields.releaseDate).getTime() - new Date(a.fields.releaseDate).getTime();
+        });
+
+        setSongs(sortedArr);
+    }
+
+    async function getProfilePictures(){
+
+        let res = await axios.get('api/profilePictures');
+        console.log('profilePictures:', res.data);
+        setProfilePictures(res.data.items);
+    }
+
+    async function getBackgroundImages(){
+
+        let res = await axios.get('api/backgroundImages');
+        console.log('backgroundImages:', res.data.items);
+        setBackgroundImages(res.data.items);
+    }
+
     useEffect(() => {
 
-        // document.body.style.overflowY = 'hidden';
-
-        // setTimeout(() => {
-
-        //     document.body.style.overflowY = 'auto';
-        // }, 4000);
+        getSongs();
+        getProfilePictures();
+        getBackgroundImages();
 
         setTimeout(() => {
 
@@ -47,9 +73,12 @@ export default function Home(props:props) {
 
             { showStart && <Intro></Intro> }
 
+            <Hamburger></Hamburger>
+            <Menu></Menu>
+
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
-                <Splash image={breakpoint === "desktop" ? props.profilePictures[2]?.fields.image.fields.file.url : props.profilePictures[1]?.fields.image.fields.file.url}></Splash>
+                <Splash image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Splash>
             </Section>
 
             {/* <Section paddingTop={200}>
@@ -58,9 +87,9 @@ export default function Home(props:props) {
             </Section> */}
 
             <Section>
-                <BackgroundImage></BackgroundImage>
+                <SvgBackground></SvgBackground>
                 <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
-                <Releases songs={props.songs}></Releases>
+                <Releases></Releases>
             </Section>
         </>
     );
