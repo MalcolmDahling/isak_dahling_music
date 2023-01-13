@@ -5,7 +5,7 @@ const Div = styled('div', {
     position:'absolute',
     inset:0,
 
-    opacity:0.2,
+    opacity:0.10,
     zIndex:-1,
 
     backgroundImage:'url(/images/hexagon.svg)',

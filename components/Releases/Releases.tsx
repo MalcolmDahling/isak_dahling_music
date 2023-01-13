@@ -11,7 +11,7 @@ const Div = styled('div', {
 
 const CardContainer = styled('div', {
 
-    maxWidth:1920,
+    maxWidth:900,
     margin:'auto',
 
     display:'flex',
@@ -36,7 +36,7 @@ const H2 = styled('h2', {
 
     textShadow:'0px 0px 50px rgba(0, 0, 0, 1)',
     textAlign:'center',
-    fontSize:'calc(30px + 5vw)',
+    fontSize:'calc(30px + 3vw)',
     userSelect:'none',
 });
 

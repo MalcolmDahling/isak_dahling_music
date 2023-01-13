@@ -6,7 +6,7 @@ import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
 const Div = styled('div', {
 
     position:'relative',
-    maxWidth:400,
+    maxWidth:250,
 
     backgroundSize:'cover',
     userSelect:'none',
@@ -14,7 +14,6 @@ const Div = styled('div', {
     transition:'all 500ms',
     cursor:'pointer',
     overflow:'hidden',
-    borderRadius:15,
     pointerEvents:'auto',
 
     '@desktop':{
@@ -43,9 +42,9 @@ const Img = styled('img',{
 const BottomDiv = styled('div', {
 
     position:'absolute',
-    bottom:20,
-    left:20,
-    right:20,
+    bottom:15,
+    left:15,
+    right:15,
 
     display:'flex',
     justifyContent:'space-between'
@@ -54,7 +53,7 @@ const BottomDiv = styled('div', {
 const Title = styled('h3', {
 
     margin:0,
-    fontSize:25,
+    fontSize:18,
 });
 
 const ReleaseDate = styled('p', {
@@ -64,7 +63,7 @@ const ReleaseDate = styled('p', {
 
 const Icon = styled('img', {
 
-    width:50,
+    width:40,
 });
 
 interface props{
