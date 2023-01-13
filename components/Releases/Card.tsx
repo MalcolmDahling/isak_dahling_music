@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import { styled } from "../../stitches.config";
+import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
 
 const Div = styled('div', {
 
@@ -75,6 +77,7 @@ interface props{
 export default function Card(props:props){
 
     const [releaseDate, setReleaseDate] = useState('');
+    const [toggleMusicPopup, setToggleMusicPopup] = useRecoilState(ToggleMusicPopup);
 
     useEffect(() => {
 
@@ -82,8 +85,13 @@ export default function Card(props:props){
         setReleaseDate(date.getFullYear().toString()); 
     }, []);
 
+    function handleClick(){
+
+        setToggleMusicPopup({show:true, title:props.title});
+    }
+
     return(
-        <Div>
+        <Div onClick={handleClick}>
             <Overlay></Overlay> 
             <Img src={props.image} alt={props.title}></Img>
 

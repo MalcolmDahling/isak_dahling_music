@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { useRecoilValue } from "recoil";
+import { SocialMedia } from "../../atoms/SocialMedia";
 import { styled } from "../../stitches.config";
 
 const Div = styled('div', {
@@ -53,23 +55,17 @@ const P = styled('p', {
 
 export default function Socials(){
 
-    const links = [
-        {name:'Facebook', link:'https://www.facebook.com/isakdahlingmusic'},
-        {name:'Soundcloud', link:'https://soundcloud.com/isakdahling'},
-        {name:'Instagram', link:'https://www.instagram.com/isakdahling/'},
-        {name:'Spotify', link:'https://open.spotify.com/artist/0TxYGvNHyaDxPCsHExowda'},
-        {name:'Youtube', link:'https://www.youtube.com/@isakdahling680'},
-    ];
+    const socialMedia = useRecoilValue(SocialMedia);
 
     return(
         <Div>
             {
-                links.map((link, i) => {
+                socialMedia.map((social, i) => {
 
                     return(
-                        <StyledLink href={link.link} key={link.name}>
-                            <Img src={`/images/icons/${link.name}.svg`} alt={link.name}></Img>
-                            <P>{link.name}</P>
+                        <StyledLink href={social.fields.link} key={social.fields.title}>
+                            <Img src={social.fields.image.fields.file.url} alt={social.fields.title}></Img>
+                            <P>{social.fields.title}</P>
                         </StyledLink>
                     );
                 })

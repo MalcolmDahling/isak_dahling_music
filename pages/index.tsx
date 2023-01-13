@@ -15,11 +15,14 @@ import Hamburger from "../components/Hamburger";
 import Menu from "../components/Menu/Menu";
 import { ProfilePictures } from "../atoms/ProfilePictures";
 import SvgBackground from "../components/SvgBackground";
+import { SocialMedia } from "../atoms/SocialMedia";
+import MusicPopup from "../components/MusicPopup/MusicPopup";
 
 export default function Home() {
 
     const [songs, setSongs] = useRecoilState(Songs);
     const [profilePictures, setProfilePictures] = useRecoilState(ProfilePictures);
+    const [socialMedia, setSocialMedia] = useRecoilState(SocialMedia);
     const [backgroundImages, setBackgroundImages] = useState();
 
     const [showStart, setShowStart] = useState(true);
@@ -27,7 +30,7 @@ export default function Home() {
 
     async function getSongs(){
 
-        let res = await axios.get('api/songs');
+        let res = await axios.get('api/getSongs');
         console.log('songs:', res.data);
 
         let sortedArr = res.data.items.sort((a:Song, b:Song) => {
@@ -40,16 +43,23 @@ export default function Home() {
 
     async function getProfilePictures(){
 
-        let res = await axios.get('api/profilePictures');
+        let res = await axios.get('api/getProfilePictures');
         console.log('profilePictures:', res.data);
         setProfilePictures(res.data.items);
     }
 
     async function getBackgroundImages(){
 
-        let res = await axios.get('api/backgroundImages');
+        let res = await axios.get('api/getBackgroundImages');
         console.log('backgroundImages:', res.data.items);
         setBackgroundImages(res.data.items);
+    }
+
+    async function getSocialMedia(){
+
+        let res = await axios.get('api/getSocialMedia');
+        console.log('socialMedia', res.data.items);
+        setSocialMedia(res.data.items);
     }
 
     useEffect(() => {
@@ -57,6 +67,7 @@ export default function Home() {
         getSongs();
         getProfilePictures();
         getBackgroundImages();
+        getSocialMedia();
 
         setTimeout(() => {
 
@@ -75,6 +86,7 @@ export default function Home() {
 
             <Hamburger></Hamburger>
             <Menu></Menu>
+            <MusicPopup></MusicPopup>
 
             <Section viewHeight100={true}>
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>

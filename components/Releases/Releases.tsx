@@ -1,6 +1,5 @@
 import { useRecoilValue } from "recoil";
 import { Songs } from "../../atoms/Songs";
-import { Song } from "../../models/Song";
 import { styled } from "../../stitches.config";
 import Card from "./Card";
 
