@@ -95,6 +95,8 @@ const P = styled('p', {
 const Img = styled('img', {
 
     maxWidth:250,
+
+    border:'2px solid $white',
 });
 
 export default function MusicPopup(){

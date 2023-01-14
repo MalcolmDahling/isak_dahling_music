@@ -41,6 +41,8 @@ const Div = styled('div', {
     gap:8,
     justifyContent:'center',
     alignItems:'center',
+
+    mixBlendMode:'difference'
 });
 
 const LineContainer = styled('div', {

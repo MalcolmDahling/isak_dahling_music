@@ -1,7 +1,10 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Songs } from "../../atoms/Songs";
 import { styled } from "../../stitches.config";
+import { useEffect } from "react";
 import Card from "./Card";
+import { ReleasesInView } from "../../atoms/ReleasesInView";
+import { useInView } from "react-intersection-observer";
 
 const Div = styled('div', {
 
@@ -11,7 +14,7 @@ const Div = styled('div', {
 
 const CardContainer = styled('div', {
 
-    maxWidth:900,
+    maxWidth:800,
     margin:'auto',
 
     display:'flex',
@@ -31,10 +34,10 @@ const CardContainer = styled('div', {
 
 const H2 = styled('h2', {
 
-    marginTop:200,
+    margin:0,
     marginBottom:50,
 
-    textShadow:'0px 0px 50px rgba(0, 0, 0, 1)',
+    color:'$black',
     textAlign:'center',
     fontSize:'calc(30px + 3vw)',
     userSelect:'none',
@@ -44,8 +47,16 @@ export default function Releases(){
 
     const songs = useRecoilValue(Songs);
     
+    const [releasesInView, setReleasesInView] = useRecoilState(ReleasesInView);
+    const { ref, inView, entry } = useInView();
+
+    useEffect(() => {
+
+        setReleasesInView(inView);
+    }, [inView]);
+    
     return(
-        <Div>
+        <Div ref={ref}>
             <H2>RELEASES</H2>
 
             <CardContainer>

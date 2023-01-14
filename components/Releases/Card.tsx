@@ -10,8 +10,8 @@ const Div = styled('div', {
 
     backgroundSize:'cover',
     userSelect:'none',
-    border:'2px solid $white',
-    transition:'all 500ms',
+    border:'2px solid $black',
+    transition:'all 250ms',
     cursor:'pointer',
     overflow:'hidden',
     pointerEvents:'auto',
@@ -53,12 +53,16 @@ const BottomDiv = styled('div', {
 const Title = styled('h3', {
 
     margin:0,
+
     fontSize:18,
+    color:'$white'
 });
 
 const ReleaseDate = styled('p', {
 
     margin:0,
+
+    color:'$white'
 });
 
 const Icon = styled('img', {

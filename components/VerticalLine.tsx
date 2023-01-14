@@ -15,7 +15,8 @@ const Div = styled('div', {
     gap:10,
 
     userSelect:'none',
-
+    mixBlendMode:'difference'
+,
     variants:{
         top:{
             true:{
@@ -33,17 +34,21 @@ const Div = styled('div', {
 const H1 = styled('h1', {
 
     margin:0,
+
     transform:'rotate(-90deg)',
     whiteSpace:'nowrap',
-    fontSize:24
+    fontSize:24,
+    color:'$white'
 });
 
 const H2 = styled('h1', {
 
     margin:0,
+    
     transform:'rotate(-90deg)',
     whiteSpace:'nowrap',
-    fontSize:24
+    fontSize:24,
+    color:'$white'
 });
 
 const Line = styled('div', {

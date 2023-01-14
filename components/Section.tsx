@@ -3,9 +3,8 @@ import { styled } from "../stitches.config";
 const StyledSection = styled('section', {
 
     position:'relative',
-    paddingLeft:26,
-    paddingRight:26,
-    overflowX:'hidden',
+    // paddingLeft:26,
+    // paddingRight:26,
 
     variants:{
         paddingTop:{
@@ -17,24 +16,38 @@ const StyledSection = styled('section', {
             true:{
                 height:'100vh'
             }
+        },
+
+        overflowXHidden:{
+            true:{
+                overflowX:'hidden'
+            }
+        },
+
+        backgroundColor:{
+            white:{
+                backgroundColor:'$white'
+            },
+
+            black:{
+                backgroundColor:'$black'
+            }
         }
     }
-});
-
-const BackgroundImage = styled('img', {
-
 });
 
 interface props{
     children:React.ReactNode;
     paddingTop?:200;
     viewHeight100?:boolean;
+    overflowXHidden?:boolean;
+    backgroundColor:'white' | 'black';
 }
 
 export default function Section(props:props){
 
     return(
-        <StyledSection paddingTop={props.paddingTop} viewHeight100={props.viewHeight100}>
+        <StyledSection paddingTop={props.paddingTop} viewHeight100={props.viewHeight100} overflowXHidden={props.overflowXHidden} backgroundColor={props.backgroundColor}>
             {props.children}
         </StyledSection>
     );

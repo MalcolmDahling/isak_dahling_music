@@ -14,9 +14,9 @@ import axios from "axios";
 import Hamburger from "../components/Hamburger";
 import Menu from "../components/Menu/Menu";
 import { ProfilePictures } from "../atoms/ProfilePictures";
-import SvgBackground from "../components/SvgBackground";
 import { SocialMedia } from "../atoms/SocialMedia";
 import MusicPopup from "../components/MusicPopup/MusicPopup";
+import ZoomEffect from "../components/ZoomEffect/ZoomEffect";
 
 export default function Home() {
 
@@ -75,6 +75,8 @@ export default function Home() {
         }, 5000);
     }, []);
 
+    
+
     //################### set bottom={true} on last VerticalLine when done ###################
     return (
         <>
@@ -82,13 +84,13 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            { showStart && <Intro></Intro> }
+            {/* { showStart && <Intro></Intro> } */}
 
             <Hamburger></Hamburger>
             <Menu></Menu>
             <MusicPopup></MusicPopup>
 
-            <Section viewHeight100={true}>
+            <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
                 <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
                 <Splash image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Splash>
             </Section>
@@ -98,8 +100,10 @@ export default function Home() {
                 <Carousel songs={props.songs}></Carousel>
             </Section> */}
 
-            <Section>
-                <SvgBackground></SvgBackground>
+
+            <Section backgroundColor="white">
+                {/* <SvgBackground></SvgBackground> */}
+                <ZoomEffect></ZoomEffect>
                 <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
                 <Releases></Releases>
             </Section>

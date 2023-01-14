@@ -75,6 +75,7 @@ const Background = styled('div', {
 const Div = styled('div', {
 
     width:'100%',
+    maxWidth:1300,
     display:'flex',
     justifyContent:'center',
     alignItems:'center',
@@ -92,9 +93,8 @@ const H1 = styled('h1', {
 
     userSelect:'none',
     opacity:0,
-    fontSize:'6vw',
+    fontSize:'calc(15px + 3vw)',
     whiteSpace:'nowrap',
-    // textShadow:'2px 2px 10px rgba(255,255,255,0.5)',
     
     animation:`${FadeInText} 1500ms cubic-bezier(.55,.085,.68,.53) forwards`,
     animationDelay:'500ms'
@@ -103,10 +103,9 @@ const H1 = styled('h1', {
 const Line = styled('div', {
 
     width:'0%',
-    height:'0.8vw',
+    height:'0.6vw',
 
     backgroundColor:'$white',
-    // boxShadow:'2px 2px 10px rgba(255,255,255,0.5)',
 
     animation:`${ExtendLine} 2000ms ease-in-out forwards`,
     animationDelay:'2000ms'
