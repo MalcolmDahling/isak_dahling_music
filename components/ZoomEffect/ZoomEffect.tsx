@@ -13,7 +13,8 @@ const Div = styled('div', {
     height:'100vh',
     zIndex:1,
     
-    backgroundColor:'rgba(0,0,0,0.5)',
+    backgroundColor:'$black',
+    pointerEvents:'none',
     
     mask:'url(/images/note.svg), linear-gradient(#fff 0 0)',
     '-webkit-mask':'url(/images/note.svg), linear-gradient(#fff 0 0)',
@@ -21,11 +22,11 @@ const Div = styled('div', {
     maskRepeat:'no-repeat',
     '-webkit-mask-repeat':'no-repeat',
 
-    maskPosition:'50%, 50%',
-    '-webkit-mask-position':'50%, 50%',
+    maskPosition:'50.85%, 50%',
+    '-webkit-mask-position':'50.85%, 50%',
 
-    maskSize:'100%',
-    '-webkit-mask-size':'100%',
+    // maskSize:'100%',
+    // '-webkit-mask-size':'100%',
 
     maskComposite:'destination-out',
     '-webkit-mask-composite':'destination-out',
@@ -37,19 +38,54 @@ export default function ZoomEffect(){
 
     const [prevScroll, setPrevScroll] = useState(0);
     const [maskSize, setMaskSize] = useState(100);
+    const [stage, setStage] = useState(0);
     const releasesInView = useRecoilValue(ReleasesInView);
 
     function handleScroll(){
-            
-        if(releasesInView && window.pageYOffset > prevScroll){ //if scrolling down
+        
+        if(releasesInView){
 
-            setMaskSize(maskSize + 500);
+            if(window.pageYOffset > prevScroll){ //if scrolling down
+
+                if(stage === 0){
+
+                    setMaskSize(maskSize + 150);
+                }
+
+                if(stage === 1){
+
+                    setMaskSize(maskSize + 500);
+                }
+
+                if(stage >= 2){
+                    
+                    setMaskSize(maskSize + 1000);
+                }
+
+                setStage(stage + 1);
+            }
+
+
+            if(prevScroll > window.pageYOffset && stage > 0){
+
+                if(stage > 2){
+
+                    setMaskSize(maskSize - 1000);
+                }
+
+                if(stage === 2){
+                    setMaskSize(maskSize - 500);
+                }
+
+                if(stage === 1){
+                    setMaskSize(maskSize - 150);
+                }
+
+                setStage(stage - 1);
+            }
+
+            console.log('maskSize', maskSize, 'stage', stage, 'prevScroll');
         }
-
-        // if(releasesInView && prevScroll > window.pageYOffset){ //if scrolling up
-
-        //     setMaskSize(maskSize - 500);
-        // }
 
         setPrevScroll(window.pageYOffset);
     }
@@ -62,11 +98,11 @@ export default function ZoomEffect(){
 
             window.removeEventListener('scroll', handleScroll);
         });
-    }, [releasesInView]);
+    }, [releasesInView, prevScroll]);
 
     return(
         <>
-            <Div style={{maskSize:maskSize+'%', WebkitMaskSize:maskSize+'%'}}>
+            <Div style={{maskSize: maskSize + '%', WebkitMaskSize: maskSize + '%'}}>
 
             </Div>
         </>
