@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { ReleasesPercentageVisible } from "../atoms/ReleasesPercentageVisible";
+import { ReleasesScroll } from "../atoms/ReleasesScroll";
 import { styled } from "../stitches.config";
 
 const Div = styled('div', {
@@ -31,7 +31,7 @@ const Div = styled('div', {
     maskComposite:'destination-out',
     '-webkit-mask-composite':'destination-out',
 
-    transition:'all 350ms'
+    transition:'all 350ms',
 });
 
 
@@ -39,40 +39,58 @@ const Div = styled('div', {
 export default function ZoomEffect(){
 
     const [maskSize, setMaskSize] = useState(100);
-    const releasesPercentageVisible = useRecoilValue(ReleasesPercentageVisible);
+    const releasesScroll = useRecoilValue(ReleasesScroll);
 
-    const stages = [100, 500, 1500, 3000, 10000];
+    const stages = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 10000];
 
     useEffect(() => {
 
-        if(releasesPercentageVisible < 10){
+        console.log(releasesScroll.pixelsFromTop / releasesScroll.height);
 
+
+        if(releasesScroll.pixelsFromTop / releasesScroll.height < 0){
             setMaskSize(stages[0]);
         }
 
-        if(releasesPercentageVisible > 10 && releasesPercentageVisible < 20){
-
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.1){
             setMaskSize(stages[1]);
         }
 
-        if(releasesPercentageVisible > 20 && releasesPercentageVisible < 30){
-
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.2){
             setMaskSize(stages[2]);
         }
 
-        if(releasesPercentageVisible > 30 && releasesPercentageVisible < 40){
-
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.3){
             setMaskSize(stages[3]);
         }
 
-        if(releasesPercentageVisible > 40 && releasesPercentageVisible < 50){
-
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.4){
             setMaskSize(stages[4]);
         }
+
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.5){
+            setMaskSize(stages[5]);
+        }
+
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.6){
+            setMaskSize(stages[6]);
+        }
+
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.7){
+            setMaskSize(stages[7]);
+        }
+
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.8){
+            setMaskSize(stages[8]);
+        }
         
-        console.log(releasesPercentageVisible);
-        
-    },[releasesPercentageVisible]);
+        if(releasesScroll.pixelsFromTop / releasesScroll.height > 1){
+            setMaskSize(stages[9]);
+        }
+
+
+        console.log(releasesScroll);
+    }, [releasesScroll])
 
     return(
             <Div style={{maskSize: maskSize + 'vw', WebkitMaskSize: maskSize + 'vw'}}>

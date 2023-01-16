@@ -2,9 +2,8 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { Songs } from "../../atoms/Songs";
 import { styled } from "../../stitches.config";
 import Card from "./Card";
-import { ReleasesPercentageVisible } from "../../atoms/ReleasesPercentageVisible";
-import { useInView } from "react-intersection-observer";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { ReleasesScroll } from "../../atoms/ReleasesScroll";
 
 const Div = styled('div', {
 
@@ -46,23 +45,17 @@ const H2 = styled('h2', {
 export default function Releases(){
 
     const songs = useRecoilValue(Songs);
-    const [releasesPercentageVisible, setReleasesPercentageVisible] = useRecoilState(ReleasesPercentageVisible);
+    const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
     const ref = useRef<any>();
-    const [prevScroll, setPrevScroll] = useState(0);
 
+    // let percentage = Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 );
 
     function handleScroll(){
-        
-        let percentage = Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 );
 
-        if(percentage < 0){
-
-            percentage = 0;
-        }
-
-        setReleasesPercentageVisible(percentage);
-
-        setPrevScroll(window.pageYOffset);
+        setReleasesScroll({
+            pixelsFromTop: window.pageYOffset - ref.current?.getBoundingClientRect().top,
+            height: ref.current?.clientHeight
+        });
     }
 
     useEffect(() => {
