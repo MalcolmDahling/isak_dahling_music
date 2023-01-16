@@ -30,6 +30,8 @@ const Div = styled('div', {
 
     maskComposite:'destination-out',
     '-webkit-mask-composite':'destination-out',
+
+    transition:'all 350ms'
 });
 
 
@@ -39,23 +41,33 @@ export default function ZoomEffect(){
     const [maskSize, setMaskSize] = useState(100);
     const releasesPercentageVisible = useRecoilValue(ReleasesPercentageVisible);
 
+    const stages = [100, 500, 1500, 3000, 10000];
 
     useEffect(() => {
 
-        for(let i = 0; i < 100; i++){
+        if(releasesPercentageVisible < 10){
 
-            if(i === releasesPercentageVisible){
+            setMaskSize(stages[0]);
+        }
 
-                if(i <= 0){
+        if(releasesPercentageVisible > 10 && releasesPercentageVisible < 20){
 
-                    setMaskSize(100);
-                }
+            setMaskSize(stages[1]);
+        }
 
-                else{
+        if(releasesPercentageVisible > 20 && releasesPercentageVisible < 30){
 
-                    setMaskSize(i * 75);
-                }  
-            }
+            setMaskSize(stages[2]);
+        }
+
+        if(releasesPercentageVisible > 30 && releasesPercentageVisible < 40){
+
+            setMaskSize(stages[3]);
+        }
+
+        if(releasesPercentageVisible > 40 && releasesPercentageVisible < 50){
+
+            setMaskSize(stages[4]);
         }
         
         console.log(releasesPercentageVisible);

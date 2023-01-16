@@ -50,30 +50,17 @@ export default function Releases(){
     const ref = useRef<any>();
     const [prevScroll, setPrevScroll] = useState(0);
 
-    const [throttle, setThrottle] = useState(false);
-
 
     function handleScroll(){
         
-        if(window.pageYOffset - prevScroll > 100){
+        let percentage = Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 );
 
+        if(percentage < 0){
+
+            percentage = 0;
         }
 
-
-
-        if(throttle === false){
-
-            setThrottle(true);
-
-            setTimeout(() => {
-
-                setReleasesPercentageVisible( 
-                    Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 )
-                );
-        
-                setThrottle(false);
-            }, 200);
-        }
+        setReleasesPercentageVisible(percentage);
 
         setPrevScroll(window.pageYOffset);
     }
