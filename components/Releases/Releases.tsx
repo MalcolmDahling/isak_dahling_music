@@ -1,10 +1,10 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { Songs } from "../../atoms/Songs";
 import { styled } from "../../stitches.config";
-import { useEffect } from "react";
 import Card from "./Card";
-import { ReleasesInView } from "../../atoms/ReleasesInView";
+import { ReleasesPercentageVisible } from "../../atoms/ReleasesPercentageVisible";
 import { useInView } from "react-intersection-observer";
+import { useEffect, useRef, useState } from "react";
 
 const Div = styled('div', {
 
@@ -46,14 +46,30 @@ const H2 = styled('h2', {
 export default function Releases(){
 
     const songs = useRecoilValue(Songs);
-    
-    const [releasesInView, setReleasesInView] = useRecoilState(ReleasesInView);
-    const { ref, inView, entry } = useInView();
+    const [releasesPercentageVisible, setReleasesPercentageVisible] = useRecoilState(ReleasesPercentageVisible);
+    const [topOfElement, setTopOfElement] = useState(0);
+    const ref = useRef<any>();
+
+
+
+
+    function handleScroll(){
+
+        setReleasesPercentageVisible( 
+            Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 )
+        );
+    }
 
     useEffect(() => {
 
-        setReleasesInView(inView);
-    }, [inView]);
+        window.addEventListener('scroll', handleScroll);
+
+        return(() => {
+
+            window.removeEventListener('scroll', handleScroll);
+        });
+    }, []);
+
     
     return(
         <Div ref={ref}>

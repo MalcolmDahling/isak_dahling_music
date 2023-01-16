@@ -16,7 +16,7 @@ import Menu from "../components/Menu/Menu";
 import { ProfilePictures } from "../atoms/ProfilePictures";
 import { SocialMedia } from "../atoms/SocialMedia";
 import MusicPopup from "../components/MusicPopup/MusicPopup";
-import ZoomEffect from "../components/ZoomEffect/ZoomEffect";
+import ZoomEffect from "../components/ZoomEffect";
 
 export default function Home() {
 
@@ -102,9 +102,9 @@ export default function Home() {
 
 
             <Section backgroundColor="white">
+                <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
                 {/* <SvgBackground></SvgBackground> */}
                 <ZoomEffect></ZoomEffect>
-                <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
                 <Releases></Releases>
             </Section>
         </>
