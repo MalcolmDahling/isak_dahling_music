@@ -47,17 +47,35 @@ export default function Releases(){
 
     const songs = useRecoilValue(Songs);
     const [releasesPercentageVisible, setReleasesPercentageVisible] = useRecoilState(ReleasesPercentageVisible);
-    const [topOfElement, setTopOfElement] = useState(0);
     const ref = useRef<any>();
+    const [prevScroll, setPrevScroll] = useState(0);
 
-
+    const [throttle, setThrottle] = useState(false);
 
 
     function handleScroll(){
+        
+        if(window.pageYOffset - prevScroll > 100){
 
-        setReleasesPercentageVisible( 
-            Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 )
-        );
+        }
+
+
+
+        if(throttle === false){
+
+            setThrottle(true);
+
+            setTimeout(() => {
+
+                setReleasesPercentageVisible( 
+                    Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 )
+                );
+        
+                setThrottle(false);
+            }, 200);
+        }
+
+        setPrevScroll(window.pageYOffset);
     }
 
     useEffect(() => {

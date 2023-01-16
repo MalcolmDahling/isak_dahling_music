@@ -42,72 +42,11 @@ export default function ZoomEffect(){
 
     useEffect(() => {
 
-        // if(releasesPercentageVisible > 0 && releasesPercentageVisible < 5){
-
-        //     setMaskSize(200);
-        // }
-
-        // if(releasesPercentageVisible > 5 && releasesPercentageVisible < 10){
-
-        //     setMaskSize(400);
-        // }
-
-        // if(releasesPercentageVisible > 10 && releasesPercentageVisible < 20){
-
-        //     setMaskSize(500);
-        // }
-
-        // if(releasesPercentageVisible > 20 && releasesPercentageVisible < 30){
-
-        //     setMaskSize(1000);
-        // }
-
-        // if(releasesPercentageVisible > 30 && releasesPercentageVisible < 40){
-
-        //     setMaskSize(1500);
-        // }
-
-        // if(releasesPercentageVisible > 40 && releasesPercentageVisible < 50){
-
-        //     setMaskSize(2000);
-        // }
-
-        // if(releasesPercentageVisible > 50 && releasesPercentageVisible < 60){
-
-        //     setMaskSize(2500);
-        // }
-
-        // if(releasesPercentageVisible > 60 && releasesPercentageVisible < 70){
-
-        //     setMaskSize(3000);
-        // }
-
-        // if(releasesPercentageVisible > 70 && releasesPercentageVisible < 80){
-
-        //     setMaskSize(3500);
-        // }
-
-        // if(releasesPercentageVisible > 80 && releasesPercentageVisible < 90){
-
-        //     setMaskSize(4000);
-        // }
-
-        // if(releasesPercentageVisible > 90 && releasesPercentageVisible < 100){
-
-        //     setMaskSize(4500);
-        // }
-
-        // if(releasesPercentageVisible >= 100){
-
-        //     setMaskSize(10000);
-        // }
-
-
-        for(let i = 1; i < 101; i++){
+        for(let i = 0; i < 100; i++){
 
             if(i === releasesPercentageVisible){
 
-                if(i === 1){
+                if(i <= 0){
 
                     setMaskSize(100);
                 }
@@ -119,16 +58,13 @@ export default function ZoomEffect(){
             }
         }
         
-        
         console.log(releasesPercentageVisible);
         
     },[releasesPercentageVisible]);
 
     return(
-        <>
             <Div style={{maskSize: maskSize + 'vw', WebkitMaskSize: maskSize + 'vw'}}>
 
             </Div>
-        </>
     );
 }
