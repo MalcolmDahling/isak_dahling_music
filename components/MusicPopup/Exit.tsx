@@ -10,10 +10,11 @@ const LineContainer = styled('div', {
 
     cursor:'pointer',
     transition:'all 250ms',
+    opacity:0.5,
 
     '&:hover':{
 
-        opacity:0.5
+        opacity:1
     },
 });
 

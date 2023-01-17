@@ -18,6 +18,11 @@ export const {
             black:'#000000',
             white:'#FFFFFF',
             whiteHalfOpacity:'rgba(255,255,255,0.5)'
+        },
+
+        fontSizes:{
+
+            header:'calc(30px + 3vw)',
         }
     },
 

@@ -91,19 +91,18 @@ export default function Home() {
             <MusicPopup></MusicPopup>
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
-                <VerticalLine textElement="h1" text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
+                <VerticalLine text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
                 <Splash image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Splash>
             </Section>
 
             {/* <Section paddingTop={200}>
-                <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
+                <VerticalLine text="RELEASES"></VerticalLine>
                 <Carousel songs={props.songs}></Carousel>
             </Section> */}
 
 
             <Section backgroundColor="white">
-                <VerticalLine textElement="h2" text="RELEASES"></VerticalLine>
-                {/* <SvgBackground></SvgBackground> */}
+                <VerticalLine text="RELEASES" mixBlendModeDifference={true}></VerticalLine>
                 <ZoomEffect></ZoomEffect>
                 <Releases></Releases>
             </Section>

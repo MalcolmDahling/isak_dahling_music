@@ -45,7 +45,8 @@ export default function ZoomEffect(){
 
     useEffect(() => {
 
-        console.log(releasesScroll.pixelsFromTop / releasesScroll.height);
+        // console.log(releasesScroll.pixelsFromTop / releasesScroll.height);
+        // console.log(releasesScroll);
 
 
         if(releasesScroll.pixelsFromTop / releasesScroll.height < 0){
@@ -87,9 +88,6 @@ export default function ZoomEffect(){
         if(releasesScroll.pixelsFromTop / releasesScroll.height > 1){
             setMaskSize(stages[9]);
         }
-
-
-        console.log(releasesScroll);
     }, [releasesScroll])
 
     return(

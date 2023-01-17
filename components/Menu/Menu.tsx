@@ -38,7 +38,7 @@ const BackgroundDiv = styled('div', {
 
     position:'fixed',
     inset:'0',
-    zIndex:2,
+    zIndex:3,
     padding:0,
 
     display:'flex',

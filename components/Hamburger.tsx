@@ -34,7 +34,7 @@ const Div = styled('div', {
     position:'fixed',
     top:30,
     right:30,
-    zIndex:3,
+    zIndex:4,
 
     display:'flex',
     flexDirection:'column',

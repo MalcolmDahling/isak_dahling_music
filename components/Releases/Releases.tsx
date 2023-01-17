@@ -4,6 +4,7 @@ import { styled } from "../../stitches.config";
 import Card from "./Card";
 import { useEffect, useRef } from "react";
 import { ReleasesScroll } from "../../atoms/ReleasesScroll";
+import { throttle } from "throttle-debounce";
 
 const Div = styled('div', {
 
@@ -38,7 +39,7 @@ const H2 = styled('h2', {
 
     color:'$black',
     textAlign:'center',
-    fontSize:'calc(30px + 3vw)',
+    fontSize:'$header',
     userSelect:'none',
 });
 
@@ -50,13 +51,13 @@ export default function Releases(){
 
     // let percentage = Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 );
 
-    function handleScroll(){
+    const handleScroll = throttle(50, () => {
 
         setReleasesScroll({
             pixelsFromTop: window.pageYOffset - ref.current?.getBoundingClientRect().top,
             height: ref.current?.clientHeight
         });
-    }
+    },{});
 
     useEffect(() => {
 

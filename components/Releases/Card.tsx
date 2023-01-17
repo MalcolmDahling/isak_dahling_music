@@ -6,7 +6,7 @@ import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
 const Div = styled('div', {
 
     position:'relative',
-    maxWidth:250,
+    maxWidth:300,
 
     backgroundSize:'cover',
     userSelect:'none',
@@ -15,6 +15,7 @@ const Div = styled('div', {
     cursor:'pointer',
     overflow:'hidden',
     pointerEvents:'auto',
+    boxShadow:'0px 0px 10px 5px rgba(0,0,0,0.3)',
 
     '@desktop':{
 

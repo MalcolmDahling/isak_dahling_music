@@ -5,6 +5,7 @@ import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
 import { Song } from "../../models/Song";
 import { keyframes, styled } from "../../stitches.config";
 import Exit from "./Exit";
+import SelectStream from "./SelectStream";
 
 const FadeOut = keyframes({
 
@@ -36,7 +37,7 @@ const BackgroundDiv = styled('div', {
 
     position:'fixed',
     inset:0,
-    zIndex:3,
+    zIndex:4,
 
     display:'flex',
     justifyContent:'center',
@@ -64,12 +65,18 @@ const ContentDiv = styled('div', {
     display:'flex',
     gap:20,
 
-    // border:'1px solid red',
-
     '@desktop':{
 
         minWidth:800
     }
+});
+
+const LeftDiv = styled('div', {
+
+    display:'flex',
+    flexDirection:'column',
+    alignItems:'center',
+    gap:20,
 });
 
 const TextDiv = styled('div', {
@@ -105,6 +112,7 @@ export default function MusicPopup(){
     const songs = useRecoilValue(Songs);
     const [currentSong, setCurrentSong] = useState<Song>();
     const [showPopup, setShowPopup] = useState(false);
+    const [selectedStream, setSelectedStream] = useState('spotify');
 
     useEffect(() => {
 
@@ -115,8 +123,9 @@ export default function MusicPopup(){
 
             setShowPopup(true);
         }
-
+        
     }, [toggleMusicPopup]);
+
 
     function close(){
 
@@ -125,7 +134,13 @@ export default function MusicPopup(){
         setTimeout(() => {
 
             setShowPopup(false);
+            setSelectedStream('spotify');
         }, 500);
+    }
+
+    function selectStream(title:string){
+
+        setSelectedStream(title);
     }
 
     return(
@@ -136,12 +151,22 @@ export default function MusicPopup(){
                     <ContentDiv>
                         <Exit close={close}></Exit>
                         
-                        <Img src={currentSong?.fields.image.fields.file.url} alt={currentSong?.fields.image.fields.title}></Img>
+                        <LeftDiv>
+                            <Img src={currentSong?.fields.image.fields.file.url} alt={currentSong?.fields.image.fields.title}></Img>
+                            <SelectStream
+                                selectStream={selectStream}
+                                spotify={currentSong?.fields.spotifyID !== '' ? true : false}
+                                soundCloud={currentSong?.fields.soundCloudIFrame !== '' ? true : false}
+                                youtube={currentSong?.fields.youtubeLink !== '' ? true : false}
+                            ></SelectStream>
+                        </LeftDiv>
 
                         <TextDiv>
                             <H2>{currentSong?.fields.title}</H2>
                             <P>{new Date(currentSong?.fields.releaseDate || '').getFullYear().toString()}</P>
                         </TextDiv>
+
+                        {selectedStream}
                         
                     </ContentDiv>
                 </BackgroundDiv>
