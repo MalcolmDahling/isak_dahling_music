@@ -30,7 +30,7 @@ interface props{
     image:string;
 }
 
-export default function Splash(props:props){
+export default function Hero(props:props){
 
     return(
         <Div>

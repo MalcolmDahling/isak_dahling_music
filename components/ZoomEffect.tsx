@@ -16,14 +16,14 @@ const Div = styled('div', {
     backgroundColor:'$black',
     pointerEvents:'none',
     
-    mask:'url(/images/note.svg), linear-gradient(#fff 0 0)',
-    '-webkit-mask':'url(/images/note.svg), linear-gradient(#fff 0 0)',
+    mask:'url(/images/logo.svg), linear-gradient(#fff 0 0)',
+    '-webkit-mask':'url(/images/logo.svg), linear-gradient(#fff 0 0)',
 
     maskRepeat:'no-repeat',
     '-webkit-mask-repeat':'no-repeat',
 
-    maskPosition:'50.85%, 50%',
-    '-webkit-mask-position':'50.85%, 50%',
+    maskPosition:'50% 53%',
+    '-webkit-mask-position':'50% 53%',
 
     // maskSize:'100%',
     // '-webkit-mask-size':'100%',
@@ -48,45 +48,16 @@ export default function ZoomEffect(){
         // console.log(releasesScroll.pixelsFromTop / releasesScroll.height);
         // console.log(releasesScroll);
 
-
-        if(releasesScroll.pixelsFromTop / releasesScroll.height < 0){
+        if(releasesScroll.pixelsFromTop / releasesScroll.height <= 0.1){
             setMaskSize(stages[0]);
         }
 
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.1){
-            setMaskSize(stages[1]);
-        }
+        for(let i = 1; i < stages.length; i++){
 
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.2){
-            setMaskSize(stages[2]);
-        }
+            if(releasesScroll.pixelsFromTop / releasesScroll.height > i / 10){
 
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.3){
-            setMaskSize(stages[3]);
-        }
-
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.4){
-            setMaskSize(stages[4]);
-        }
-
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.5){
-            setMaskSize(stages[5]);
-        }
-
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.6){
-            setMaskSize(stages[6]);
-        }
-
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.7){
-            setMaskSize(stages[7]);
-        }
-
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 0.8){
-            setMaskSize(stages[8]);
-        }
-        
-        if(releasesScroll.pixelsFromTop / releasesScroll.height > 1){
-            setMaskSize(stages[9]);
+                setMaskSize(stages[i]);
+            }
         }
     }, [releasesScroll])
 

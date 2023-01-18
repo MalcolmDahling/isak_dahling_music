@@ -53,6 +53,7 @@ export default function Releases(){
 
     const handleScroll = throttle(50, () => {
 
+
         setReleasesScroll({
             pixelsFromTop: window.pageYOffset - ref.current?.getBoundingClientRect().top,
             height: ref.current?.clientHeight

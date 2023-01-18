@@ -6,7 +6,7 @@ import { BREAKPOINTS } from "../variables/breakpoints";
 import VerticalLine from "../components/VerticalLine";
 import Section from "../components/Section";
 import Intro from "../components/Intro";
-import Splash from "../components/Splash";
+import Hero from "../components/Hero";
 import Releases from "../components/Releases/Releases";
 import { useRecoilState } from "recoil";
 import { Songs } from "../atoms/Songs";
@@ -92,7 +92,7 @@ export default function Home() {
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
                 <VerticalLine text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
-                <Splash image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Splash>
+                <Hero image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Hero>
             </Section>
 
             {/* <Section paddingTop={200}>
