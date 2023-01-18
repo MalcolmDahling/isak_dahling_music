@@ -33,7 +33,6 @@ const Div = styled('div', {
     '-webkit-mask-composite':'destination-out',
 
     transition:'all 350ms',
-    opacity:0.5
 });
 
 
@@ -42,55 +41,40 @@ export default function ZoomEffect(){
 
     const [maskSize, setMaskSize] = useState(100);
     const releasesScroll = useRecoilValue(ReleasesScroll);
-    const releasesInView = useRecoilValue(ReleasesInView);
+    
+    const maskSizes = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 10000];
 
-    const stages = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 10000];
-
+    // const releasesInView = useRecoilValue(ReleasesInView);
     // useEffect(() => {
 
     //     // console.log(releasesScroll.pixelsFromTop / releasesScroll.height);
     //     // console.log(releasesScroll);
 
     //     if(releasesScroll.pixelsFromTop / releasesScroll.height <= 0.1){
-    //         setMaskSize(stages[0]);
+    //         setMaskSize(maskSizes[0]);
     //     }
 
-    //     for(let i = 1; i < stages.length; i++){
+    //     for(let i = 1; i < maskSizes.length; i++){
 
     //         if(releasesScroll.pixelsFromTop / releasesScroll.height > i / 10){
 
-    //             setMaskSize(stages[i]);
+    //             setMaskSize(maskSizes[i]);
     //         }
     //     }
     // }, [releasesScroll]);
 
     const [prevScroll, setPrevScroll] = useState(0);
-    const [count, setCount] = useState(0);
 
     function handleScroll(){
 
-        if(releasesInView){
+        for(let i = 0; i < maskSizes.length; i++){
 
-            if(window.pageYOffset > prevScroll){ //if scrolling down
+            if(window.pageYOffset - releasesScroll.sectionPixelsFromTop < (releasesScroll.releasesPixelsFromTop - releasesScroll.sectionPixelsFromTop) / maskSizes.length * i + 100){ //+100 makes it start a little lower so you can see the logo at its smallest for a little bit.
 
-                if(count < 100){
-    
-                    setCount(count + 1);
-                }
-            }
-            
-            else{
-    
-                if(count > 0){
-    
-                    setCount(count - 1);
-                }
+                setMaskSize(maskSizes[i])
+                break;
             }
         }
-
-        
-
-        console.log(count, releasesInView);
 
         setPrevScroll(window.pageYOffset);
         window.removeEventListener('scroll', handleScroll);

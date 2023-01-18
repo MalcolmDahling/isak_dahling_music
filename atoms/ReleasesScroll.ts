@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const ReleasesScroll = atom<{pixelsFromTop:number, height:number}>({
+export const ReleasesScroll = atom<{releasesPixelsFromTop:number, sectionPixelsFromTop:number}>({
     key:'ReleasesScroll',
-    default:{pixelsFromTop:0, height:0}
+    default:{releasesPixelsFromTop:0, sectionPixelsFromTop:0}
 });

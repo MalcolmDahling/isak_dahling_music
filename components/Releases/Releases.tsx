@@ -50,9 +50,9 @@ export default function Releases(){
     const songs = useRecoilValue(Songs);
     const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
     const [releasesInView, setReleasesInView] = useRecoilState(ReleasesInView);
-    const { ref, inView } = useInView();
-    // const ref = useRef<any>();
+    const ref = useRef<any>();
 
+    // const { ref, inView } = useInView();
     // let percentage = Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 );
 
     // const handleScroll = throttle(50, () => {
@@ -75,11 +75,18 @@ export default function Releases(){
     //     });
     // }, []);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        setReleasesInView(inView);
-    }, [inView]);
+    //     setReleasesInView(inView);
+    // }, [inView]);
 
+    useEffect(() => { //used for ZoomEffect
+
+        setReleasesScroll(prev => ({...prev, 
+            releasesPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
+        }));
+
+    }, [ref]);
     
     return(
         <Div ref={ref}>

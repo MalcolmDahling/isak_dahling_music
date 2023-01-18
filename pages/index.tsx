@@ -101,7 +101,7 @@ export default function Home() {
             </Section> */}
 
 
-            <Section backgroundColor="white">
+            <Section backgroundColor="white" checkPixelsFromTop={true}>
                 <VerticalLine text="RELEASES" mixBlendModeDifference={true}></VerticalLine>
                 <ZoomEffect></ZoomEffect>
                 <Releases></Releases>

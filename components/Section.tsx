@@ -1,3 +1,6 @@
+import { useEffect, useRef } from "react";
+import { useRecoilState } from "recoil";
+import { ReleasesScroll } from "../atoms/ReleasesScroll";
 import { styled } from "../stitches.config";
 
 const StyledSection = styled('section', {
@@ -42,12 +45,27 @@ interface props{
     viewHeight100?:boolean;
     overflowXHidden?:boolean;
     backgroundColor:'white' | 'black';
+    checkPixelsFromTop?:boolean;
 }
 
 export default function Section(props:props){
 
+    const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
+    const ref = useRef<any>();
+
+    useEffect(() => { //used for ZoomEffect
+
+        if(props.checkPixelsFromTop){
+
+            setReleasesScroll(prev => ({...prev, 
+                sectionPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
+            }));
+        }
+
+    }, [ref]);
+
     return(
-        <StyledSection paddingTop={props.paddingTop} viewHeight100={props.viewHeight100} overflowXHidden={props.overflowXHidden} backgroundColor={props.backgroundColor}>
+        <StyledSection ref={ref} paddingTop={props.paddingTop} viewHeight100={props.viewHeight100} overflowXHidden={props.overflowXHidden} backgroundColor={props.backgroundColor}>
             {props.children}
         </StyledSection>
     );
