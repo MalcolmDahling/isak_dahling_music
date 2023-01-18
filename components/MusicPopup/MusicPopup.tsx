@@ -5,6 +5,7 @@ import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
 import { Song } from "../../models/Song";
 import { keyframes, styled } from "../../stitches.config";
 import Exit from "./Exit";
+import SpotifyIFrame from "./IFrames/SpotifyIFrames";
 import SelectStream from "./SelectStream";
 
 const FadeOut = keyframes({
@@ -67,7 +68,7 @@ const ContentDiv = styled('div', {
 
     '@desktop':{
 
-        minWidth:800
+        //minWidth:800
     }
 });
 
@@ -77,6 +78,17 @@ const LeftDiv = styled('div', {
     flexDirection:'column',
     alignItems:'center',
     gap:20,
+});
+
+const RightDiv = styled('div', {
+
+    display:'flex',
+    flexDirection:'column',
+    justifyContent:'space-between',
+    gap:20,
+
+    height:250,
+
 });
 
 const TextDiv = styled('div', {
@@ -161,12 +173,14 @@ export default function MusicPopup(){
                             ></SelectStream>
                         </LeftDiv>
 
-                        <TextDiv>
-                            <H2>{currentSong?.fields.title}</H2>
-                            <P>{new Date(currentSong?.fields.releaseDate || '').getFullYear().toString()}</P>
-                        </TextDiv>
+                        <RightDiv>
+                            <TextDiv>
+                                <H2>{currentSong?.fields.title}</H2>
+                                <P>{new Date(currentSong?.fields.releaseDate || '').getFullYear().toString()}</P>
+                            </TextDiv>
 
-                        {selectedStream}
+                            {selectedStream === 'spotify' && <SpotifyIFrame id={currentSong?.fields.spotifyID || ''}></SpotifyIFrame>}
+                        </RightDiv>
                         
                     </ContentDiv>
                 </BackgroundDiv>

@@ -10,8 +10,8 @@ import { useInView } from "react-intersection-observer";
 
 const Div = styled('div', {
 
-    paddingLeft:40,
-    paddingBottom:200,
+    paddingLeft:65,
+    paddingRight:20,
 });
 
 const CardContainer = styled('div', {

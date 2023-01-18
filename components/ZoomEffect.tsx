@@ -42,7 +42,7 @@ export default function ZoomEffect(){
     const [maskSize, setMaskSize] = useState(100);
     const releasesScroll = useRecoilValue(ReleasesScroll);
     
-    const maskSizes = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 10000];
+    const maskSizes = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 10000]; //make new maskSizes for mobile, maybe
 
     // const releasesInView = useRecoilValue(ReleasesInView);
     // useEffect(() => {
