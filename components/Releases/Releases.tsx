@@ -5,6 +5,8 @@ import Card from "./Card";
 import { useEffect, useRef } from "react";
 import { ReleasesScroll } from "../../atoms/ReleasesScroll";
 import { throttle } from "throttle-debounce";
+import { ReleasesInView } from "../../atoms/ReleasesInView";
+import { useInView } from "react-intersection-observer";
 
 const Div = styled('div', {
 
@@ -47,28 +49,36 @@ export default function Releases(){
 
     const songs = useRecoilValue(Songs);
     const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
-    const ref = useRef<any>();
+    const [releasesInView, setReleasesInView] = useRecoilState(ReleasesInView);
+    const { ref, inView } = useInView();
+    // const ref = useRef<any>();
 
     // let percentage = Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 );
 
-    const handleScroll = throttle(50, () => {
+    // const handleScroll = throttle(50, () => {
 
+    //     setReleasesScroll({
+    //         pixelsFromTop: window.pageYOffset - ref.current?.getBoundingClientRect().top,
+    //         height: ref.current?.clientHeight
+    //     });
 
-        setReleasesScroll({
-            pixelsFromTop: window.pageYOffset - ref.current?.getBoundingClientRect().top,
-            height: ref.current?.clientHeight
-        });
-    },{});
+        
+    // },{});
+
+    // useEffect(() => {
+
+    //     window.addEventListener('scroll', handleScroll);
+
+    //     return(() => {
+
+    //         window.removeEventListener('scroll', handleScroll);
+    //     });
+    // }, []);
 
     useEffect(() => {
 
-        window.addEventListener('scroll', handleScroll);
-
-        return(() => {
-
-            window.removeEventListener('scroll', handleScroll);
-        });
-    }, []);
+        setReleasesInView(inView);
+    }, [inView]);
 
     
     return(
