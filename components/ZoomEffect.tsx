@@ -69,7 +69,7 @@ export default function ZoomEffect(){
 
         for(let i = 0; i < maskSizes.length; i++){
 
-            if(window.pageYOffset - releasesScroll.sectionPixelsFromTop < (releasesScroll.releasesPixelsFromTop - releasesScroll.sectionPixelsFromTop) / maskSizes.length * i + 100){ //+100 makes it start a little lower so you can see the logo at its smallest for a little bit.
+            if(window.pageYOffset - releasesScroll.sectionPixelsFromTop < (releasesScroll.releasesPixelsFromTop - releasesScroll.sectionPixelsFromTop) / maskSizes.length * i + 50){ //+50 makes it start a little lower so you can see the logo at its smallest for a little bit.
 
                 setMaskSize(maskSizes[i])
                 break;
