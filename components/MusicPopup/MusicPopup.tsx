@@ -62,6 +62,7 @@ const BackgroundDiv = styled('div', {
 const ContentDiv = styled('div', {
 
     position:'relative',
+    paddingRight:55,
 
     display:'flex',
     gap:20,
