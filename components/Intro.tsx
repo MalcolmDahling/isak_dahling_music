@@ -1,41 +1,6 @@
 import { keyframes, styled } from "../stitches.config";
-
-const FadeInText = keyframes({
-
-    '0%':{
-        filter:'blur(12px)',
-        opacity:0
-    },
-
-    '100%':{
-        filter:'blur(0)',
-        opacity:1
-    }
-});
-
-const ExtendLine = keyframes({
-
-    '0%':{
-        width:'0%'
-    },
-
-    '100%':{
-        width:'100%'
-    }
-});
-
-const FadeOutTextAndLine = keyframes({
-
-    '0%':{
-        filter:'blur(0)',
-        opacity:1
-    },
-
-    '100%':{
-        filter:'blur(12px)',
-        opacity:0
-    }
-});
+import Left from "../public/images/animLogo/left.svg";
+import Right from "../public/images/animLogo/right.svg";
 
 const FadeOutBackground = keyframes({
 
@@ -45,6 +10,35 @@ const FadeOutBackground = keyframes({
 
     '100%':{
         opacity:0
+    }
+});
+
+const StrokeAnimLeft = keyframes({
+    '100%':{
+        strokeDashoffset:0,
+    }
+});
+
+const StrokeAnimRight = keyframes({
+    '100%':{
+        strokeDashoffset:0,
+    }
+});
+
+const FillAnim = keyframes({
+    '100%':{
+        fill:'$white'
+    }
+})
+
+const TextAnim = keyframes({
+
+    '0%':{
+        opacity:0
+    },
+
+    '100%':{
+        opacity:1
     }
 });
 
@@ -65,50 +59,54 @@ const Background = styled('div', {
     backgroundColor:'$black',
 
     animation:`${FadeOutBackground} 1000ms forwards`,
-    animationDelay:'4000ms',
-
-    '@tablet':{
-        padding:10
-    }
+    animationDelay:'6500ms',
 });
 
 const Div = styled('div', {
 
-    width:'100%',
-    maxWidth:1300,
     display:'flex',
-    justifyContent:'center',
-    alignItems:'center',
-    gap:20,
+    flexDirection:'column',
+    alignItems:'center'
+});
 
-    animation:`${FadeOutTextAndLine} 1000ms cubic-bezier(.55,.085,.68,.53) forwards`,
-    animationDelay:'4000ms',
+const LogoContainer = styled('div', {
 
-    '@tablet':{
-        gap:10
-    }
+    display:'flex',
+});
+
+const LogoLeft = styled(Left, {
+
+    width:'30vw',
+    marginRight:'-29.9vw',
+
+    fill:'transparent',
+    stroke:'#FFFFFF',
+    strokeDasharray:1000,
+    strokeDashoffset:1000,
+    animation:`${StrokeAnimLeft} 3000ms 500ms linear forwards, ${FillAnim} 2000ms 3500ms forwards`,
+});
+
+const LogoRight = styled(Right, {
+
+    width:'30vw',
+
+    fill:'transparent',
+    stroke:'#FFFFFF',
+    strokeDasharray:1800,
+    strokeDashoffset:1800,
+    animation:`${StrokeAnimRight} 3000ms 500ms linear forwards, ${FillAnim} 2000ms 3500ms forwards`,
 });
 
 const H1 = styled('h1', {
 
-    userSelect:'none',
+    margin:0,
+    marginTop:'-3vw',
+
     opacity:0,
+    userSelect:'none',
     fontSize:'calc(15px + 3vw)',
     whiteSpace:'nowrap',
-    
-    animation:`${FadeInText} 1500ms cubic-bezier(.55,.085,.68,.53) forwards`,
-    animationDelay:'500ms'
-});
-
-const Line = styled('div', {
-
-    width:'0%',
-    height:'0.6vw',
-
-    backgroundColor:'$white',
-
-    animation:`${ExtendLine} 2000ms ease-in-out forwards`,
-    animationDelay:'2000ms'
+    animation:`${TextAnim} 2000ms 3500ms forwards`
 });
 
 export default function Intro(){
@@ -116,9 +114,12 @@ export default function Intro(){
     return(
         <Background>
             <Div>
-                <Line></Line>
+                <LogoContainer>
+                    <LogoLeft></LogoLeft>
+                    <LogoRight></LogoRight>
+                </LogoContainer>
+
                 <H1>ISAK DAHLING MUSIC</H1>
-                <Line></Line>
             </Div>
         </Background>
     );

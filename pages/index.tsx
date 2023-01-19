@@ -25,7 +25,7 @@ export default function Home() {
     const [socialMedia, setSocialMedia] = useRecoilState(SocialMedia);
     const [backgroundImages, setBackgroundImages] = useState();
 
-    const [showStart, setShowStart] = useState(true);
+    const [showIntro, setShowIntro] = useState(true);
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
 
     async function getSongs(){
@@ -71,8 +71,8 @@ export default function Home() {
 
         setTimeout(() => {
 
-            setShowStart(false);
-        }, 5000);
+            setShowIntro(false);
+        }, 7500);
     }, []);
 
     
@@ -84,7 +84,7 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            {/* { showStart && <Intro></Intro> } */}
+            { showIntro && <Intro></Intro> }
 
             <Hamburger></Hamburger>
             <Menu></Menu>
