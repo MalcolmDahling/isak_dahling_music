@@ -84,6 +84,11 @@ const LogoLeft = styled(Left, {
     strokeDasharray:1000,
     strokeDashoffset:1000,
     animation:`${StrokeAnimLeft} 3000ms 500ms linear forwards, ${FillAnim} 2000ms 3500ms forwards`,
+
+    '@tablet':{
+        width:'50vw',
+        marginRight:'-50vw',
+    }
 });
 
 const LogoRight = styled(Right, {
@@ -95,6 +100,10 @@ const LogoRight = styled(Right, {
     strokeDasharray:1800,
     strokeDashoffset:1800,
     animation:`${StrokeAnimRight} 3000ms 500ms linear forwards, ${FillAnim} 2000ms 3500ms forwards`,
+
+    '@tablet':{
+        width:'50vw',
+    }
 });
 
 const H1 = styled('h1', {
