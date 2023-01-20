@@ -16,6 +16,11 @@ const LineContainer = styled('div', {
 
         opacity:1
     },
+
+    '@tablet':{
+        top:30,
+        right:30,
+    }
 });
 
 const Line = styled('div', {

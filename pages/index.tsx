@@ -88,7 +88,7 @@ export default function Home() {
 
             <Hamburger></Hamburger>
             <Menu></Menu>
-            <MusicPopup></MusicPopup>
+            <MusicPopup breakpoint={breakpoint}></MusicPopup>
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
                 <VerticalLine text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true} breakpoint={breakpoint}></VerticalLine>

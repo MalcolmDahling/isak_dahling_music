@@ -63,35 +63,47 @@ const BackgroundDiv = styled('div', {
 
 const ContentDiv = styled('div', {
 
+    width:'100%',
+    maxWidth:650,
     position:'relative',
-    paddingRight:55,
-
+    
     display:'flex',
+    flexDirection:'column',
     gap:20,
 
     '@desktop':{
+        paddingRight:55,
+    },
 
-        //minWidth:800
+    '@tablet':{
+        paddingLeft:30,
+        paddingRight:30
     }
 });
 
-const LeftDiv = styled('div', {
+const IFrameWrapper = styled('div', {
 
-    display:'flex',
-    flexDirection:'column',
-    alignItems:'center',
-    gap:20,
+    position:'relative',
+    paddingBottom:'56.25%',
+    height:0,
 });
 
-const RightDiv = styled('div', {
+
+const BottomDiv = styled('div', {
 
     display:'flex',
-    flexDirection:'column',
-    gap:20,
+    justifyContent:'space-between',
+
+    '@tablet':{
+        flexDirection:'column',
+        alignItems:'center',
+        gap:20
+    }
 });
 
 const TextDiv = styled('div', {
 
+    
 });
 
 const H2 = styled('h2', {
@@ -110,14 +122,11 @@ const P = styled('p', {
     
 });
 
-const Img = styled('img', {
+interface props{
+    breakpoint:string;
+}
 
-    maxWidth:250,
-
-    border:'2px solid $white',
-});
-
-export default function MusicPopup(){
+export default function MusicPopup(props:props){
 
     const [toggleMusicPopup, setToggleMusicPopup] = useRecoilState(ToggleMusicPopup);
     const songs = useRecoilValue(Songs);
@@ -154,38 +163,48 @@ export default function MusicPopup(){
         setSelectedStream(title);
     }
 
-    console.log(currentSong);
-    
-
     return(
         <>
             { showPopup &&
 
                 <BackgroundDiv fade={toggleMusicPopup.show}>
-                    <ContentDiv>
-                        <Exit close={close}></Exit>
-                        
-                        <LeftDiv>
-                            <Img src={currentSong?.fields.image.fields.file.url} alt={currentSong?.fields.image.fields.title}></Img>
-                            <SelectStream
-                                selectStream={selectStream}
-                                spotify={currentSong?.fields.spotifyID ? true : false}
-                                soundCloud={currentSong?.fields.soundCloudLink ? true : false}
-                                youtube={currentSong?.fields.youtubeID ? true : false}
-                            ></SelectStream>
-                        </LeftDiv>
 
-                        <RightDiv>
+                    {props.breakpoint !== 'desktop' && <Exit close={close}></Exit>}
+
+                    <ContentDiv>
+
+                        {props.breakpoint === 'desktop' && <Exit close={close}></Exit>}
+
+                        {props.breakpoint !== 'desktop' &&
                             <TextDiv>
                                 <H2>{currentSong?.fields.title}</H2>
                                 <P>{new Date(currentSong?.fields.releaseDate || '').getFullYear().toString()}</P>
                             </TextDiv>
+                        }
 
+                        <IFrameWrapper>
                             {selectedStream === 'spotify' && <SpotifyIFrame id={currentSong?.fields.spotifyID || ''}></SpotifyIFrame>}
                             {selectedStream === 'youtube' && <YoutubeIFrame id={currentSong?.fields.youtubeID || ''}></YoutubeIFrame>}
                             {selectedStream === 'soundCloud' && <SoundCloudIFrame link={currentSong?.fields.soundCloudLink || ''}></SoundCloudIFrame>}
-                        </RightDiv>
-                        
+                        </IFrameWrapper>
+
+                        <BottomDiv>
+                            {props.breakpoint === 'desktop' &&
+                                <TextDiv>
+                                    <H2>{currentSong?.fields.title}</H2>
+                                    <P>{new Date(currentSong?.fields.releaseDate || '').getFullYear().toString()}</P>
+                                </TextDiv>
+                            }
+
+                            <SelectStream
+                                selectStream={selectStream}
+                                selectedStream={selectedStream}
+                                spotify={currentSong?.fields.spotifyID ? true : false}
+                                soundCloud={currentSong?.fields.soundCloudLink ? true : false}
+                                youtube={currentSong?.fields.youtubeID ? true : false}
+                            ></SelectStream>
+                        </BottomDiv>
+
                     </ContentDiv>
                 </BackgroundDiv>
             }
