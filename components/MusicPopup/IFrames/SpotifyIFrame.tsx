@@ -11,9 +11,7 @@ interface props{
 
 export default function SpotifyIFrame(props:props){
 
-    console.log(props.id);
     
-
     return(
         <IFrame 
             src={`https://open.spotify.com/embed/track/${props.id}?utm_source=generator&theme=0`}
@@ -22,6 +20,7 @@ export default function SpotifyIFrame(props:props){
             frameBorder="1"
             allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
             loading="lazy"
+            as="iframe"
         ></IFrame>
     );
 }

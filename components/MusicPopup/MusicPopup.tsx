@@ -5,7 +5,9 @@ import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
 import { Song } from "../../models/Song";
 import { keyframes, styled } from "../../stitches.config";
 import Exit from "./Exit";
-import SpotifyIFrame from "./IFrames/SpotifyIFrames";
+import SoundCloudIFrame from "./IFrames/SoundCloudIFrame";
+import SpotifyIFrame from "./IFrames/SpotifyIFrame";
+import YoutubeIFrame from "./IFrames/YoutubeIFrame";
 import SelectStream from "./SelectStream";
 
 const FadeOut = keyframes({
@@ -85,11 +87,7 @@ const RightDiv = styled('div', {
 
     display:'flex',
     flexDirection:'column',
-    justifyContent:'space-between',
     gap:20,
-
-    height:250,
-
 });
 
 const TextDiv = styled('div', {
@@ -156,6 +154,9 @@ export default function MusicPopup(){
         setSelectedStream(title);
     }
 
+    console.log(currentSong);
+    
+
     return(
         <>
             { showPopup &&
@@ -168,9 +169,9 @@ export default function MusicPopup(){
                             <Img src={currentSong?.fields.image.fields.file.url} alt={currentSong?.fields.image.fields.title}></Img>
                             <SelectStream
                                 selectStream={selectStream}
-                                spotify={currentSong?.fields.spotifyID !== '' ? true : false}
-                                soundCloud={currentSong?.fields.soundCloudIFrame !== '' ? true : false}
-                                youtube={currentSong?.fields.youtubeLink !== '' ? true : false}
+                                spotify={currentSong?.fields.spotifyID ? true : false}
+                                soundCloud={currentSong?.fields.soundCloudLink ? true : false}
+                                youtube={currentSong?.fields.youtubeID ? true : false}
                             ></SelectStream>
                         </LeftDiv>
 
@@ -181,6 +182,8 @@ export default function MusicPopup(){
                             </TextDiv>
 
                             {selectedStream === 'spotify' && <SpotifyIFrame id={currentSong?.fields.spotifyID || ''}></SpotifyIFrame>}
+                            {selectedStream === 'youtube' && <YoutubeIFrame id={currentSong?.fields.youtubeID || ''}></YoutubeIFrame>}
+                            {selectedStream === 'soundCloud' && <SoundCloudIFrame link={currentSong?.fields.soundCloudLink || ''}></SoundCloudIFrame>}
                         </RightDiv>
                         
                     </ContentDiv>

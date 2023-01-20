@@ -58,10 +58,6 @@ export default function SelectStream(props:props){
 
     const socialMedia = useRecoilValue<ISocialMedia[]>(SocialMedia);
 
-    console.log(socialMedia);
-
-    console.log(props);
-
     return(
         <Div>
             {props.spotify &&
@@ -81,7 +77,7 @@ export default function SelectStream(props:props){
             {props.youtube &&
                 <Button onClick={() => {props.selectStream('youtube')}}>
                     <Img src={socialMedia[4].fields.image.fields.file.url}></Img>
-                    <P>Youtube</P>
+                    <P>YouTube</P>
                 </Button>
             }
         </Div>

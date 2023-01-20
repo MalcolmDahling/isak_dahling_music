@@ -84,14 +84,14 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            { showIntro && <Intro></Intro> }
+            {/* { showIntro && <Intro></Intro> } */}
 
             <Hamburger></Hamburger>
             <Menu></Menu>
             <MusicPopup></MusicPopup>
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
-                <VerticalLine text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
+                <VerticalLine text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true} breakpoint={breakpoint}></VerticalLine>
                 <Hero image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Hero>
             </Section>
 
@@ -102,7 +102,7 @@ export default function Home() {
 
 
             <Section backgroundColor="white" checkPixelsFromTop={true}>
-                <VerticalLine text="RELEASES" mixBlendModeDifference={true}></VerticalLine>
+                <VerticalLine text="RELEASES" mixBlendModeDifference={true} breakpoint={breakpoint}></VerticalLine>
                 <ZoomEffect></ZoomEffect>
                 <Releases></Releases>
             </Section>

@@ -4,13 +4,11 @@ import { styled } from "../../stitches.config";
 import Card from "./Card";
 import { useEffect, useRef } from "react";
 import { ReleasesScroll } from "../../atoms/ReleasesScroll";
-import { throttle } from "throttle-debounce";
 import { ReleasesInView } from "../../atoms/ReleasesInView";
-import { useInView } from "react-intersection-observer";
 
 const Div = styled('div', {
 
-    paddingLeft:65,
+    paddingLeft:20,
     paddingRight:20,
 });
 

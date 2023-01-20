@@ -3,9 +3,9 @@ export interface Song{
     fields:{
         title:string;
         releaseDate:string;
-        youtubeLink:string;
+        youtubeID:string;
         spotifyID:string;
-        soundCloudIFrame:string;
+        soundCloudLink:string;
 
         image:{
             fields:{
