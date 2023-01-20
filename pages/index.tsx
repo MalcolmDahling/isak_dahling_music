@@ -91,7 +91,7 @@ export default function Home() {
             <MusicPopup breakpoint={breakpoint}></MusicPopup>
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
-                <VerticalLine text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true} breakpoint={breakpoint}></VerticalLine>
+                <VerticalLine text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
                 <Hero image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Hero>
             </Section>
 
@@ -102,7 +102,7 @@ export default function Home() {
 
 
             <Section backgroundColor="white" checkPixelsFromTop={true}>
-                <VerticalLine text="RELEASES" mixBlendModeDifference={true} breakpoint={breakpoint}></VerticalLine>
+                <VerticalLine text="RELEASES" mixBlendModeDifference={true}></VerticalLine>
                 <ZoomEffect></ZoomEffect>
                 <Releases></Releases>
             </Section>
