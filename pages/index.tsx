@@ -84,7 +84,7 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            {/* { showIntro && <Intro></Intro> } */}
+            { showIntro && <Intro></Intro> }
 
             <Hamburger></Hamburger>
             <Menu></Menu>

@@ -26,10 +26,7 @@ const Div = styled('div', {
     maskPosition:'50% 53%',
     '-webkit-mask-position':'50% 53%',
 
-    // maskSize:'100%',
-    // '-webkit-mask-size':'100%',
-
-    maskComposite:'destination-out',
+    maskComposite:'exclude',
     '-webkit-mask-composite':'destination-out',
 
     transition:'all 350ms',
