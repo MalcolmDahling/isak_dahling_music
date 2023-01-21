@@ -29,12 +29,13 @@ const FadeIn = keyframes({
     }
 });
 
-const Div = styled('div', {
+const Button = styled('button', {
 
     position:'fixed',
     top:30,
     right:30,
     zIndex:4,
+    padding:0,
 
     display:'flex',
     flexDirection:'column',
@@ -42,7 +43,9 @@ const Div = styled('div', {
     justifyContent:'center',
     alignItems:'center',
 
-    mixBlendMode:'difference'
+    mixBlendMode:'difference',
+    backgroundColor:'transparent',
+    border:'none'
 });
 
 const LineContainer = styled('div', {
@@ -106,7 +109,9 @@ const Text = styled('p', {
 
     margin:0,
 
+    fontSize:15,
     userSelect:'none',
+    color:'$white',
 
     variants:{
         show:{
@@ -148,7 +153,7 @@ export default function Hamburger(){
     }
 
     return(
-        <Div>
+        <Button>
 
             <LineContainer 
                 rotate={toggleMenu}
@@ -165,6 +170,6 @@ export default function Hamburger(){
             </LineContainer>
 
             <Text show={toggleMenu}>MENU</Text>
-        </Div>
+        </Button>
     );
 }
