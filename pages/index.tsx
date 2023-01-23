@@ -46,7 +46,7 @@ export default function Home() {
         setTimeout(() => { 
 
             setReleasesAreLoaded(true);
-        }, 100);
+        }, 500);
     }
 
     async function getProfilePictures(){
