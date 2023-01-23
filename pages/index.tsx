@@ -48,7 +48,7 @@ export default function Home() {
             setReleasesAreLoaded(true);
 
             //ensures scroll starts at top when reloading page so scroll effects work properly
-            window.scroll(0,0);
+            window.scrollTo(0,0);
         }, 2000);
     }
 
