@@ -39,11 +39,8 @@ const BackgroundDiv = styled('div', {
     position:'fixed',
     inset:'0',
     zIndex:3,
-    padding:0,
 
-    display:'flex',
-    justifyContent:'center',
-
+    
     backgroundColor:'rgba(0,0,0,0.75)',
     backdropFilter:'blur(12px)',
 
@@ -59,7 +56,10 @@ const BackgroundDiv = styled('div', {
     },
 
     '@desktop':{
-        alignItems:'center',
+
+        display:'flex',
+        justifyContent:'center',
+        flexDirection:'column',
     },
 
     '@tablet':{
@@ -67,20 +67,15 @@ const BackgroundDiv = styled('div', {
     }
 });
 
-const OuterDiv = styled('div', {
+const Div = styled('div', {
 
-    '@tablet':{
-        width:'80%'
-    }
-});
-
-const InnerDiv = styled('div', {
+    margin:'auto',
 
     display:'flex',
-    justifyContent:'center',
     gap:20,
 
     '@tablet':{
+        width:'80%'
     },
 });
 
@@ -118,14 +113,11 @@ export default function Menu(){
             { showMenu && 
                 <BackgroundDiv fade={toggleMenu}>
             
-                    <OuterDiv>
-                        <InnerDiv>
-                            {breakpoint === "desktop" && <Img src={profilePictures[0]?.fields.image.fields.file.url} draggable={false}></Img>}
-                            <Nav></Nav>
-                            
-                        </InnerDiv>
-                    </OuterDiv>
-
+                    <Div>
+                        {breakpoint === "desktop" && <Img src={profilePictures[0]?.fields.image.fields.file.url} draggable={false}></Img>}
+                        <Nav></Nav>
+                    </Div>
+                    
                     <Socials></Socials>
 
                 </BackgroundDiv>

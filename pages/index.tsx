@@ -17,6 +17,7 @@ import { ProfilePictures } from "../atoms/ProfilePictures";
 import { SocialMedia } from "../atoms/SocialMedia";
 import MusicPopup from "../components/MusicPopup/MusicPopup";
 import ZoomEffect from "../components/ZoomEffect";
+import News from "../components/News";
 
 export default function Home() {
 
@@ -84,9 +85,9 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            { showIntro && <Intro></Intro> }
+            {/* { showIntro && <Intro></Intro> } */}
 
-            <Hamburger></Hamburger>
+            <Hamburger breakpoint={breakpoint}></Hamburger>
             <Menu></Menu>
             <MusicPopup breakpoint={breakpoint}></MusicPopup>
 
@@ -95,16 +96,14 @@ export default function Home() {
                 <Hero image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Hero>
             </Section>
 
-            {/* <Section paddingTop={200}>
-                <VerticalLine text="RELEASES"></VerticalLine>
-                <Carousel songs={props.songs}></Carousel>
-            </Section> */}
-
-
-            <Section backgroundColor="white" checkPixelsFromTop={true}>
+            <Section backgroundColor="white" checkPixelsFromTop={true} paddingBottom={true}>
                 <VerticalLine text="RELEASES" mixBlendModeDifference={true}></VerticalLine>
                 <ZoomEffect></ZoomEffect>
                 <Releases></Releases>
+            </Section>
+
+            <Section backgroundColor="black">
+                <News></News>
             </Section>
         </>
     );

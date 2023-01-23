@@ -73,7 +73,7 @@ const LineContainer = styled('div', {
         opacity:{
             true:{
                 '&:not(:hover)':{
-                    opacity:0.5
+                    opacity:0.75
                 }
             }
         }
@@ -126,19 +126,25 @@ const Text = styled('p', {
     }
 });
 
-export default function Hamburger(){
+interface props{
+    breakpoint:'mobile' | 'tablet' | 'desktop';
+}
+
+export default function Hamburger(props:props){
 
     const [toggleMenu, setToggleMenu] = useRecoilState(ToggleMenu);
     const [rotate, setRotate] = useState(false);
 
     function handleOnMouseEnter(){
 
-        setRotate(true);
+        if(props.breakpoint === 'desktop'){
+            setRotate(true);
+        }
     }
 
     function handleOnMouseLeave(){
 
-        if(toggleMenu === false){
+        if(toggleMenu === false && props.breakpoint === 'desktop'){
 
             setRotate(false);
         }
@@ -148,6 +154,16 @@ export default function Hamburger(){
 
         if(!e.detail || e.detail == 1){ //prevents double clicking
 
+            if(props.breakpoint !== 'desktop'){
+                
+                if(toggleMenu){
+                    setRotate(false);
+                }
+                else{
+                    setRotate(true);
+                }
+            }
+            
             setToggleMenu(!toggleMenu);
         }
     }

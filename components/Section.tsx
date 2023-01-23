@@ -6,13 +6,11 @@ import { styled } from "../stitches.config";
 const StyledSection = styled('section', {
 
     position:'relative',
-    // paddingLeft:26,
-    // paddingRight:26,
 
     variants:{
-        paddingTop:{
-            200:{
-                paddingTop:200
+        paddingBottom:{
+            true:{
+                paddingBottom:200
             }
         },
         viewHeight100:{
@@ -41,7 +39,7 @@ const StyledSection = styled('section', {
 
 interface props{
     children:React.ReactNode;
-    paddingTop?:200;
+    paddingBottom?:boolean;
     viewHeight100?:boolean;
     overflowXHidden?:boolean;
     backgroundColor:'white' | 'black';
@@ -65,7 +63,7 @@ export default function Section(props:props){
     }, [ref]);
 
     return(
-        <StyledSection ref={ref} paddingTop={props.paddingTop} viewHeight100={props.viewHeight100} overflowXHidden={props.overflowXHidden} backgroundColor={props.backgroundColor}>
+        <StyledSection ref={ref} paddingBottom={props.paddingBottom} viewHeight100={props.viewHeight100} overflowXHidden={props.overflowXHidden} backgroundColor={props.backgroundColor}>
             {props.children}
         </StyledSection>
     );

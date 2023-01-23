@@ -5,11 +5,20 @@ import Card from "./Card";
 import { useEffect, useRef } from "react";
 import { ReleasesScroll } from "../../atoms/ReleasesScroll";
 import { ReleasesInView } from "../../atoms/ReleasesInView";
+import { debounce } from "throttle-debounce";
 
 const Div = styled('div', {
 
     paddingLeft:20,
     paddingRight:20,
+
+    '@tablet':{
+        paddingLeft:50,
+    },
+
+    '@mobile':{
+        paddingLeft:20,
+    }
 });
 
 const CardContainer = styled('div', {
@@ -49,34 +58,17 @@ export default function Releases(){
     const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
     const [releasesInView, setReleasesInView] = useRecoilState(ReleasesInView);
     const ref = useRef<any>();
+    
 
-    // const { ref, inView } = useInView();
-    // let percentage = Math.round( (window.pageYOffset - ref.current?.getBoundingClientRect().top) / ref.current?.getBoundingClientRect().height / 2 * 100 );
+    useEffect(() => { //used for ZoomEffect
 
-    // const handleScroll = throttle(50, () => {
+        window.onresize = debounce(250, () => {
 
-    //     setReleasesScroll({
-    //         pixelsFromTop: window.pageYOffset - ref.current?.getBoundingClientRect().top,
-    //         height: ref.current?.clientHeight
-    //     });
-
-        
-    // },{});
-
-    // useEffect(() => {
-
-    //     window.addEventListener('scroll', handleScroll);
-
-    //     return(() => {
-
-    //         window.removeEventListener('scroll', handleScroll);
-    //     });
-    // }, []);
-
-    // useEffect(() => {
-
-    //     setReleasesInView(inView);
-    // }, [inView]);
+            setReleasesScroll(prev => ({...prev, 
+                releasesPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
+            })); 
+        });
+    }, []);
 
     useEffect(() => { //used for ZoomEffect
 
@@ -88,7 +80,7 @@ export default function Releases(){
     
     return(
         <Div ref={ref}>
-            <H2>RELEASES</H2>
+            <H2>- RELEASES -</H2>
 
             <CardContainer>
                 {

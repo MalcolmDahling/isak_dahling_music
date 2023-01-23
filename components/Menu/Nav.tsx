@@ -31,9 +31,9 @@ const StyledNav = styled('nav', {
     '@tablet':{
         
         width:'100%',
-        marginTop:50,
+        marginTop:20,
 
-        gap:40,
+        gap:30,
     }
 });
 

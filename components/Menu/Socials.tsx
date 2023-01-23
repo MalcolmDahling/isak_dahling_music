@@ -6,9 +6,13 @@ import { styled } from "../../stitches.config";
 const Div = styled('div', {
 
     position:'absolute',
+    left:0,
+    right:0,
     bottom:20,
+
     paddingLeft:20,
     paddingRight:20,
+    marginBottom:20,
 
     display:'flex',
     flexWrap:'wrap',
