@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import { ReleasesScroll } from "../../atoms/ReleasesScroll";
 import { debounce } from "throttle-debounce";
 import H2 from "../H2";
+import { ReleasesAreLoaded } from "../../atoms/ReleasesAreLoaded";
 
 const Div = styled('div', {
 
@@ -57,6 +58,7 @@ export default function Releases(){
                 releasesPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
             })); 
         });
+
     }, []);
 
     useEffect(() => {

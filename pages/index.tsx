@@ -18,12 +18,14 @@ import { SocialMedia } from "../atoms/SocialMedia";
 import MusicPopup from "../components/MusicPopup/MusicPopup";
 import ZoomEffect from "../components/ZoomEffect";
 import News from "../components/News/News";
+import { ReleasesAreLoaded } from "../atoms/ReleasesAreLoaded";
 
 export default function Home() {
 
     const [songs, setSongs] = useRecoilState(Songs);
     const [profilePictures, setProfilePictures] = useRecoilState(ProfilePictures);
     const [socialMedia, setSocialMedia] = useRecoilState(SocialMedia);
+    const [releasesAreLoaded, setReleasesAreLoaded] = useRecoilState(ReleasesAreLoaded);
     const [backgroundImages, setBackgroundImages] = useState();
 
     const [showIntro, setShowIntro] = useState(true);
@@ -39,6 +41,12 @@ export default function Home() {
         });
 
         setSongs(sortedArr);
+
+        //wait until releases component has updated so it has the correct height
+        setTimeout(() => { 
+
+            setReleasesAreLoaded(true);
+        }, 100);
     }
 
     async function getProfilePictures(){

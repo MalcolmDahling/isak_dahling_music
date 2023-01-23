@@ -8,6 +8,7 @@ import { styled } from "../../stitches.config";
 import H2 from "../H2";
 import Article from "./Article";
 import { Songs } from "../../atoms/Songs";
+import { ReleasesAreLoaded } from "../../atoms/ReleasesAreLoaded";
 
 const Div = styled('div', {
 
@@ -27,6 +28,7 @@ export default function News(){
 
     const [news, setNews] = useState<INews[]>([]);
     const [newsScroll, setNewsScroll] = useRecoilState(NewsScroll);
+    const releasesAreLoaded = useRecoilValue(ReleasesAreLoaded);
     const songs = useRecoilValue(Songs);
     const ref = useRef<any>();
 
@@ -56,7 +58,7 @@ export default function News(){
             newsPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
         }));
         
-    }, [ref, songs]); //setNewsScroll when songs are loaded so releases is the correct height
+    }, [ref, releasesAreLoaded]); //setNewsScroll when songs are loaded so releases is the correct height
 
     return(
         <Div ref={ref}>
