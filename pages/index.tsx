@@ -46,7 +46,7 @@ export default function Home() {
         setTimeout(() => { 
 
             setReleasesAreLoaded(true);
-        }, 500);
+        }, 2000);
     }
 
     async function getProfilePictures(){
@@ -69,6 +69,9 @@ export default function Home() {
 
     useEffect(() => {
 
+        //ensures scroll starts at top when reloading page so scroll effects work properly
+        window.scroll(0,0);
+
         getSongs();
         getProfilePictures();
         getBackgroundImages();
@@ -89,7 +92,7 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            {/* { showIntro && <Intro></Intro> } */}
+            { showIntro && <Intro></Intro> }
 
             <Hamburger breakpoint={breakpoint}></Hamburger>
             <Menu></Menu>

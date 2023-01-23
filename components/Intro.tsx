@@ -83,7 +83,7 @@ const LogoLeft = styled(Left, {
     stroke:'#FFFFFF',
     strokeDasharray:1000,
     strokeDashoffset:1000,
-    animation:`${StrokeAnimLeft} 3000ms 500ms linear forwards, ${FillAnim} 2000ms 3500ms forwards`,
+    animation:`${StrokeAnimLeft} 4500ms 500ms linear forwards, ${FillAnim} 2000ms 3500ms forwards`,
 
     '@tablet':{
         width:'50vw',
