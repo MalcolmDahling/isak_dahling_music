@@ -26,6 +26,7 @@ export default function Home() {
     const [profilePictures, setProfilePictures] = useRecoilState(ProfilePictures);
     const [socialMedia, setSocialMedia] = useRecoilState(SocialMedia);
     const [releasesAreLoaded, setReleasesAreLoaded] = useRecoilState(ReleasesAreLoaded);
+    
     const [backgroundImages, setBackgroundImages] = useState();
 
     const [showIntro, setShowIntro] = useState(true);
@@ -42,14 +43,10 @@ export default function Home() {
 
         setSongs(sortedArr);
 
-        //wait until releases component has updated so it has the correct height
-        setTimeout(() => { 
+        setTimeout(() => {
 
             setReleasesAreLoaded(true);
-
-            //ensures scroll starts at top when reloading page so scroll effects work properly
-            window.scrollTo(0,0);
-        }, 2000);
+        }, 6500)
     }
 
     async function getProfilePictures(){
@@ -84,8 +81,6 @@ export default function Home() {
             setShowIntro(false);
         }, 7500);
     }, []);
-
-    
 
     //################### set bottom={true} on last VerticalLine when done ###################
     return (

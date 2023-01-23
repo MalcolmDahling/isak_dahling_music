@@ -34,7 +34,6 @@ export default function News(){
 
     async function getNews(){
         let res = await axios.get('api/getNews');
-        console.log('news:', res.data);
         setNews(res.data.items);
     }
    
@@ -57,7 +56,6 @@ export default function News(){
         setNewsScroll(prev => ({...prev, 
             newsPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
         }));
-        
     }, [ref, releasesAreLoaded]); //setNewsScroll when songs are loaded so releases is the correct height
 
     return(

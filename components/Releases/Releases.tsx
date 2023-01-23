@@ -12,6 +12,7 @@ const Div = styled('div', {
 
     paddingLeft:20,
     paddingRight:20,
+    paddingBottom:50,
 
     '@tablet':{
         paddingLeft:50,
@@ -46,19 +47,18 @@ export default function Releases(){
 
     const songs = useRecoilValue(Songs);
     const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
+    const releasesAreLoaded = useRecoilValue(ReleasesAreLoaded);
     const ref = useRef<any>();
     
-
-    useEffect(() => {
+    useEffect(() => { //################# NOT WORKING ####################
 
         //used for ZoomEffect
         window.onresize = debounce(250, () => {
 
             setReleasesScroll(prev => ({...prev, 
                 releasesPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
-            })); 
+            }));
         });
-
     }, []);
 
     useEffect(() => {
@@ -67,23 +67,25 @@ export default function Releases(){
         setReleasesScroll(prev => ({...prev, 
             releasesPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
         }));
-
-    }, [ref]);
+        
+    }, [ref, releasesAreLoaded]);
     
     return(
         <Div ref={ref}>
             <H2 text="- RELEASES -" color="black"></H2>
 
             <CardContainer>
-                {
-                    songs.map(song => {
+                <>
+                    {
+                        songs.map(song => {
 
-                        return(
+                            return(
 
-                            <Card title={song.fields.title} releaseDate={song.fields.releaseDate} image={song.fields.image.fields.file.url} key={song.fields.title}></Card>
-                        );
-                    })
-                }
+                                <Card title={song.fields.title} releaseDate={song.fields.releaseDate} image={song.fields.image.fields.file.url} key={song.fields.title}></Card>
+                            );
+                        })
+                    }
+                </>
             </CardContainer>
         </Div>
     );

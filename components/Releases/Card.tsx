@@ -86,7 +86,7 @@ export default function Card(props:props){
     useEffect(() => {
 
         let date = new Date(props.releaseDate);
-        setReleaseDate(date.getFullYear().toString()); 
+        setReleaseDate(date.getFullYear().toString());
     }, []);
 
     function handleClick(){

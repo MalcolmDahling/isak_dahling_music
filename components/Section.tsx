@@ -65,7 +65,7 @@ export default function Section(props:props){
                 sectionPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
             }));
         }
-    }, [ref]);
+    }, [ref, releasesAreLoaded]);
 
     useEffect(() => {
 
