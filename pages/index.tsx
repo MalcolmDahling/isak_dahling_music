@@ -46,6 +46,9 @@ export default function Home() {
         setTimeout(() => { 
 
             setReleasesAreLoaded(true);
+
+            //ensures scroll starts at top when reloading page so scroll effects work properly
+            window.scroll(0,0);
         }, 2000);
     }
 
@@ -68,12 +71,6 @@ export default function Home() {
     }
 
     useEffect(() => {
-
-        //ensures scroll starts at top when reloading page so scroll effects work properly
-        setTimeout(() => {
-
-            window.scroll(0,0);
-        }, 2000);
 
         getSongs();
         getProfilePictures();
