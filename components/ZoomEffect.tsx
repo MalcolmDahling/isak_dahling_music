@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { ReleasesInView } from "../atoms/ReleasesInView";
+import { NewsScroll } from "../atoms/NewsScroll";
 import { ReleasesScroll } from "../atoms/ReleasesScroll";
 import { styled } from "../stitches.config";
 
@@ -13,8 +13,7 @@ const Div = styled('div', {
     width:'100%',
     height:'100vh',
     zIndex:1,
-    
-    backgroundColor:'$black',
+
     pointerEvents:'none',
     
     mask:'url(/images/logo.svg), linear-gradient(#fff 0 0)',
@@ -30,27 +29,57 @@ const Div = styled('div', {
     '-webkit-mask-composite':'destination-out',
 
     transition:'all 350ms',
+
+    variants:{
+        backgroundColor:{
+            black:{
+                backgroundColor:'$black',
+            },
+            white:{
+                backgroundColor:'$white',
+            }
+        }
+    }
 });
 
+interface props{
+    category:'releases' | 'news';
+    backgroundColor:'black' | 'white';
+}
 
+export default function ZoomEffect(props:props){
 
-export default function ZoomEffect(){
-
-    const [maskSize, setMaskSize] = useState(100);
     const releasesScroll = useRecoilValue(ReleasesScroll);
+    const newsScroll = useRecoilValue(NewsScroll);
     
-    const maskSizes:number[] = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 15000]; //make new maskSizes for mobile, maybe
+    const [maskSize, setMaskSize] = useState(100);
+    const maskSizes:number[] = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 15000];
     const [prevScroll, setPrevScroll] = useState(0);
     
 
     function handleScroll(){
 
-        for(let i = 0; i < maskSizes.length; i++){
+        if(props.category === 'releases'){
 
-            if(window.pageYOffset - releasesScroll.sectionPixelsFromTop < (releasesScroll.releasesPixelsFromTop - releasesScroll.sectionPixelsFromTop) / maskSizes.length * i + 50){ //+50 makes it start a little lower so you can see the logo at its smallest for a little bit.
- 
-                setMaskSize(maskSizes[i]);
-                break;
+            for(let i = 0; i < maskSizes.length; i++){
+
+                if(window.pageYOffset - releasesScroll.sectionPixelsFromTop < (releasesScroll.releasesPixelsFromTop - releasesScroll.sectionPixelsFromTop) / maskSizes.length * i + 50){ //+50 makes it start a little lower so you can see the logo at its smallest for a little bit.
+     
+                    setMaskSize(maskSizes[i]);
+                    break;
+                }
+            }
+        }
+
+        else if(props.category === 'news'){
+
+            for(let i = 0; i < maskSizes.length; i++){
+
+                if(window.pageYOffset - newsScroll.sectionPixelsFromTop < (newsScroll.newsPixelsFromTop - newsScroll.sectionPixelsFromTop) / maskSizes.length * i + 50){ //+50 makes it start a little lower so you can see the logo at its smallest for a little bit.
+     
+                    setMaskSize(maskSizes[i]);
+                    break;
+                }
             }
         }
 
@@ -64,8 +93,8 @@ export default function ZoomEffect(){
     }, [prevScroll]);
 
     return(
-            <Div style={{maskSize: maskSize + 'vw', WebkitMaskSize: maskSize + 'vw'}}>
+        <Div style={{maskSize: maskSize + 'vw', WebkitMaskSize: maskSize + 'vw'}} backgroundColor={props.backgroundColor}>
 
-            </Div>
+        </Div>
     );
 }

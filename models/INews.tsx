@@ -4,7 +4,9 @@ export interface INews{
 
         title:string;
 
-        content:content[];
+        text:{
+            content:content[];
+        };
 
         image:{
             fields:{
@@ -14,16 +16,18 @@ export interface INews{
             }
         }
     }
+
+    sys:{
+        createdAt:Date;
+    }
 }
 
 interface content{
 
-    content:{
-        arr:arr[];
-    }
+    content:content2[];
 }
 
-interface arr{
+interface content2{
 
     value:string;
 }

@@ -17,7 +17,7 @@ import { ProfilePictures } from "../atoms/ProfilePictures";
 import { SocialMedia } from "../atoms/SocialMedia";
 import MusicPopup from "../components/MusicPopup/MusicPopup";
 import ZoomEffect from "../components/ZoomEffect";
-import News from "../components/News";
+import News from "../components/News/News";
 
 export default function Home() {
 
@@ -32,7 +32,6 @@ export default function Home() {
     async function getSongs(){
 
         let res = await axios.get('api/getSongs');
-        console.log('songs:', res.data);
 
         let sortedArr = res.data.items.sort((a:Song, b:Song) => {
 
@@ -45,21 +44,18 @@ export default function Home() {
     async function getProfilePictures(){
 
         let res = await axios.get('api/getProfilePictures');
-        console.log('profilePictures:', res.data);
         setProfilePictures(res.data.items);
     }
 
     async function getBackgroundImages(){
 
         let res = await axios.get('api/getBackgroundImages');
-        console.log('backgroundImages:', res.data.items);
         setBackgroundImages(res.data.items);
     }
 
     async function getSocialMedia(){
 
         let res = await axios.get('api/getSocialMedia');
-        console.log('socialMedia', res.data.items);
         setSocialMedia(res.data.items);
     }
 
@@ -96,13 +92,15 @@ export default function Home() {
                 <Hero image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Hero>
             </Section>
 
-            <Section backgroundColor="white" checkPixelsFromTop={true} paddingBottom={true}>
+            <Section backgroundColor="white" checkPixelsFromTop="releases">
                 <VerticalLine text="RELEASES" mixBlendModeDifference={true}></VerticalLine>
-                <ZoomEffect></ZoomEffect>
+                <ZoomEffect category="releases" backgroundColor="black"></ZoomEffect>
                 <Releases></Releases>
             </Section>
 
-            <Section backgroundColor="black">
+            <Section backgroundColor="black" checkPixelsFromTop="news">
+                <VerticalLine text="NEWS" mixBlendModeDifference={true}></VerticalLine>
+                <ZoomEffect category="news" backgroundColor="white"></ZoomEffect>
                 <News></News>
             </Section>
         </>

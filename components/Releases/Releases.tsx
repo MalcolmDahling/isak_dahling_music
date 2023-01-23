@@ -4,8 +4,8 @@ import { styled } from "../../stitches.config";
 import Card from "./Card";
 import { useEffect, useRef } from "react";
 import { ReleasesScroll } from "../../atoms/ReleasesScroll";
-import { ReleasesInView } from "../../atoms/ReleasesInView";
 import { debounce } from "throttle-debounce";
+import H2 from "../H2";
 
 const Div = styled('div', {
 
@@ -41,27 +41,16 @@ const CardContainer = styled('div', {
     }
 });
 
-const H2 = styled('h2', {
-
-    margin:0,
-    marginBottom:50,
-
-    color:'$black',
-    textAlign:'center',
-    fontSize:'$header',
-    userSelect:'none',
-});
-
 export default function Releases(){
 
     const songs = useRecoilValue(Songs);
     const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
-    const [releasesInView, setReleasesInView] = useRecoilState(ReleasesInView);
     const ref = useRef<any>();
     
 
-    useEffect(() => { //used for ZoomEffect
+    useEffect(() => {
 
+        //used for ZoomEffect
         window.onresize = debounce(250, () => {
 
             setReleasesScroll(prev => ({...prev, 
@@ -70,8 +59,9 @@ export default function Releases(){
         });
     }, []);
 
-    useEffect(() => { //used for ZoomEffect
+    useEffect(() => {
 
+        //used for ZoomEffect
         setReleasesScroll(prev => ({...prev, 
             releasesPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
         }));
@@ -80,7 +70,7 @@ export default function Releases(){
     
     return(
         <Div ref={ref}>
-            <H2>- RELEASES -</H2>
+            <H2 text="- RELEASES -" color="black"></H2>
 
             <CardContainer>
                 {
