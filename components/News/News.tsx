@@ -7,7 +7,7 @@ import Article from "./Article";
 import { useInView } from "react-intersection-observer";
 import { useRecoilState } from "recoil";
 import { NewsInView } from "../../atoms/NewsInView";
-import TopRef from "../TopRef";
+import { ComponentInView } from "../../atoms/ComponentInView";
 
 const Div = styled('div', {
 
@@ -26,9 +26,8 @@ const Div = styled('div', {
 export default function News(){
 
     const [news, setNews] = useState<INews[]>([]);
-    const [newsInView, setNewsInView] = useRecoilState(NewsInView);
-    const [thresh, setThresh] = useState(0);
-    const {ref, inView, entry} = useInView({threshold:thresh});
+    const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
+    const {ref, inView, entry} = useInView({threshold:0.6});
 
     async function getNews(){
         let res = await axios.get('api/getNews');
@@ -39,26 +38,18 @@ export default function News(){
 
         getNews();
 
-        if(window.innerWidth >= 735){ // >=735 is 2 columns of releases, <735 is 1 column
-            setThresh(0.6);
-        }
-        else{
-            setThresh(0.3);
-        }
-    },[]);
+        if(!entry) return;
 
-    useEffect(() => {
-        
-        if(newsInView.topRefInView){
-            setNewsInView(prev => ({...prev, inView: inView}));
+        if(entry.boundingClientRect.top > 0){ //positive below viewport, negative when above viewport
+
+            setComponentInView(prev => ({...prev, news:entry.isIntersecting}))
         }
 
-    }, [inView]);
+    }, [entry]);
 
 
     return(
         <Div ref={ref}>
-            <TopRef category="news"></TopRef>
 
             <H2 text="- NEWS -" color="white"></H2>
             {

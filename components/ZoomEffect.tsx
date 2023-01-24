@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { useRecoilValue } from "recoil";
-import { NewsInView } from "../atoms/NewsInView";
-import { ReleasesInView } from "../atoms/ReleasesInView";
+import { ComponentInView } from "../atoms/ComponentInView";
 import { styled } from "../stitches.config";
 
 const Div = styled('div', {
@@ -45,7 +44,7 @@ const Div = styled('div', {
                 WebkitMaskSize:'100vw',
             }
         }
-    },
+    }
 });
 
 const Blur = styled('div', {
@@ -79,14 +78,11 @@ interface props{
 
 export default function ZoomEffect(props:props){
     
-    const maskSizes:number[] = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 15000];
-    const [prevScroll, setPrevScroll] = useState(0);
-    const releasesInView = useRecoilValue(ReleasesInView);
-    const newsInView = useRecoilValue(NewsInView);
+    const componentInView = useRecoilValue(ComponentInView);
     
     return(
-        <Blur blur={props.category === 'releases' ? releasesInView.inView : newsInView.inView}>
-            <Div maskSize={props.category === 'releases' ? releasesInView.inView : newsInView.inView} backgroundColor={props.backgroundColor}>
+        <Blur blur={props.category === 'releases' ? componentInView.releases : componentInView.news}>
+            <Div backgroundColor={props.backgroundColor} maskSize={props.category === 'releases' ? componentInView.releases : componentInView.news}>
             
             </Div>
         </Blur>

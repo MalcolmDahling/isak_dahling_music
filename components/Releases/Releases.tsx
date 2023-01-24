@@ -7,12 +7,9 @@ import { Song } from "../../models/Song";
 import axios from "axios";
 import { Songs } from "../../atoms/Songs";
 import { useInView } from "react-intersection-observer";
-import { ReleasesInView } from "../../atoms/ReleasesInView";
-import TopRef from "../TopRef";
+import { ComponentInView } from "../../atoms/ComponentInView";
 
 const Div = styled('div', {
-
-    marginTop:'-40vh',
 
     paddingLeft:20,
     paddingRight:20,
@@ -50,9 +47,8 @@ const CardContainer = styled('div', {
 export default function Releases(){
 
     const [songs, setSongs] = useRecoilState(Songs);
-    const [releasesInView, setReleasesInView] = useRecoilState(ReleasesInView);
-    const [thresh, setThresh] = useState(0);
-    const {ref, inView, entry} = useInView({threshold:thresh});
+    const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
+    const {ref, inView, entry} = useInView({threshold:0.4});
 
     async function getSongs(){
 
@@ -65,30 +61,25 @@ export default function Releases(){
 
         setSongs(sortedArr);
     }
-    
-    useEffect(() => { 
+
+    useEffect(() => {
 
         getSongs();
-
-        if(window.innerWidth >= 735){ // >=735 is 2 columns of releases, <735 is 1 column
-            setThresh(0.6);
-        }
-        else{
-            setThresh(0.3);
-        }
     }, []);
 
     useEffect(() => {
-        
-        if(releasesInView.topRefInView){
-            setReleasesInView(prev => ({...prev, inView: inView}));
+
+        if(!entry) return;
+
+        if(entry.boundingClientRect.top > 0){ //positive below viewport, negative when above viewport
+
+            setComponentInView(prev => ({...prev, releases:entry.isIntersecting}))
         }
 
-    }, [inView]);
+    }, [entry]);
     
     return(
         <Div ref={ref}>
-            <TopRef category="releases"></TopRef>
 
             <H2 text="- RELEASES -" color="black"></H2>
 

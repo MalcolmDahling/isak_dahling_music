@@ -1,9 +1,6 @@
 import { atom } from "recoil";
 
-export const NewsInView = atom<{inView:boolean, topRefInView:boolean}>({
+export const NewsInView = atom<number>({
     key:'NewsInView',
-    default:{
-        inView:false,
-        topRefInView:false
-    }
+    default:0
 });
