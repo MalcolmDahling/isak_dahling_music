@@ -8,6 +8,8 @@ import { useInView } from "react-intersection-observer";
 import { useRecoilState } from "recoil";
 import { NewsInView } from "../../atoms/NewsInView";
 import { ComponentInView } from "../../atoms/ComponentInView";
+import { useBreakpoint } from "use-breakpoint";
+import { BREAKPOINTS } from "../../variables/breakpoints";
 
 const Div = styled('div', {
 
@@ -27,16 +29,31 @@ export default function News(){
 
     const [news, setNews] = useState<INews[]>([]);
     const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
-    const {ref, inView, entry} = useInView({threshold:0.6});
+    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
+    const [thresh, setThresh] = useState(0);
+    const {ref, inView, entry} = useInView({threshold:thresh});
 
     async function getNews(){
         let res = await axios.get('api/getNews');
         setNews(res.data.items);
     }
-   
+
     useEffect(() => {
 
         getNews();
+    }, []);
+
+    useEffect(() => {
+
+        if(breakpoint === 'desktop'){
+            setThresh(0.6);
+        }
+        if(breakpoint === 'tablet' || breakpoint === 'mobile'){
+            setThresh(0.3);
+        }
+    }, [breakpoint]);
+   
+    useEffect(() => {
 
         if(!entry) return;
 

@@ -8,6 +8,8 @@ import axios from "axios";
 import { Songs } from "../../atoms/Songs";
 import { useInView } from "react-intersection-observer";
 import { ComponentInView } from "../../atoms/ComponentInView";
+import { useBreakpoint } from "use-breakpoint";
+import { BREAKPOINTS } from "../../variables/breakpoints";
 
 const Div = styled('div', {
 
@@ -48,7 +50,9 @@ export default function Releases(){
 
     const [songs, setSongs] = useRecoilState(Songs);
     const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
-    const {ref, inView, entry} = useInView({threshold:0.4});
+    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
+    const [thresh, setThresh] = useState(0);
+    const {ref, inView, entry} = useInView({threshold:thresh});
 
     async function getSongs(){
 
@@ -66,6 +70,16 @@ export default function Releases(){
 
         getSongs();
     }, []);
+
+    useEffect(() => {
+
+        if(breakpoint === 'desktop'){
+            setThresh(0.4);
+        }
+        if(breakpoint === 'tablet' || breakpoint === 'mobile'){
+            setThresh(0.15);
+        }
+    }, [breakpoint]);
 
     useEffect(() => {
 
