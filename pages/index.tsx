@@ -52,7 +52,7 @@ export default function Home() {
 
         setTimeout(() => {
             window.scrollTo(0,0);
-        }, 100);
+        }, 500);
 
         getProfilePictures();
         getBackgroundImages();
