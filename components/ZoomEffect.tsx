@@ -68,9 +68,7 @@ const Blur = styled('div', {
                 backdropFilter:'blur(12px)'
             }
         }
-    },
-
-    opacity:0.5
+    }
 });
 
 interface props{
