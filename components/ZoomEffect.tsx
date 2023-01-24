@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
+import { useBreakpoint } from "use-breakpoint";
 import { ComponentInView } from "../atoms/ComponentInView";
 import { styled } from "../stitches.config";
+import { BREAKPOINTS } from "../variables/breakpoints";
 
 const Blur = styled('div', {
 
@@ -78,10 +80,25 @@ interface props{
 
 export default function ZoomEffect(props:props){
     
-    const componentInView = useRecoilValue(ComponentInView);
-    const maskSizes = [100, 500, 1000, 1500, 4000];
+    const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
+    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
+    const [maskSizes, setMaskSizes] = useState<number[]>([])
     const blurSizes = [0, 3, 6, 9, 12];
     const [currentSize, setCurrentSize] = useState(0);
+
+    useEffect(() => {
+        
+        if(breakpoint === 'desktop'){
+            setComponentInView(prev => ({...prev, threshold: [0, 0.1, 0.2, 0.3, 0.4]}));
+            
+            setMaskSizes([100, 500, 1000, 1500, 4000]);
+        }
+        else{
+            setComponentInView(prev => ({...prev, threshold: [0, 0.05, 0.1, 0.15, 0.2]}));
+            setMaskSizes([100, 500, 1500, 5000, 10000]);
+        }
+
+    }, [breakpoint]);
 
     useEffect(() => {
 
@@ -106,7 +123,7 @@ export default function ZoomEffect(props:props){
         }
         
     }, [componentInView]);
-    
+
     return(
         <Blur >
             <Div backgroundColor={props.backgroundColor} style={{maskSize:maskSizes[currentSize] + 'vw', WebkitMaskSize:maskSizes[currentSize] + 'vw'}}>
