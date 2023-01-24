@@ -1,14 +1,13 @@
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { debounce } from "throttle-debounce";
-import { NewsScroll } from "../../atoms/NewsScroll";
+import { useEffect, useState } from "react";
 import { INews } from "../../models/INews";
 import { styled } from "../../stitches.config";
 import H2 from "../H2";
 import Article from "./Article";
-import { Songs } from "../../atoms/Songs";
-import { ReleasesAreLoaded } from "../../atoms/ReleasesAreLoaded";
+import { useInView } from "react-intersection-observer";
+import { useRecoilState } from "recoil";
+import { NewsInView } from "../../atoms/NewsInView";
+import TopRef from "../TopRef";
 
 const Div = styled('div', {
 
@@ -27,10 +26,9 @@ const Div = styled('div', {
 export default function News(){
 
     const [news, setNews] = useState<INews[]>([]);
-    const [newsScroll, setNewsScroll] = useRecoilState(NewsScroll);
-    const releasesAreLoaded = useRecoilValue(ReleasesAreLoaded);
-    const songs = useRecoilValue(Songs);
-    const ref = useRef<any>();
+    const [newsInView, setNewsInView] = useRecoilState(NewsInView);
+    const [thresh, setThresh] = useState(0);
+    const {ref, inView, entry} = useInView({threshold:thresh});
 
     async function getNews(){
         let res = await axios.get('api/getNews');
@@ -41,25 +39,27 @@ export default function News(){
 
         getNews();
 
-        //used for ZoomEffect
-        window.onresize = debounce(250, () => {
-
-            setNewsScroll(prev => ({...prev, 
-                newsPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
-            })); 
-        });
+        if(window.innerWidth >= 735){ // >=735 is 2 columns of releases, <735 is 1 column
+            setThresh(0.6);
+        }
+        else{
+            setThresh(0.3);
+        }
     },[]);
 
     useEffect(() => {
+        
+        if(newsInView.topRefInView){
+            setNewsInView(prev => ({...prev, inView: inView}));
+        }
 
-        //used for ZoomEffect
-        setNewsScroll(prev => ({...prev, 
-            newsPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
-        }));
-    }, [ref, releasesAreLoaded]); //setNewsScroll when songs are loaded so releases is the correct height
+    }, [inView]);
+
 
     return(
         <Div ref={ref}>
+            <TopRef category="news"></TopRef>
+
             <H2 text="- NEWS -" color="white"></H2>
             {
                 news.map((newsItem, i) => {

@@ -1,8 +1,5 @@
-import { useEffect, useRef } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { NewsScroll } from "../atoms/NewsScroll";
-import { ReleasesAreLoaded } from "../atoms/ReleasesAreLoaded";
-import { ReleasesScroll } from "../atoms/ReleasesScroll";
+import { useRef } from "react";
+import { useRecoilValue } from "recoil";
 import { Songs } from "../atoms/Songs";
 import { styled } from "../stitches.config";
 
@@ -46,39 +43,14 @@ interface props{
     viewHeight100?:boolean;
     overflowXHidden?:boolean;
     backgroundColor:'white' | 'black';
-    checkPixelsFromTop?:'releases' | 'news';
 }
 
 export default function Section(props:props){
 
-    const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
-    const [newsScroll, setNewsScroll] = useRecoilState(NewsScroll);
-    const releasesAreLoaded = useRecoilValue(ReleasesAreLoaded);
     const songs = useRecoilValue(Songs);
-    const ref = useRef<any>();
-
-    useEffect(() => { //used for ZoomEffect
-
-        if(props.checkPixelsFromTop === 'releases'){
-
-            setReleasesScroll(prev => ({...prev, 
-                sectionPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
-            }));
-        }
-    }, [ref, releasesAreLoaded]);
-
-    useEffect(() => {
-
-        if(props.checkPixelsFromTop === 'news'){
-
-            setNewsScroll(prev => ({...prev, 
-                sectionPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
-            }));
-        }
-    }, [ref, releasesAreLoaded]); //setNewsScroll when songs are loaded so releases is the correct height
 
     return(
-        <StyledSection ref={ref} paddingBottom={props.paddingBottom} viewHeight100={props.viewHeight100} overflowXHidden={props.overflowXHidden} backgroundColor={props.backgroundColor}>
+        <StyledSection paddingBottom={props.paddingBottom} viewHeight100={props.viewHeight100} overflowXHidden={props.overflowXHidden} backgroundColor={props.backgroundColor}>
             {props.children}
         </StyledSection>
     );

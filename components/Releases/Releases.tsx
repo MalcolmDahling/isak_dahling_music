@@ -1,14 +1,18 @@
-import { useRecoilState, useRecoilValue } from "recoil";
-import { Songs } from "../../atoms/Songs";
+import { useRecoilState } from "recoil";
 import { styled } from "../../stitches.config";
 import Card from "./Card";
-import { useEffect, useRef } from "react";
-import { ReleasesScroll } from "../../atoms/ReleasesScroll";
-import { debounce } from "throttle-debounce";
+import { useEffect, useState } from "react";
 import H2 from "../H2";
-import { ReleasesAreLoaded } from "../../atoms/ReleasesAreLoaded";
+import { Song } from "../../models/Song";
+import axios from "axios";
+import { Songs } from "../../atoms/Songs";
+import { useInView } from "react-intersection-observer";
+import { ReleasesInView } from "../../atoms/ReleasesInView";
+import TopRef from "../TopRef";
 
 const Div = styled('div', {
+
+    marginTop:'-40vh',
 
     paddingLeft:20,
     paddingRight:20,
@@ -45,33 +49,47 @@ const CardContainer = styled('div', {
 
 export default function Releases(){
 
-    const songs = useRecoilValue(Songs);
-    const [releasesScroll, setReleasesScroll] = useRecoilState(ReleasesScroll);
-    const releasesAreLoaded = useRecoilValue(ReleasesAreLoaded);
-    const ref = useRef<any>();
-    
-    useEffect(() => { //################# NOT WORKING ####################
+    const [songs, setSongs] = useRecoilState(Songs);
+    const [releasesInView, setReleasesInView] = useRecoilState(ReleasesInView);
+    const [thresh, setThresh] = useState(0);
+    const {ref, inView, entry} = useInView({threshold:thresh});
 
-        //used for ZoomEffect
-        window.onresize = debounce(250, () => {
+    async function getSongs(){
 
-            setReleasesScroll(prev => ({...prev, 
-                releasesPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
-            }));
+        let res = await axios.get('api/getSongs');
+
+        let sortedArr = res.data.items.sort((a:Song, b:Song) => {
+
+            return new Date(b.fields.releaseDate).getTime() - new Date(a.fields.releaseDate).getTime();
         });
+
+        setSongs(sortedArr);
+    }
+    
+    useEffect(() => { 
+
+        getSongs();
+
+        if(window.innerWidth >= 735){ // >=735 is 2 columns of releases, <735 is 1 column
+            setThresh(0.6);
+        }
+        else{
+            setThresh(0.3);
+        }
     }, []);
 
     useEffect(() => {
-
-        //used for ZoomEffect
-        setReleasesScroll(prev => ({...prev, 
-            releasesPixelsFromTop: ref.current?.getBoundingClientRect().top + window.pageYOffset
-        }));
         
-    }, [ref, releasesAreLoaded]);
+        if(releasesInView.topRefInView){
+            setReleasesInView(prev => ({...prev, inView: inView}));
+        }
+
+    }, [inView]);
     
     return(
         <Div ref={ref}>
+            <TopRef category="releases"></TopRef>
+
             <H2 text="- RELEASES -" color="black"></H2>
 
             <CardContainer>

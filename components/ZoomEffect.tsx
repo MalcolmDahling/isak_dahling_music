@@ -1,18 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRecoilValue } from "recoil";
-import { NewsScroll } from "../atoms/NewsScroll";
-import { ReleasesScroll } from "../atoms/ReleasesScroll";
+import { NewsInView } from "../atoms/NewsInView";
+import { ReleasesInView } from "../atoms/ReleasesInView";
 import { styled } from "../stitches.config";
 
 const Div = styled('div', {
 
-    position:'sticky',
-    top:0,
-    left:0,
-    right:0,
-    width:'100%',
-    height:'100vh',
-    zIndex:1,
+    position:'absolute',
+    inset:0,
 
     pointerEvents:'none',
     
@@ -28,7 +23,7 @@ const Div = styled('div', {
     maskComposite:'exclude',
     '-webkit-mask-composite':'destination-out',
 
-    transition:'all 350ms',
+    transition:'all 750ms ease-in-out',
 
     variants:{
         backgroundColor:{
@@ -37,6 +32,41 @@ const Div = styled('div', {
             },
             white:{
                 backgroundColor:'$white',
+            }
+        },
+
+        maskSize:{
+            true:{
+                maskSize:'4000vh',
+                WebkitMaskSize:'4000vh',
+            },
+            false:{
+                maskSize:'100vw',
+                WebkitMaskSize:'100vw',
+            }
+        }
+    },
+});
+
+const Blur = styled('div', {
+
+    position:'sticky',
+    top:0,
+    left:0,
+    right:0,
+    width:'100%',
+    height:'100vh',
+    zIndex:1,
+
+    transition:'all 750ms ease-in-out',
+
+    variants:{
+        blur:{
+            true:{
+                backdropFilter:'blur(0px)',
+            },
+            false:{
+                backdropFilter:'blur(12px)'
             }
         }
     }
@@ -48,53 +78,17 @@ interface props{
 }
 
 export default function ZoomEffect(props:props){
-
-    const releasesScroll = useRecoilValue(ReleasesScroll);
-    const newsScroll = useRecoilValue(NewsScroll);
     
-    const [maskSize, setMaskSize] = useState(100);
     const maskSizes:number[] = [100, 200, 500, 1000, 1500, 2000, 3000, 4500, 6000, 15000];
     const [prevScroll, setPrevScroll] = useState(0);
+    const releasesInView = useRecoilValue(ReleasesInView);
+    const newsInView = useRecoilValue(NewsInView);
     
-
-    function handleScroll(){
-
-        if(props.category === 'releases'){
-
-            for(let i = 0; i < maskSizes.length; i++){
-
-                if(window.pageYOffset - releasesScroll.sectionPixelsFromTop < (releasesScroll.releasesPixelsFromTop - releasesScroll.sectionPixelsFromTop) / maskSizes.length * i + 50){ //+50 makes it start a little lower so you can see the logo at its smallest for a little bit.
-     
-                    setMaskSize(maskSizes[i]);
-                    break;
-                }
-            }
-        }
-
-        else if(props.category === 'news'){
-
-            for(let i = 0; i < maskSizes.length; i++){
-
-                if(window.pageYOffset - newsScroll.sectionPixelsFromTop < (newsScroll.newsPixelsFromTop - newsScroll.sectionPixelsFromTop) / maskSizes.length * i + 50){ //+50 makes it start a little lower so you can see the logo at its smallest for a little bit.
-     
-                    setMaskSize(maskSizes[i]);
-                    break;
-                }
-            }
-        }
-
-        setPrevScroll(window.pageYOffset);
-        window.removeEventListener('scroll', handleScroll);
-    }
-
-    useEffect(() => {
-
-        window.addEventListener('scroll', handleScroll);
-    }, [prevScroll]);
-
     return(
-        <Div style={{maskSize: maskSize + 'vw', WebkitMaskSize: maskSize + 'vw'}} backgroundColor={props.backgroundColor}>
-
-        </Div>
+        <Blur blur={props.category === 'releases' ? releasesInView.inView : newsInView.inView}>
+            <Div maskSize={props.category === 'releases' ? releasesInView.inView : newsInView.inView} backgroundColor={props.backgroundColor}>
+            
+            </Div>
+        </Blur>
     );
 }
