@@ -6,10 +6,7 @@ import H2 from "../H2";
 import Article from "./Article";
 import { useInView } from "react-intersection-observer";
 import { useRecoilState } from "recoil";
-import { NewsInView } from "../../atoms/NewsInView";
 import { ComponentInView } from "../../atoms/ComponentInView";
-import { useBreakpoint } from "use-breakpoint";
-import { BREAKPOINTS } from "../../variables/breakpoints";
 
 const Div = styled('div', {
 
@@ -29,9 +26,7 @@ export default function News(){
 
     const [news, setNews] = useState<INews[]>([]);
     const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
-    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
-    const [thresh, setThresh] = useState(0);
-    const {ref, inView, entry} = useInView({threshold:thresh});
+    const {ref, inView, entry} = useInView({threshold:componentInView.threshold});
 
     async function getNews(){
         let res = await axios.get('api/getNews');
@@ -42,16 +37,6 @@ export default function News(){
 
         getNews();
     }, []);
-
-    useEffect(() => {
-
-        if(breakpoint === 'desktop'){
-            setThresh(0.6);
-        }
-        if(breakpoint === 'tablet' || breakpoint === 'mobile'){
-            setThresh(0.3);
-        }
-    }, [breakpoint]);
    
     useEffect(() => {
 
@@ -59,11 +44,9 @@ export default function News(){
 
         if(entry.boundingClientRect.top > 0){ //positive below viewport, negative when above viewport
 
-            setComponentInView(prev => ({...prev, news:entry.isIntersecting}))
+            setComponentInView(prev => ({...prev, news:entry.intersectionRatio}));
         }
-
     }, [entry]);
-
 
     return(
         <Div ref={ref}>

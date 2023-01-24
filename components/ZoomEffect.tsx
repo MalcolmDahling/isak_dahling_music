@@ -1,7 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { ComponentInView } from "../atoms/ComponentInView";
 import { styled } from "../stitches.config";
+
+const Blur = styled('div', {
+
+    position:'sticky',
+    top:0,
+    left:0,
+    right:0,
+    width:'100%',
+    height:'100vh',
+    zIndex:1,
+
+    transition:'all 350ms ease-in-out',
+
+    variants:{
+        blur:{
+            true:{
+                backdropFilter:'blur(0px)',
+            },
+            false:{
+                backdropFilter:'blur(12px)'
+            }
+        }
+    }
+});
 
 const Div = styled('div', {
 
@@ -22,7 +46,7 @@ const Div = styled('div', {
     maskComposite:'exclude',
     '-webkit-mask-composite':'destination-out',
 
-    transition:'all 750ms ease-in-out',
+    transition:'all 350ms ease-in-out',
 
     variants:{
         backgroundColor:{
@@ -47,30 +71,6 @@ const Div = styled('div', {
     }
 });
 
-const Blur = styled('div', {
-
-    position:'sticky',
-    top:0,
-    left:0,
-    right:0,
-    width:'100%',
-    height:'100vh',
-    zIndex:1,
-
-    transition:'all 750ms ease-in-out',
-
-    variants:{
-        blur:{
-            true:{
-                backdropFilter:'blur(0px)',
-            },
-            false:{
-                backdropFilter:'blur(12px)'
-            }
-        }
-    }
-});
-
 interface props{
     category:'releases' | 'news';
     backgroundColor:'black' | 'white';
@@ -79,10 +79,37 @@ interface props{
 export default function ZoomEffect(props:props){
     
     const componentInView = useRecoilValue(ComponentInView);
+    const maskSizes = [100, 500, 1000, 1500, 4000];
+    const blurSizes = [0, 3, 6, 9, 12];
+    const [currentSize, setCurrentSize] = useState(0);
+
+    useEffect(() => {
+
+        if(props.category === 'releases'){
+
+            for(let i = 0; i < componentInView.threshold.length; i++){
+
+                if(componentInView.releases >= componentInView.threshold[i]){
+                    setCurrentSize(i);
+                }
+            }
+        }
+
+        if(props.category === 'news'){
+
+            for(let i = 0; i < componentInView.threshold.length; i++){
+
+                if(componentInView.news >= componentInView.threshold[i]){
+                    setCurrentSize(i);
+                }
+            }
+        }
+        
+    }, [componentInView]);
     
     return(
-        <Blur blur={props.category === 'releases' ? componentInView.releases : componentInView.news}>
-            <Div backgroundColor={props.backgroundColor} maskSize={props.category === 'releases' ? componentInView.releases : componentInView.news}>
+        <Blur >
+            <Div backgroundColor={props.backgroundColor} style={{maskSize:maskSizes[currentSize] + 'vw', WebkitMaskSize:maskSizes[currentSize] + 'vw'}}>
             
             </Div>
         </Blur>

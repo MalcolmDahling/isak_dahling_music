@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { useRecoilValue } from "recoil";
 import { Songs } from "../atoms/Songs";
 import { styled } from "../stitches.config";
