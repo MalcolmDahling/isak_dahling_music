@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { useBreakpoint } from "use-breakpoint";
 import { ComponentInView } from "../atoms/ComponentInView";
 import { styled } from "../stitches.config";
@@ -16,6 +16,7 @@ const Blur = styled('div', {
     zIndex:1,
 
     transition:'all 350ms ease-in-out',
+    pointerEvents:'none',
 
     variants:{
         blur:{

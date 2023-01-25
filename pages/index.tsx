@@ -16,7 +16,8 @@ import { SocialMedia } from "../atoms/SocialMedia";
 import MusicPopup from "../components/MusicPopup/MusicPopup";
 import ZoomEffect from "../components/ZoomEffect";
 import News from "../components/News/News";
-import VerticalLine2 from "../components/VerticalLine2";
+import Wrapper from "../components/Wrapper";
+import StickyText from "../components/StickyText";
 
 export default function Home() {
 
@@ -79,21 +80,24 @@ export default function Home() {
             <MusicPopup breakpoint={breakpoint}></MusicPopup>
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
-                <VerticalLine2 text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine2>
+                <VerticalLine top={true}></VerticalLine>
+                <StickyText text="ISAK&nbsp; DAHLING&nbsp; MUSIC"></StickyText>
                 <Hero image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Hero>
             </Section>
 
-            <Section backgroundColor="white">
-                <VerticalLine text="RELEASES" mixBlendModeDifference={true}></VerticalLine>
-                <ZoomEffect category="releases" backgroundColor="black"></ZoomEffect>
-                <Releases></Releases>
-            </Section>
+            <Wrapper>
+                <VerticalLine mixBlendModeDifference={true} bottom={true}></VerticalLine>
 
-            <Section backgroundColor="black">
-                <VerticalLine text="NEWS" mixBlendModeDifference={true}></VerticalLine>
-                <ZoomEffect category="news" backgroundColor="white"></ZoomEffect>
-                <News></News>
-            </Section>
+                <Section backgroundColor="white">
+                    <ZoomEffect category="releases" backgroundColor="black"></ZoomEffect>
+                    <Releases></Releases>
+                </Section>
+
+                <Section backgroundColor="black">
+                    <ZoomEffect category="news" backgroundColor="white"></ZoomEffect>
+                    <News></News>
+                </Section>
+            </Wrapper>
         </>
     );
 }

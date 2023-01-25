@@ -7,9 +7,17 @@ import Article from "./Article";
 import { useInView } from "react-intersection-observer";
 import { useRecoilState } from "recoil";
 import { ComponentInView } from "../../atoms/ComponentInView";
+import StickyText from "../StickyText";
+
+const OuterDiv = styled('div', {
+
+    position:'relative',
+    width:'100%'
+});
 
 const Div = styled('div', {
 
+    position:'relative',
     maxWidth:800,
     margin:'auto',
 
@@ -25,10 +33,10 @@ const Div = styled('div', {
 const RefDiv = styled('div', {
 
     position:'absolute',
-    top:'100vh',
+    top:0,
     left:0,
     height:'80vh',
-    width:10
+    width:10,
 });
 
 export default function News(){
@@ -58,18 +66,23 @@ export default function News(){
     }, [entry]);
 
     return(
-        <Div>
-            <RefDiv ref={ref}></RefDiv>
 
-            <H2 text="- NEWS -" color="white"></H2>
-            {
-                news.map((newsItem, i) => {
+        <OuterDiv>
+            <StickyText text="NEWS" marginTop={120}></StickyText>
 
-                    return(
-                        <Article newsItem={newsItem} key={i}></Article>
-                    );
-                })
-            }
-        </Div>
+            <Div>
+                <RefDiv ref={ref}></RefDiv>
+
+                <H2 text="- NEWS -" color="white"></H2>
+                {
+                    news.map((newsItem, i) => {
+
+                        return(
+                            <Article newsItem={newsItem} key={i}></Article>
+                        );
+                    })
+                }
+            </Div>
+        </OuterDiv>
     );
 }

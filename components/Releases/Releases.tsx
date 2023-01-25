@@ -8,9 +8,11 @@ import axios from "axios";
 import { Songs } from "../../atoms/Songs";
 import { useInView } from "react-intersection-observer";
 import { ComponentInView } from "../../atoms/ComponentInView";
+import StickyText from "../StickyText";
 
 const Div = styled('div', {
 
+    position:'relative',
     paddingLeft:20,
     paddingRight:20,
     paddingBottom:50,
@@ -27,10 +29,10 @@ const Div = styled('div', {
 const RefDiv = styled('div', {
 
     position:'absolute',
-    top:'100vh',
+    top:0,
     left:0,
     height:'80vh',
-    width:10
+    width:10,
 });
 
 const CardContainer = styled('div', {
@@ -90,8 +92,10 @@ export default function Releases(){
         <Div>
             <RefDiv ref={ref}></RefDiv>
 
-            <H2 text="- RELEASES -" color="black"></H2>
+            <StickyText text="RELEASES" marginTop={150}></StickyText>
 
+            <H2 text="- RELEASES -" color="black"></H2>
+            
             <CardContainer>
                 <>
                     {

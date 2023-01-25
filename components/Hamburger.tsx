@@ -34,7 +34,7 @@ const Button = styled('button', {
     position:'fixed',
     top:30,
     right:30,
-    zIndex:4,
+    zIndex:9,
     padding:0,
 
     display:'flex',
