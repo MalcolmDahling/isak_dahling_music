@@ -7,7 +7,6 @@ const Div = styled('div', {
 
     position:'relative',
     maxWidth:300,
-    zIndex:4,
 
     backgroundSize:'cover',
     userSelect:'none',

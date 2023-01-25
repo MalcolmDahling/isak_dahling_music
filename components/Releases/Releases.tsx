@@ -13,16 +13,13 @@ import StickyText from "../StickyText";
 const Div = styled('div', {
 
     position:'relative',
-    paddingLeft:20,
-    paddingRight:20,
+    paddingLeft:70,
+    paddingRight:70,
     paddingBottom:50,
-
-    '@tablet':{
-        paddingLeft:50,
-    },
 
     '@mobile':{
         paddingLeft:20,
+        paddingRight:20
     }
 });
 
