@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useBreakpoint } from "use-breakpoint";
 import { ComponentInView } from "../atoms/ComponentInView";
 import { styled } from "../stitches.config";
@@ -58,17 +58,6 @@ const Div = styled('div', {
             white:{
                 backgroundColor:'$white',
             }
-        },
-
-        maskSize:{
-            true:{
-                maskSize:'4000vh',
-                WebkitMaskSize:'4000vh',
-            },
-            false:{
-                maskSize:'100vw',
-                WebkitMaskSize:'100vw',
-            }
         }
     }
 });
@@ -83,19 +72,22 @@ export default function ZoomEffect(props:props){
     const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
     const [maskSizes, setMaskSizes] = useState<number[]>([])
-    const blurSizes = [0, 3, 6, 9, 12];
+    const [blurSizes, setBlurSizes] = useState<number[]>([]);
     const [currentSize, setCurrentSize] = useState(0);
 
     useEffect(() => {
         
         if(breakpoint === 'desktop'){
-            setComponentInView(prev => ({...prev, threshold: [0, 0.1, 0.2, 0.3, 0.4]}));
-            
-            setMaskSizes([100, 500, 1000, 1500, 4000]);
+        
+            setComponentInView(prev => ({...prev, threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]}));
+            setMaskSizes([100, 300, 800, 1200, 3000, 10000]);
+            setBlurSizes([12, 9, 4, 2, 0, 0]);
         }
         else{
-            setComponentInView(prev => ({...prev, threshold: [0, 0.05, 0.1, 0.15, 0.2]}));
-            setMaskSizes([100, 500, 1500, 5000, 10000]);
+
+            setComponentInView(prev => ({...prev, threshold: [0, 0.2, 0.4, 0.6, 0.7, 0.9]}));
+            setMaskSizes([200, 500, 1500, 3000, 6000, 10000]);
+            setBlurSizes([12, 9, 4, 2, 1, 0]);
         }
 
     }, [breakpoint]);
@@ -107,6 +99,7 @@ export default function ZoomEffect(props:props){
             for(let i = 0; i < componentInView.threshold.length; i++){
 
                 if(componentInView.releases >= componentInView.threshold[i]){
+                    
                     setCurrentSize(i);
                 }
             }
@@ -125,7 +118,7 @@ export default function ZoomEffect(props:props){
     }, [componentInView]);
 
     return(
-        <Blur >
+        <Blur style={{backdropFilter:`blur(${blurSizes[currentSize]}px)`}}>
             <Div backgroundColor={props.backgroundColor} style={{maskSize:maskSizes[currentSize] + 'vw', WebkitMaskSize:maskSizes[currentSize] + 'vw'}}>
             
             </Div>

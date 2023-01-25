@@ -22,6 +22,15 @@ const Div = styled('div', {
     }
 });
 
+const RefDiv = styled('div', {
+
+    position:'absolute',
+    top:'100vh',
+    left:0,
+    height:'80vh',
+    width:10
+});
+
 export default function News(){
 
     const [news, setNews] = useState<INews[]>([]);
@@ -49,7 +58,8 @@ export default function News(){
     }, [entry]);
 
     return(
-        <Div ref={ref}>
+        <Div>
+            <RefDiv ref={ref}></RefDiv>
 
             <H2 text="- NEWS -" color="white"></H2>
             {

@@ -11,6 +11,6 @@ export const ComponentInView = atom<componentInView>({
     default:{
         releases:0,
         news:0,
-        threshold:[],
+        threshold:[]
     }
 });

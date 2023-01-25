@@ -16,6 +16,7 @@ import { SocialMedia } from "../atoms/SocialMedia";
 import MusicPopup from "../components/MusicPopup/MusicPopup";
 import ZoomEffect from "../components/ZoomEffect";
 import News from "../components/News/News";
+import VerticalLine2 from "../components/VerticalLine2";
 
 export default function Home() {
 
@@ -78,7 +79,7 @@ export default function Home() {
             <MusicPopup breakpoint={breakpoint}></MusicPopup>
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
-                <VerticalLine text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine>
+                <VerticalLine2 text="ISAK&nbsp; DAHLING&nbsp; MUSIC" top={true}></VerticalLine2>
                 <Hero image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Hero>
             </Section>
 

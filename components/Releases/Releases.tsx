@@ -24,6 +24,15 @@ const Div = styled('div', {
     }
 });
 
+const RefDiv = styled('div', {
+
+    position:'absolute',
+    top:'100vh',
+    left:0,
+    height:'80vh',
+    width:10
+});
+
 const CardContainer = styled('div', {
 
     maxWidth:800,
@@ -78,7 +87,8 @@ export default function Releases(){
     }, [entry]);
     
     return(
-        <Div ref={ref}>
+        <Div>
+            <RefDiv ref={ref}></RefDiv>
 
             <H2 text="- RELEASES -" color="black"></H2>
 

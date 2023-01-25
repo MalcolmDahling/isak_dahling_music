@@ -20,7 +20,7 @@ const StyledSection = styled('section', {
 
         overflowXHidden:{
             true:{
-                overflowX:'hidden'
+                overflowX:'clip' //overflowX:'hidden' breaks position sticky on Line text.
             }
         },
 
