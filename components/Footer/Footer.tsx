@@ -47,17 +47,17 @@ const LinkDiv = styled('div', {
     display:'flex',
     justifyContent:'center',
     flexWrap:'wrap',
-    gap:10,
+    gap:20,
 
-    marginLeft:25,
-    marginRight:25
+    marginLeft:40,
+    marginRight:40
 });
 
 const Line = styled('div', {
 
     height:1,
     width:'80%',
-    maxWidth:400,
+    maxWidth:415,
     
     backgroundColor:'$white'
 });
@@ -93,7 +93,11 @@ const EmailButton = styled('button', {
 
 const BottomText = styled('p', {
 
+});
 
+const GitHubLink = styled(Link, {
+
+    color:'$white'
 });
 
 export default function Footer(){
@@ -119,7 +123,7 @@ export default function Footer(){
             <Line></Line>
             <Socials useNames={false} smallerIcons={true}></Socials>
 
-            <BottomText>2023 &nbsp; - &nbsp; Website made by Malcolm Dahling</BottomText>
+            <BottomText>2023 &nbsp; - &nbsp; Website made by <GitHubLink href="https://github.com/MalcolmDahling">Malcolm Dahling</GitHubLink></BottomText>
 
         </StyledFooter>
     );
