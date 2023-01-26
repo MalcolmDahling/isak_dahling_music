@@ -19,6 +19,7 @@ import News from "../components/News/News";
 import Wrapper from "../components/Wrapper";
 import StickyText from "../components/StickyText";
 import Contact from "../components/Contact/Contact";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
 
@@ -67,7 +68,6 @@ export default function Home() {
         }, 7500);
     }, []);
 
-    //################### set bottom={true} on last VerticalLine when done ###################
     return (
         <>
             <Head>
@@ -99,6 +99,8 @@ export default function Home() {
                     <ZoomEffect category="news" backgroundColor="white"></ZoomEffect>
                     <News></News>
                 </Section>
+
+                <Footer></Footer>
             </Wrapper>
         </>
     );

@@ -159,12 +159,15 @@ export default function Hamburger(props:props){
 
     const [toggleMenu, setToggleMenu] = useRecoilState(ToggleMenu);
     const [rotate, setRotate] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
 
     function handleOnMouseEnter(){
 
         if(props.breakpoint === 'desktop'){
             setRotate(true);
         }
+
+        setIsHovering(true);
     }
 
     function handleOnMouseLeave(){
@@ -173,6 +176,8 @@ export default function Hamburger(props:props){
 
             setRotate(false);
         }
+
+        setIsHovering(false);
     }
 
     function handleClick(e:React.MouseEvent){
@@ -196,7 +201,7 @@ export default function Hamburger(props:props){
     useEffect(() => {
 
         //resets hemburger rotation after clicking an option in the menu
-        if(toggleMenu === false && props.breakpoint === 'desktop'){
+        if(toggleMenu === false && props.breakpoint === 'desktop' && isHovering === false){
 
             setRotate(false);
         }

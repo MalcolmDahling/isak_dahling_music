@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { ToggleContact } from "../../atoms/ToggleContact";
@@ -67,6 +68,18 @@ export default function Contact(){
 
     const [toggleContact, setToggleContact] = useRecoilState(ToggleContact);
     const [showContact, setShowContact] = useState(true);
+    const [emailAddress, setEmailAddress] = useState('');
+
+    async function getEmail(){
+
+        let res = await axios.get('api/getEmail');
+        setEmailAddress(res.data.items[0].fields.email);
+    }
+
+    useEffect(() => {
+
+        getEmail();
+    }, []);
 
     useEffect(() => {
 

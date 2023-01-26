@@ -17,7 +17,8 @@ export const {
             
             black:'#000000',
             white:'#FFFFFF',
-            whiteHalfOpacity:'rgba(255,255,255,0.5)'
+            whiteHalfOpacity:'rgba(255,255,255,0.5)',
+            gray:'#AAAAAA'
         },
 
         fontSizes:{

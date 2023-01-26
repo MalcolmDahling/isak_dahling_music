@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useBreakpoint } from "use-breakpoint";
 import { BREAKPOINTS } from "../../variables/breakpoints";
 import Nav from "./Nav";
-import Socials from "./Socials";
+import Socials from "../Socials";
 import { ProfilePictures } from "../../atoms/ProfilePictures";
 
 const FadeOut = keyframes({
@@ -118,7 +118,7 @@ export default function Menu(){
                         <Nav></Nav>
                     </Div>
                     
-                    <Socials></Socials>
+                    <Socials positionAbsolute={true} useNames={true} smallerIcons={false}></Socials>
 
                 </BackgroundDiv>
             }
