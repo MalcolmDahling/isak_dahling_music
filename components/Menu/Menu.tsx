@@ -37,7 +37,7 @@ const FadeIn = keyframes({
 const BackgroundDiv = styled('div', {
 
     position:'fixed',
-    inset:'0',
+    inset:0,
     zIndex:8,
 
     

@@ -1,5 +1,5 @@
 import { styled } from "../../stitches.config";
-import MenuLink from "./StyledLink";
+import MenuLink from "./MenuLink";
 
 const StyledNav = styled('nav', {
 
@@ -9,12 +9,6 @@ const StyledNav = styled('nav', {
 
     display:'flex',
     flexDirection:'column',
-    
-    // pointerEvents:'none',
-
-    // '&:hover > div':{
-    //     opacity:0.3
-    // }
 
     '&:hover a':{
 

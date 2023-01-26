@@ -1,6 +1,6 @@
-import { styled } from "../../stitches.config";
+import { styled } from "../stitches.config";
 
-const LineContainer = styled('div', {
+const LineContainer = styled('button', {
 
     position:'absolute',
     top:0,
@@ -8,6 +8,8 @@ const LineContainer = styled('div', {
     width:35,
     height:35,
 
+    border:'none',
+    backgroundColor:'transparent',
     cursor:'pointer',
     transition:'all 250ms',
     opacity:0.75,
@@ -54,7 +56,7 @@ type props = {
     close: () => void;
 }
 
-export default function Exit(props:props){
+export default function ExitButton(props:props){
 
 
     return(

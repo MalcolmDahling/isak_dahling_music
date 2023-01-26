@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { ToggleMenu } from "../atoms/ToggleMenu";
 import { keyframes, styled } from "../stitches.config";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const FadeOut = keyframes({
 
@@ -43,9 +43,13 @@ const Button = styled('button', {
     justifyContent:'center',
     alignItems:'center',
 
-    mixBlendMode:'difference',
     backgroundColor:'transparent',
-    border:'none'
+    border:'none',
+    mixBlendMode:'difference',
+
+    '@mobile':{
+        mixBlendMode:'normal',
+    }
 });
 
 const LineContainer = styled('div', {
@@ -73,7 +77,7 @@ const LineContainer = styled('div', {
         opacity:{
             true:{
                 '&:not(:hover)':{
-                    opacity:0.75
+                    opacity:0.75,
                 }
             }
         }
@@ -85,7 +89,7 @@ const Line = styled('div', {
     width:'100%',
     height:5,
 
-    transition:'250ms',
+    transition:'all 250ms',
     transformOrigin:'center',
     borderRadius:10,
     backgroundColor:'$white',
@@ -101,6 +105,15 @@ const Line = styled('div', {
             true:{
                 transform:'rotate(90deg) translateX(-13px)'
             }
+        },
+
+        border:{
+            true:{
+                '@mobile':{
+                    border:'1px solid black',
+                    marginBottom:-2
+                }
+            }
         }
     }
 });
@@ -109,9 +122,13 @@ const Text = styled('p', {
 
     margin:0,
 
-    fontSize:15,
+    fontSize:16,
     userSelect:'none',
     color:'$white',
+
+    '@mobile':{
+        textShadow:'-1px -1px 0 #000, 0   -1px 0 #000, 1px -1px 0 #000, 1px  0   0 #000, 1px  1px 0 #000, 0    1px 0 #000, -1px  1px 0 #000, -1px  0   0 #000'
+    },
 
     variants:{
         show:{
@@ -121,6 +138,14 @@ const Text = styled('p', {
             
             false:{
                 animation:`${FadeIn} 500ms forwards`
+            }
+        },
+
+        marginTop:{
+            true:{
+                '@mobile':{
+                    marginTop:6
+                }
             }
         }
     }
@@ -168,6 +193,16 @@ export default function Hamburger(props:props){
         }
     }
 
+    useEffect(() => {
+
+        //resets hemburger rotation after clicking an option in the menu
+        if(toggleMenu === false && props.breakpoint === 'desktop'){
+
+            setRotate(false);
+        }
+
+    }, [toggleMenu]);
+
     return(
         <Button>
 
@@ -179,13 +214,13 @@ export default function Hamburger(props:props){
                 onMouseLeave={handleOnMouseLeave}
             >
 
-                <Line rotateTop={rotate}></Line>
-                <Line></Line>
-                <Line rotateBottom={rotate}></Line>
+                <Line rotateTop={rotate} border={!toggleMenu}></Line>
+                <Line border={!toggleMenu}></Line>
+                <Line rotateBottom={rotate} border={!toggleMenu}></Line>
                 
             </LineContainer>
 
-            <Text show={toggleMenu}>MENU</Text>
+            <Text show={toggleMenu} marginTop={toggleMenu}>MENU</Text>
         </Button>
     );
 }

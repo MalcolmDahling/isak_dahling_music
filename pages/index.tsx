@@ -18,6 +18,7 @@ import ZoomEffect from "../components/ZoomEffect";
 import News from "../components/News/News";
 import Wrapper from "../components/Wrapper";
 import StickyText from "../components/StickyText";
+import Contact from "../components/Contact/Contact";
 
 export default function Home() {
 
@@ -73,11 +74,12 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            {/* { showIntro && <Intro></Intro> } */}
+            { showIntro && <Intro></Intro> }
 
             <Hamburger breakpoint={breakpoint}></Hamburger>
             <Menu></Menu>
             <MusicPopup breakpoint={breakpoint}></MusicPopup>
+            <Contact></Contact>
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
                 <VerticalLine top={true}></VerticalLine>

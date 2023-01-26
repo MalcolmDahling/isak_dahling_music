@@ -4,7 +4,7 @@ import { Songs } from "../../atoms/Songs";
 import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
 import { Song } from "../../models/Song";
 import { keyframes, styled } from "../../stitches.config";
-import Exit from "./Exit";
+import ExitButton from "../ExitButton";
 import SoundCloudIFrame from "./IFrames/SoundCloudIFrame";
 import SpotifyIFrame from "./IFrames/SpotifyIFrame";
 import YoutubeIFrame from "./IFrames/YoutubeIFrame";
@@ -169,11 +169,11 @@ export default function MusicPopup(props:props){
 
                 <BackgroundDiv fade={toggleMusicPopup.show}>
 
-                    {props.breakpoint !== 'desktop' && <Exit close={close}></Exit>}
+                    {props.breakpoint !== 'desktop' && <ExitButton close={close}></ExitButton>}
 
                     <ContentDiv>
 
-                        {props.breakpoint === 'desktop' && <Exit close={close}></Exit>}
+                        {props.breakpoint === 'desktop' && <ExitButton close={close}></ExitButton>}
 
                         {props.breakpoint !== 'desktop' &&
                             <TextDiv>

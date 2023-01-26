@@ -1,4 +1,6 @@
-import Link from "next/link";
+import { useRecoilState } from "recoil";
+import { ToggleContact } from "../../atoms/ToggleContact";
+import { ToggleMenu } from "../../atoms/ToggleMenu";
 import { keyframes, styled } from "../../stitches.config";
 
 const MoveRight = keyframes({
@@ -13,14 +15,19 @@ const MoveRight = keyframes({
     }
 });
 
-const StyledLink = styled(Link, {
+const StyledButton = styled('button', {
 
     position:'relative',
+    padding:0,
     paddingBottom:10,
     paddingLeft:20,
     marginTop:-10,
     width:'0%',
 
+    cursor:'pointer',
+    textAlign:'start',
+    backgroundColor:'transparent',
+    border:'none',
     borderBottom:'1px solid $whiteHalfOpacity',
     fontSize:50,
     color:'$white',
@@ -87,11 +94,27 @@ interface props{
 
 export default function MenuLink(props:props){
 
+    const [toggleMenu, setToggleMenu] = useRecoilState(ToggleMenu);
+    const [toggleContact, setToggleContact] = useRecoilState(ToggleContact);
+
+    function handleClick(option:string){
+
+        setToggleMenu(false);
+
+        setTimeout(() => {
+
+            if(option === 'CONTACT'){
+
+                setToggleContact(true);
+            }
+        }, 500);
+    }
+
     return(
 
-        <StyledLink href={props.url} animationDelay={props.animationDelay}>
+        <StyledButton animationDelay={props.animationDelay} onClick={() => {handleClick(props.option)}}>
             {props.option}
             <ExpandingLine></ExpandingLine>
-        </StyledLink>
+        </StyledButton>
     );
 }
