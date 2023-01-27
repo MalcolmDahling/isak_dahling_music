@@ -15,13 +15,16 @@ export default function handler(req: NextApiRequest, res: NextApiResponse){
     }
 
     mg.messages().send(data, function (error:any, body:any){
-
-        console.log(body);
         
         if(error){
             console.log(error); 
         }
+
+        else{
+            
+            res.send('success');
+        }
     });
 
-    res.send('success');
+    
 }
