@@ -1,9 +1,14 @@
 import Link from "next/link";
 import { useRecoilValue } from "recoil";
-import { SocialMedia } from "../atoms/SocialMedia";
-import { styled } from "../stitches.config";
+import { SocialMedia } from "../../atoms/SocialMedia";
+import { styled } from "../../stitches.config";
 
 const Div = styled('div', {
+
+    position:'absolute',
+    left:0,
+    right:0,
+    bottom:40,
 
     paddingLeft:20,
     paddingRight:20,
@@ -15,17 +20,6 @@ const Div = styled('div', {
 
     '&:hover a':{
         opacity:0.5
-    },
-
-    variants:{
-        positionAbsolute:{
-            true:{
-                position:'absolute',
-                left:0,
-                right:0,
-                bottom:40,
-            }
-        }
     }
 });
 
@@ -45,25 +39,13 @@ const StyledLink = styled(Link, {
 
 const Img = styled('img', {
 
-    
+    width:70,
+    height:70,
 
     '@tablet':{
         width:40,
         height:40,
     },
-
-    variants:{
-        smallerIcons:{
-            true:{
-                width:50,
-                height:50
-            },
-            false:{
-                width:70,
-                height:70,
-            }
-        }
-    }
 });
 
 const P = styled('p', {
@@ -74,25 +56,19 @@ const P = styled('p', {
     color:'$white',
 });
 
-interface props{
-    positionAbsolute?:boolean;
-    useNames:boolean;
-    smallerIcons:boolean;
-}
-
-export default function Socials(props:props){
+export default function Socials(){
 
     const socialMedia = useRecoilValue(SocialMedia);
 
     return(
-        <Div positionAbsolute={props.positionAbsolute}>
+        <Div>
             {
                 socialMedia.map((social, i) => {
 
                     return(
                         <StyledLink href={social.fields.link} key={social.fields.title}>
-                            <Img src={social.fields.image.fields.file.url} alt={social.fields.title} smallerIcons={props.smallerIcons}></Img>
-                            {props.useNames && <P>{social.fields.title}</P>}
+                            <Img src={social.fields.image.fields.file.url} alt={social.fields.title}></Img>
+                            <P>{social.fields.title}</P>
                         </StyledLink>
                     );
                 })

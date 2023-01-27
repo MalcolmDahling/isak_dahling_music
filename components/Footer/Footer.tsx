@@ -1,15 +1,11 @@
 import Link from "next/link";
-import { useRecoilState } from "recoil";
 import { styled } from "../../stitches.config";
-import { ToggleContact } from "../../atoms/ToggleContact";
-import Socials from "../Socials";
 
 const StyledFooter = styled('footer', {
 
     width:'100%',
     marginTop:200,
-    paddingBottom:30,
-
+    paddingBottom:100,
     display:'flex',
     flexDirection:'column',
     alignItems:'center',
@@ -42,57 +38,9 @@ const Logo = styled('img', {
     pointerEvents:'none'
 });
 
-const LinkDiv = styled('div', {
-
-    display:'flex',
-    justifyContent:'center',
-    flexWrap:'wrap',
-    gap:20,
-
-    marginLeft:40,
-    marginRight:40
-});
-
-const Line = styled('div', {
-
-    height:1,
-    width:'80%',
-    maxWidth:415,
-    
-    backgroundColor:'$white'
-});
-
-const StyledLink = styled(Link, {
-
-    fontSize:20,
-    color:'$gray',
-    textDecoration:'none',
-    transition:'all 250ms',
-
-    '&:hover':{
-        color:'$white'
-    }
-});
-
-const EmailButton = styled('button', {
-
-    padding:0,
-
-    fontSize:20,
-    color:'$gray',
-    transition:'all 250ms',
-    backgroundColor:'transparent',
-    border:'none',
-    textAlign:'start',
-    cursor:'pointer',
-
-    '&:hover':{
-        color:'$white'
-    }
-});
-
 const BottomText = styled('p', {
 
+    margin:0,
 });
 
 const GitHubLink = styled(Link, {
@@ -102,8 +50,6 @@ const GitHubLink = styled(Link, {
 
 export default function Footer(){
 
-    const [toggleContact, setToggleContact] = useRecoilState(ToggleContact);
-
     return(
         <StyledFooter>
 
@@ -111,17 +57,6 @@ export default function Footer(){
                 <Logo src="/images/logo.svg"></Logo>
                 <Name>ISAK DAHLING MUSIC</Name>
             </NameAndLogo>
-
-            <LinkDiv>
-                <StyledLink href="#">HOME</StyledLink>
-                <StyledLink href="#">MUSIC</StyledLink>
-                <StyledLink href="#">NEWS</StyledLink>
-                <StyledLink href="#">ABOUT</StyledLink>
-                <EmailButton onClick={() => {setToggleContact(true);}}>EMAIL ME</EmailButton>
-            </LinkDiv>
-
-            <Line></Line>
-            <Socials useNames={false} smallerIcons={true}></Socials>
 
             <BottomText>2023 &nbsp; - &nbsp; Website made by <GitHubLink href="https://github.com/MalcolmDahling">Malcolm Dahling</GitHubLink></BottomText>
 

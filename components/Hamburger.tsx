@@ -46,6 +46,7 @@ const Button = styled('button', {
     backgroundColor:'transparent',
     border:'none',
     mixBlendMode:'difference',
+    userSelect:'none',
 
     '@mobile':{
         mixBlendMode:'normal',
