@@ -2,6 +2,7 @@ import { useRecoilState } from "recoil";
 import { ToggleContact } from "../../atoms/ToggleContact";
 import { ToggleMenu } from "../../atoms/ToggleMenu";
 import { keyframes, styled } from "../../stitches.config";
+import ExpandingLine from "../ExpandingLine";
 
 const MoveRight = keyframes({
 
@@ -74,18 +75,6 @@ const StyledButton = styled('button', {
     }
 });
 
-const ExpandingLine = styled('div', {
-
-    position:'absolute',
-    bottom:-1,
-    left:0,
-    height:1,
-    width:0,
-    transition:'all 500ms',
-    
-    backgroundColor:'$white'
-});
-
 interface props{
     url:string;
     animationDelay:0|1|2|3|4;
@@ -114,7 +103,7 @@ export default function MenuLink(props:props){
 
         <StyledButton animationDelay={props.animationDelay} onClick={() => {handleClick(props.option)}}>
             {props.option}
-            <ExpandingLine></ExpandingLine>
+            <ExpandingLine position="bottom"></ExpandingLine>
         </StyledButton>
     );
 }

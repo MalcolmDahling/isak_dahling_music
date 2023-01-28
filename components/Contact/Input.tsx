@@ -1,32 +1,97 @@
-import { styled } from "../../stitches.config";
+import { keyframes, styled } from "../../stitches.config";
 import { useFormContext } from 'react-hook-form';
-import { useState } from "react";
+import ExpandingLine from "../ExpandingLine";
+
+const MoveRight = keyframes({
+
+    '0%':{
+        width:'0%',
+        opacity:0
+    },
+    '100%':{
+        width:'100%',
+        opacity:1
+    }
+});
 
 const Div = styled('div', {
 
+    position:'relative',
     marginBottom:10
-});
-
-const Label = styled('label', {
-
-    display:'block',
-    marginBottom:5,
 });
 
 const StyledInput = styled('input', {
 
-    width:'100%',
+    width:'0%',
     height:30,
     marginBottom:5,
-    paddingLeft:5,
 
     border:'none',
     boxSizing:'border-box',
-    opacity:0.75,
+    opacity:0,
     transition:'all 250ms',
+    color:'$white',
+    backgroundColor:'transparent',
+    borderBottom:'1px solid $whiteHalfOpacity',
+    animation:`${MoveRight} 1000ms forwards`,
+    fontSize:16,
 
     '&:focus':{
-        opacity:1
+        opacity:1,
+        outline:'none',
+
+        '+ div':{
+            width:'100%'
+        }
+    },
+
+    '&::placeholder':{
+        
+        color:'$white',
+        fontSize:16,
+        transition:'all 250ms',
+    },
+
+    '&:hover':{
+
+        '&::placeholder':{
+            opacity:'1 !important'
+        },
+
+        '+ div':{
+            width:'100%'
+        }
+    },
+
+    variants:{
+        animationDelay:{
+            0:{
+                animationDelay:'400ms',
+            },
+
+            1:{
+                animationDelay:'600ms',
+            },
+
+            2:{
+                animationDelay:'800ms',
+            }
+        },
+
+        hasFocus:{
+            true:{
+                opacity:1,
+        
+                '+ div':{
+                    width:'100%'
+                }
+            },
+            false:{
+                '&::placeholder':{
+                    opacity:0.5
+                }
+            }
+        }
     }
 });
 
@@ -37,10 +102,14 @@ const Error = styled('p', {
     color:'$error'
 });
 
-interface props{
+type props = {
     name:string;
     label:string;
     errorMsg:string;
+    animationDelay:0 | 1 | 2;
+    setHasFocus:() => void;
+    setNoFocus:() => void;
+    hasFocus:boolean;
 }
 
 export default function Input(props:props){
@@ -55,22 +124,28 @@ export default function Input(props:props){
 
     return(
         <Div>
-            <Label htmlFor={props.name}>{props.label}</Label>
+            <StyledInput 
+                placeholder={props.label} 
+                animationDelay={props.animationDelay}
+                onFocus={() => props.setHasFocus()}
+                hasFocus={props.hasFocus}
 
-            <StyledInput placeholder={props.label} {...register(
-                props.name,
-                {
-                    required: true,
-                    minLength: 2,
-                    validate: val => {
-                        if(val && props.name === 'emailAddress'){
-                            return validateEmail(val);
+                {...register(
+                    props.name,
+                    {
+                        required: true,
+                        minLength: 2,
+                        onBlur:() => props.setNoFocus(),
+                        validate: val => {
+                            if(val && props.name === 'emailAddress'){
+                                return validateEmail(val);
+                            }
                         }
                     }
-                }
-            )}>
-
+                )}>
             </StyledInput>
+
+            <ExpandingLine position="top"></ExpandingLine>
 
             {error && <Error>{props.errorMsg}</Error>}
         </Div>

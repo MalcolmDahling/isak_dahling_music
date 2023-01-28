@@ -10,7 +10,7 @@ const StyledNav = styled('nav', {
     display:'flex',
     flexDirection:'column',
 
-    '&:hover a':{
+    '&:hover button':{
 
         color:'$whiteHalfOpacity'
     },

@@ -71,8 +71,35 @@ const ContentDiv = styled('div', {
 
 const H2 = styled('h2', {
 
+    position:'relative',
+    top:-6,
     margin:0,
     marginBottom:20,
+    width:'fit-content',
+
+    fontSize:30,
+    fontWeight:'normal',
+});
+
+const Form = styled('form', {
+
+    '&:hover input:not([type=submit])':{
+
+        opacity:0.5
+    },
+
+    '&:hover input::placeholder':{
+        opacity:0.5
+    },
+
+    '&:hover textarea':{
+
+        opacity:0.5
+    },
+
+    '&:hover textarea::placeholder':{
+        opacity:0.5
+    },
 });
 
 const Submit = styled('input', {
@@ -117,8 +144,9 @@ export default function Contact(){
     const [isaksEmail, setIsaksEmail] = useState('');
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
     const [success, setSuccess] = useState(false);
+    const [hasFocus, setHasFocus] = useState<number | null>(null);
 
-    const methods = useForm<email>({mode:'onBlur'});
+    const methods = useForm<email>({mode:'onTouched'});
 
     async function onSubmit(email:email){
         
@@ -180,16 +208,47 @@ export default function Contact(){
                         <H2>SEND ME AN EMAIL</H2>
 
                         <FormProvider {...methods}>
-                            <form onSubmit={methods.handleSubmit(onSubmit)}>
-                                <Input name="name" label="Your name" errorMsg="Please enter your name."></Input>
-                                <Input name="emailAddress" label="Your email address" errorMsg="Please enter your email address."></Input>
-                                <Input name="subject" label="Subject" errorMsg="Please enter the subject."></Input>
-                                <TextArea></TextArea>
+                            <Form onSubmit={methods.handleSubmit(onSubmit)}>
+                                <Input 
+                                    name="name" 
+                                    label="Your name" 
+                                    errorMsg="Please enter your name." 
+                                    animationDelay={0} 
+                                    setHasFocus={() => {setHasFocus(0); setSuccess(false);}} 
+                                    setNoFocus={() => {setHasFocus(null)}}
+                                    hasFocus={hasFocus === 0 ? true : false}
+                                ></Input>
+
+                                <Input 
+                                    name="emailAddress" 
+                                    label="Your email address" 
+                                    errorMsg="Please enter your email address." 
+                                    animationDelay={1} 
+                                    setHasFocus={() => {setHasFocus(1); setSuccess(false);}} 
+                                    setNoFocus={() => {setHasFocus(null)}}
+                                    hasFocus={hasFocus === 1 ? true : false}
+                                ></Input>
+
+                                <Input 
+                                    name="subject" 
+                                    label="Subject" 
+                                    errorMsg="Please enter a subject." 
+                                    animationDelay={2} 
+                                    setHasFocus={() => {setHasFocus(2); setSuccess(false);}} 
+                                    setNoFocus={() => {setHasFocus(null)}}
+                                    hasFocus={hasFocus === 2 ? true : false}
+                                ></Input>
+
+                                <TextArea 
+                                    setHasFocus={() => {setHasFocus(3); setSuccess(false);}} 
+                                    setNoFocus={() => {setHasFocus(null)}}
+                                    hasFocus={hasFocus === 3 ? true : false}
+                                ></TextArea>
 
                                 {success && <Success>Your message was sent!</Success>}
 
                                 <Submit type="submit" value="SEND"></Submit>
-                            </form>
+                            </Form>
                         </FormProvider>
                     </ContentDiv>
                 </BackgroundDiv>
