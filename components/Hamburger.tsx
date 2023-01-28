@@ -201,10 +201,16 @@ export default function Hamburger(props:props){
 
     useEffect(() => {
 
-        //resets hemburger rotation after clicking an option in the menu
-        if(toggleMenu === false && props.breakpoint === 'desktop' && isHovering === false){
+        //resets hamburger rotation after clicking an option in the menu
+        if(toggleMenu === false){
 
-            setRotate(false);
+            if(props.breakpoint === 'desktop' && isHovering === false){
+                setRotate(false);
+            }
+
+            if(props.breakpoint !== 'desktop'){
+                setRotate(false);
+            }
         }
 
     }, [toggleMenu]);

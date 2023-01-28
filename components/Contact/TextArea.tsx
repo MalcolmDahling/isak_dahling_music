@@ -99,6 +99,11 @@ type props = {
     hasFocus:boolean;
 }
 
+
+//When inputting enough text into the textarea so that it becomes scrollable, the text appears blurry in small resolutions in responsive mode in chrome.
+//It is not blurry when tested on a real phone.
+//It is probably a bug in chrome.
+
 export default function TextArea(props:props){
 
     const {register, getFieldState, formState} = useFormContext();

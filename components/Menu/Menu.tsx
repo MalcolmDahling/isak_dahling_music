@@ -63,7 +63,7 @@ const BackgroundDiv = styled('div', {
     },
 
     '@tablet':{
-        paddingTop:50
+        marginTop:60
     }
 });
 

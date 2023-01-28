@@ -49,6 +49,10 @@ const BackgroundDiv = styled('div', {
     backgroundColor:'rgba(0,0,0,0.75)',
     backdropFilter:'blur(12px)',
 
+    '@mobile':{
+        alignItems:'flex-start'
+    },
+
     variants:{
         fade:{
             true:{
@@ -67,6 +71,10 @@ const ContentDiv = styled('div', {
     width:'80%',
     maxWidth:500,
     height:500,
+
+    '@mobile':{
+        marginTop:100,
+    }
 });
 
 const H2 = styled('h2', {
