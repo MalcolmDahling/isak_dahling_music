@@ -13,7 +13,7 @@ const Blur = styled('div', {
     right:0,
     width:'100%',
     height:'100vh',
-    zIndex:1,
+    zIndex:2,
 
     transition:'all 350ms ease-in-out',
     pointerEvents:'none',

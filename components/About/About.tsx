@@ -8,12 +8,25 @@ import { styled } from "../../stitches.config";
 import { BREAKPOINTS } from "../../variables/breakpoints";
 import H2 from "../H2";
 import StickyText from "../StickyText";
+import Grunge from "../../public/images/grunge.svg"
 
 const OuterDiv = styled('div', {
 
     position:'relative',
     width:'100%',
     paddingTop:100,
+
+    '@desktop':{
+        paddingTop:200
+    }
+});
+
+const BackgroundImage = styled(Grunge, {
+
+    position:'absolute',
+    top:0,
+    left:0,
+    right:0,
 });
 
 const ContentDiv = styled('div', {
@@ -81,6 +94,8 @@ export default function About(){
     return(
         <OuterDiv>
             <StickyText text="ABOUT" marginTop={220}></StickyText>
+
+            <BackgroundImage></BackgroundImage>
 
             <ContentDiv id="ABOUT">
                 <H2 text="- ABOUT -" color="black"></H2>

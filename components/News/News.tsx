@@ -14,6 +14,7 @@ const OuterDiv = styled('div', {
     position:'relative',
     width:'100%',
     paddingBottom:100,
+    zIndex:1,
 });
 
 const Div = styled('div', {
