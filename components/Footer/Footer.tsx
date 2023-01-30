@@ -6,7 +6,7 @@ const StyledFooter = styled('footer', {
 
     width:'100%',
     paddingTop:100,
-    marginBottom:100,
+    paddingBottom:50,
 
     display:'flex',
     flexDirection:'column',

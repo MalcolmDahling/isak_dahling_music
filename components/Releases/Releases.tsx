@@ -19,7 +19,7 @@ const Div = styled('div', {
 
     '@mobile':{
         paddingLeft:20,
-        paddingRight:20
+        paddingRight:20,
     }
 });
 
@@ -86,7 +86,7 @@ export default function Releases(){
     }, [entry]);
     
     return(
-        <Div id="MUSIC">
+        <Div id="RELEASES">
             <RefDiv ref={ref}></RefDiv>
 
             <StickyText text="RELEASES" marginTop={150}></StickyText>

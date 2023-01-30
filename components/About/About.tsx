@@ -33,12 +33,22 @@ const ContentDiv = styled('div', {
 
 const InnerDiv = styled('div', {
 
-    display:'flex'
+    display:'flex',
+
+    '@tablet':{
+
+        flexDirection:'column',
+        alignItems:'center'
+    }
 });
 
 const Img = styled('img', {
 
-    maxHeight:500
+    maxHeight:600,
+    
+    '@tablet':{
+        maxHeight:500,
+    }
 });
 
 const P = styled('p', {
@@ -69,14 +79,14 @@ export default function About(){
     }, []);
 
     return(
-        <OuterDiv id="ABOUT">
+        <OuterDiv>
             <StickyText text="ABOUT" marginTop={220}></StickyText>
 
-            <ContentDiv>
+            <ContentDiv id="ABOUT">
                 <H2 text="- ABOUT -" color="black"></H2>
 
                 <InnerDiv>
-                    {breakpoint === 'desktop' && <Img src={profilePictures[0]?.fields.image.fields.file.url}></Img>}
+                    <Img src={profilePictures[0]?.fields.image.fields.file.url}></Img>
 
                     <P>
                         {about?.fields.text.content.map((text, i) => {

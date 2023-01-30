@@ -4,8 +4,7 @@ import MenuLink from "./MenuLink";
 const StyledNav = styled('nav', {
 
     maxWidth:650,
-    minWidth:250,
-    paddingRight:20,
+    minWidth:300,
 
     display:'flex',
     flexDirection:'column',
@@ -28,13 +27,17 @@ const StyledNav = styled('nav', {
         marginTop:20,
 
         gap:30,
+    },
+
+    '@mobile':{
+        minWidth:220,
     }
 });
 
 
 export default function Nav(){
 
-    const menuOptions = ['HOME', 'MUSIC', 'NEWS', 'ABOUT', 'CONTACT'];
+    const menuOptions = ['HOME', 'RELEASES', 'NEWS', 'ABOUT', 'CONTACT'];
 
     return(
         <StyledNav>
