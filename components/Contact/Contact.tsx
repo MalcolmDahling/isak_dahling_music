@@ -188,10 +188,19 @@ export default function Contact(){
 
         if(toggleContact){
 
+            //disables scrolling
+            document.body.style.overflow = 'hidden';
+
             setShowContact(true);
         }
 
         else{
+
+            setTimeout(() => {
+
+                //enables scrolling
+                document.body.style.overflow = 'auto';
+            }, 250);
 
             setTimeout(() => {
 

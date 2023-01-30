@@ -95,6 +95,9 @@ export default function Menu(){
 
         if(toggleMenu){
 
+            //disables scrolling
+            document.body.style.overflow = 'hidden';
+
             setShowMenu(true);
         }
 
@@ -102,7 +105,13 @@ export default function Menu(){
 
             setTimeout(() => {
 
-                setShowMenu(false);
+                //enables scrolling
+                document.body.style.overflow = 'auto';
+            }, 250);
+
+            setTimeout(() => {
+
+                setShowMenu(false); 
             }, 500);
         }
         
