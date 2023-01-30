@@ -12,7 +12,8 @@ import StickyText from "../StickyText";
 const OuterDiv = styled('div', {
 
     position:'relative',
-    width:'100%'
+    width:'100%',
+    paddingBottom:100,
 });
 
 const Div = styled('div', {
@@ -67,8 +68,8 @@ export default function News(){
 
     return(
 
-        <OuterDiv>
-            <StickyText text="NEWS" marginTop={120}></StickyText>
+        <OuterDiv id="NEWS">
+            <StickyText text="NEWS" marginTop={105}></StickyText>
 
             <Div>
                 <RefDiv ref={ref}></RefDiv>

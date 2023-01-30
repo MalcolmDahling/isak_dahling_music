@@ -3,6 +3,8 @@ import { ToggleContact } from "../../atoms/ToggleContact";
 import { ToggleMenu } from "../../atoms/ToggleMenu";
 import { keyframes, styled } from "../../stitches.config";
 import ExpandingLine from "../ExpandingLine";
+import * as Scroll from 'react-scroll';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 const MoveRight = keyframes({
 
@@ -22,7 +24,7 @@ const StyledButton = styled('button', {
     padding:0,
     paddingBottom:10,
     paddingLeft:20,
-    marginTop:-10,
+    marginTop:-9,
     width:'0%',
 
     cursor:'pointer',
@@ -95,6 +97,12 @@ export default function MenuLink(props:props){
             if(option === 'CONTACT'){
 
                 setToggleContact(true);
+            }
+
+            else{
+                // window.location.href=`#${option}`;
+                
+                scroller.scrollTo(option, {duration:1000, smooth:true})
             }
         }, 500);
     }

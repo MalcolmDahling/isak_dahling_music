@@ -1,15 +1,19 @@
 import Link from "next/link";
 import { styled } from "../../stitches.config";
+import LogoSVG from "../../public/images/logo.svg";
 
 const StyledFooter = styled('footer', {
 
     width:'100%',
-    marginTop:200,
-    paddingBottom:100,
+    paddingTop:100,
+    marginBottom:100,
+
     display:'flex',
     flexDirection:'column',
     alignItems:'center',
-    gap:50
+    gap:50,
+
+    backgroundColor:'$white'
 });
 
 const NameAndLogo = styled('div', {
@@ -24,9 +28,10 @@ const Name = styled('p', {
 
     fontSize:24,
     fontWeight:'bold',
+    color:'$black'
 });
 
-const Logo = styled('img', {
+const Logo = styled(LogoSVG, {
 
     position:'absolute',
     top:-135,
@@ -35,17 +40,20 @@ const Logo = styled('img', {
     marginRight:-100,
     marginLeft:-115,
 
-    pointerEvents:'none'
+    pointerEvents:'none',
+    filter:'invert(100%)'
 });
 
 const BottomText = styled('p', {
 
     margin:0,
+
+    color:'$black'
 });
 
 const GitHubLink = styled(Link, {
 
-    color:'$white'
+    color:'$black'
 });
 
 export default function Footer(){
@@ -54,7 +62,7 @@ export default function Footer(){
         <StyledFooter>
 
             <NameAndLogo>
-                <Logo src="/images/logo.svg"></Logo>
+                <Logo></Logo>
                 <Name>ISAK DAHLING MUSIC</Name>
             </NameAndLogo>
 

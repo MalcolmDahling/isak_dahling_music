@@ -23,7 +23,7 @@ const Div = styled('div', {
 const StyledTextArea = styled('textarea', {
 
     width:'100%',
-    height:200,
+    height:175,
     marginBottom:10,
 
     resize:'none',

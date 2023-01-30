@@ -33,7 +33,7 @@ interface props{
 export default function Hero(props:props){
 
     return(
-        <Div>
+        <Div id="HOME">
             <Img src={props.image} draggable={false}></Img>
             <ScrollDown></ScrollDown>
         </Div>

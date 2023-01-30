@@ -40,7 +40,12 @@ const BackgroundDiv = styled('div', {
     inset:0,
     zIndex:8,
 
-    
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',
+    flexDirection:'column',
+    gap:20,
+
     backgroundColor:'rgba(0,0,0,0.75)',
     backdropFilter:'blur(12px)',
 
@@ -55,24 +60,18 @@ const BackgroundDiv = styled('div', {
         }
     },
 
-    '@desktop':{
-
-        display:'flex',
-        justifyContent:'center',
-        flexDirection:'column',
-    },
-
     '@tablet':{
-        marginTop:60
+        paddingTop:60
     }
 });
 
-const Div = styled('div', {
+const FlexDiv = styled('div', {
 
-    margin:'auto',
+    paddingTop:20,
 
     display:'flex',
     gap:20,
+    margin:'auto',
 
     '@tablet':{
         width:'80%'
@@ -81,7 +80,8 @@ const Div = styled('div', {
 
 const Img = styled('img', {
 
-    height:600
+    height:'80vh',
+    maxHeight:600
 });
 
 export default function Menu(){
@@ -113,10 +113,10 @@ export default function Menu(){
             { showMenu && 
                 <BackgroundDiv fade={toggleMenu}>
             
-                    <Div>
-                        {breakpoint === "desktop" && <Img src={profilePictures[0]?.fields.image.fields.file.url} draggable={false}></Img>}
+                    <FlexDiv>
+                        {breakpoint === "desktop" && <Img src={profilePictures[1]?.fields.image.fields.file.url} draggable={false}></Img>}
                         <Nav></Nav>
-                    </Div>
+                    </FlexDiv>
                     
                     <Socials></Socials>
 

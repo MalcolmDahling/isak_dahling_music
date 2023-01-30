@@ -5,18 +5,19 @@ import { styled } from "../../stitches.config";
 
 const Div = styled('div', {
 
-    position:'absolute',
-    left:0,
-    right:0,
-    bottom:40,
+    // position:'absolute',
+    // left:0,
+    // right:0,
+    // bottom:40,
 
     paddingLeft:20,
     paddingRight:20,
+    marginBottom:20,
 
     display:'flex',
     flexWrap:'wrap',
     justifyContent:'center',
-    gap:20,
+    gap:15,
 
     '&:hover a':{
         opacity:0.5
@@ -39,8 +40,8 @@ const StyledLink = styled(Link, {
 
 const Img = styled('img', {
 
-    width:70,
-    height:70,
+    width:50,
+    height:50,
 
     '@tablet':{
         width:40,

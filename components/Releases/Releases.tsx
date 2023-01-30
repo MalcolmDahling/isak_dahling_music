@@ -86,7 +86,7 @@ export default function Releases(){
     }, [entry]);
     
     return(
-        <Div>
+        <Div id="MUSIC">
             <RefDiv ref={ref}></RefDiv>
 
             <StickyText text="RELEASES" marginTop={150}></StickyText>

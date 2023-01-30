@@ -20,13 +20,12 @@ import Wrapper from "../components/Wrapper";
 import StickyText from "../components/StickyText";
 import Contact from "../components/Contact/Contact";
 import Footer from "../components/Footer/Footer";
+import About from "../components/About/About";
 
 export default function Home() {
 
     const [profilePictures, setProfilePictures] = useRecoilState(ProfilePictures);
     const [socialMedia, setSocialMedia] = useRecoilState(SocialMedia);
-    
-    const [backgroundImages, setBackgroundImages] = useState();
 
     const [showIntro, setShowIntro] = useState(true);
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
@@ -36,12 +35,6 @@ export default function Home() {
 
         let res = await axios.get('api/getProfilePictures');
         setProfilePictures(res.data.items);
-    }
-
-    async function getBackgroundImages(){
-
-        let res = await axios.get('api/getBackgroundImages');
-        setBackgroundImages(res.data.items);
     }
 
     async function getSocialMedia(){
@@ -59,7 +52,6 @@ export default function Home() {
         }, 500);
 
         getProfilePictures();
-        getBackgroundImages();
         getSocialMedia();
 
         setTimeout(() => {
@@ -84,7 +76,7 @@ export default function Home() {
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
                 <VerticalLine top={true}></VerticalLine>
                 <StickyText text="ISAK&nbsp; DAHLING&nbsp; MUSIC"></StickyText>
-                <Hero image={breakpoint === "desktop" ? profilePictures[2]?.fields.image.fields.file.url : profilePictures[1]?.fields.image.fields.file.url}></Hero>
+                <Hero image={breakpoint === "desktop" ? profilePictures[3]?.fields.image.fields.file.url : profilePictures[2]?.fields.image.fields.file.url}></Hero>
             </Section>
 
             <Wrapper>
@@ -98,6 +90,10 @@ export default function Home() {
                 <Section backgroundColor="black">
                     <ZoomEffect category="news" backgroundColor="white"></ZoomEffect>
                     <News></News>
+                </Section>
+
+                <Section backgroundColor="white">
+                    <About></About>
                 </Section>
 
                 <Footer></Footer>
