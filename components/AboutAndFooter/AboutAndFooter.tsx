@@ -1,32 +1,20 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
-import { useBreakpoint } from "use-breakpoint";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { ProfilePictures } from "../../atoms/ProfilePictures";
 import { IAbout } from "../../models/IAbout";
 import { styled } from "../../stitches.config";
-import { BREAKPOINTS } from "../../variables/breakpoints";
+import Footer from "./Footer";
 import H2 from "../H2";
 import StickyText from "../StickyText";
-import Grunge from "../../public/images/grunge.svg"
+import { useInView } from "react-intersection-observer";
+import { ToggleAboutAnimation } from "../../atoms/ToggleAboutAnimation";
 
 const OuterDiv = styled('div', {
 
     position:'relative',
     width:'100%',
     paddingTop:100,
-
-    '@desktop':{
-        paddingTop:200
-    }
-});
-
-const BackgroundImage = styled(Grunge, {
-
-    position:'absolute',
-    top:0,
-    left:0,
-    right:0,
 });
 
 const ContentDiv = styled('div', {
@@ -42,6 +30,15 @@ const ContentDiv = styled('div', {
         paddingLeft:20,
         paddingRight:20
     }
+});
+
+const RefDiv = styled('div', {
+
+    position:'absolute',
+    top:0,
+    left:0,
+    height:'80vh',
+    width:10,
 });
 
 const InnerDiv = styled('div', {
@@ -74,11 +71,12 @@ const Span = styled('span', {
     display:'block'
 });
 
-export default function About(){
+export default function AboutAndFooter(){
 
     const profilePictures = useRecoilValue(ProfilePictures);
     const [about, setAbout] = useState<IAbout>();
-    const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
+    const {ref, inView, entry} = useInView({threshold:0.8});
+    const [toggleAboutAnimation, setToggleAboutAnimation] = useRecoilState(ToggleAboutAnimation);
 
     async function getAbout(){
         let res = await axios.get('api/getAbout');
@@ -91,13 +89,25 @@ export default function About(){
         getAbout();
     }, []);
 
+    useEffect(() => {
+        if(!entry) return;
+
+        if(entry.boundingClientRect.top > 0){ //positive below viewport, negative when above viewport
+            
+            setToggleAboutAnimation(inView);
+            console.log(inView);
+        }
+        
+    }, [entry]);
+
     return(
         <OuterDiv>
+
             <StickyText text="ABOUT" marginTop={220}></StickyText>
 
-            <BackgroundImage></BackgroundImage>
-
             <ContentDiv id="ABOUT">
+                <RefDiv ref={ref}></RefDiv>
+
                 <H2 text="- ABOUT -" color="black"></H2>
 
                 <InnerDiv>
@@ -119,6 +129,7 @@ export default function About(){
                 </InnerDiv>
             </ContentDiv>
 
+            <Footer></Footer>
         </OuterDiv>
     );
 }

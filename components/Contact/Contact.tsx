@@ -4,6 +4,7 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useRecoilState } from "recoil";
 import { useBreakpoint } from "use-breakpoint";
 import { ToggleContact } from "../../atoms/ToggleContact";
+import { ToggleScrolling } from "../../atoms/ToggleScrolling";
 import { keyframes, styled } from "../../stitches.config";
 import { BREAKPOINTS } from "../../variables/breakpoints";
 import ExitButton from "../ExitButton";
@@ -153,6 +154,7 @@ export default function Contact(){
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
     const [success, setSuccess] = useState(false);
     const [hasFocus, setHasFocus] = useState<number | null>(null);
+    const [toggleScrolling, setToggleScrolling] = useRecoilState(ToggleScrolling);
 
     const methods = useForm<email>({mode:'onTouched'});
 
@@ -189,7 +191,7 @@ export default function Contact(){
         if(toggleContact){
 
             //disables scrolling
-            document.body.style.overflow = 'hidden';
+            setToggleScrolling(false);
 
             setShowContact(true);
         }
@@ -199,7 +201,7 @@ export default function Contact(){
             setTimeout(() => {
 
                 //enables scrolling
-                document.body.style.overflow = 'auto';
+                setToggleScrolling(true);
             }, 250);
 
             setTimeout(() => {

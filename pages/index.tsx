@@ -19,13 +19,15 @@ import News from "../components/News/News";
 import Wrapper from "../components/Wrapper";
 import StickyText from "../components/StickyText";
 import Contact from "../components/Contact/Contact";
-import About from "../components/About/About";
-import Footer from "../components/Footer/Footer";
+import AboutAndFooter from "../components/AboutAndFooter/AboutAndFooter";
+import { ToggleScrolling } from "../atoms/ToggleScrolling";
+import AboutAnimation from "../components/AboutAnimation/AboutAnimation";
 
 export default function Home() {
 
     const [profilePictures, setProfilePictures] = useRecoilState(ProfilePictures);
     const [socialMedia, setSocialMedia] = useRecoilState(SocialMedia);
+    const [toggleScrolling, setToggleScrolling] = useRecoilState(ToggleScrolling);
 
     const [showIntro, setShowIntro] = useState(true);
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
@@ -45,12 +47,6 @@ export default function Home() {
 
     useEffect(() => {
 
-        
-
-        setTimeout(() => {
-            window.scrollTo(0,0);
-        }, 500);
-
         getProfilePictures();
         getSocialMedia();
 
@@ -59,6 +55,32 @@ export default function Home() {
             setShowIntro(false);
         }, 7500);
     }, []);
+
+    useEffect(() => {
+
+        if(showIntro){
+
+            document.body.style.overflow = 'hidden';
+
+            setTimeout(() => {
+
+                //enable scroll slightly before intro is finished.
+                setToggleScrolling(true);
+                document.body.style.overflow = 'auto';
+            }, 7000);
+        }
+
+        else{
+            
+            if(toggleScrolling){
+                document.body.style.overflow = 'auto';
+            }
+            else{
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+    }, [toggleScrolling]);
 
     return (
         <>
@@ -93,8 +115,8 @@ export default function Home() {
                 </Section>
 
                 <Section backgroundColor="white" minViewHeight100={true}>
-                    <About></About>
-                    <Footer></Footer>
+                    <AboutAnimation></AboutAnimation>
+                    <AboutAndFooter></AboutAndFooter>
                 </Section>
             </Wrapper>
         </>

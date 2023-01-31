@@ -1,4 +1,4 @@
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { ToggleMenu } from "../../atoms/ToggleMenu";
 import { keyframes, styled } from "../../stitches.config";
 import { useState, useEffect } from "react";
@@ -7,6 +7,7 @@ import { BREAKPOINTS } from "../../variables/breakpoints";
 import Nav from "./Nav";
 import Socials from "./Socials";
 import { ProfilePictures } from "../../atoms/ProfilePictures";
+import { ToggleScrolling } from "../../atoms/ToggleScrolling";
 
 const FadeOut = keyframes({
 
@@ -90,13 +91,14 @@ export default function Menu(){
     const [showMenu, setShowMenu] = useState(false);
     const profilePictures = useRecoilValue(ProfilePictures);
     const { breakpoint } = useBreakpoint(BREAKPOINTS, 'desktop');
+    const [toggleScrolling, setToggleScrolling] = useRecoilState(ToggleScrolling);
 
     useEffect(() => {
 
         if(toggleMenu){
 
             //disables scrolling
-            document.body.style.overflow = 'hidden';
+            setToggleScrolling(false);
 
             setShowMenu(true);
         }
@@ -106,7 +108,7 @@ export default function Menu(){
             setTimeout(() => {
 
                 //enables scrolling
-                document.body.style.overflow = 'auto';
+                setToggleScrolling(true);
             }, 250);
 
             setTimeout(() => {
