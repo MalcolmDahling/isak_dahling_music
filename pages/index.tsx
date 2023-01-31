@@ -19,9 +19,10 @@ import News from "../components/News/News";
 import Wrapper from "../components/Wrapper";
 import StickyText from "../components/StickyText";
 import Contact from "../components/Contact/Contact";
-import AboutAndFooter from "../components/AboutAndFooter/AboutAndFooter";
+import About from "../components/About/About";
 import { ToggleScrolling } from "../atoms/ToggleScrolling";
 import AboutAnimation from "../components/AboutAnimation/AboutAnimation";
+import Footer from "../components/Footer/Footer";
 
 export default function Home() {
 
@@ -60,23 +61,23 @@ export default function Home() {
 
         if(showIntro){
 
-            document.body.style.overflow = 'hidden';
+            //document.body.style.overflow = 'hidden';
 
             setTimeout(() => {
 
                 //enable scroll slightly before intro is finished.
                 setToggleScrolling(true);
-                document.body.style.overflow = 'auto';
+                //document.body.style.overflow = 'auto';
             }, 7000);
         }
 
         else{
             
             if(toggleScrolling){
-                document.body.style.overflow = 'auto';
+                //document.body.style.overflow = 'auto';
             }
             else{
-                document.body.style.overflow = 'hidden';
+                //document.body.style.overflow = 'hidden';
             }
         }
 
@@ -115,8 +116,8 @@ export default function Home() {
                 </Section>
 
                 <Section backgroundColor="white" minViewHeight100={true}>
-                    <AboutAnimation></AboutAnimation>
-                    <AboutAndFooter></AboutAndFooter>
+                    <About></About>
+                    <Footer></Footer>
                 </Section>
             </Wrapper>
         </>

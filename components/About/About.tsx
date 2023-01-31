@@ -4,7 +4,6 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { ProfilePictures } from "../../atoms/ProfilePictures";
 import { IAbout } from "../../models/IAbout";
 import { styled } from "../../stitches.config";
-import Footer from "./Footer";
 import H2 from "../H2";
 import StickyText from "../StickyText";
 import { useInView } from "react-intersection-observer";
@@ -71,7 +70,7 @@ const Span = styled('span', {
     display:'block'
 });
 
-export default function AboutAndFooter(){
+export default function About(){
 
     const profilePictures = useRecoilValue(ProfilePictures);
     const [about, setAbout] = useState<IAbout>();
@@ -128,8 +127,6 @@ export default function AboutAndFooter(){
                     </P>
                 </InnerDiv>
             </ContentDiv>
-
-            <Footer></Footer>
         </OuterDiv>
     );
 }
