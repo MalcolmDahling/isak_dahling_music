@@ -87,9 +87,10 @@ export default function Releases(){
     
     return(
         <Div id="RELEASES">
-            <RefDiv ref={ref}></RefDiv>
 
-            <StickyText text="RELEASES" marginTop={150}></StickyText>
+            <StickyText text="RELEASES" marginTop={150} fixedColor={false}></StickyText>
+
+            <RefDiv ref={ref}></RefDiv>
 
             <H2 text="- RELEASES -" color="black"></H2>
             

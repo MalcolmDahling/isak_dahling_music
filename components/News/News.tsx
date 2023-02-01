@@ -14,7 +14,6 @@ const OuterDiv = styled('div', {
     position:'relative',
     width:'100%',
     paddingBottom:100,
-    zIndex:1,
 });
 
 const Div = styled('div', {
@@ -70,7 +69,7 @@ export default function News(){
     return(
 
         <OuterDiv id="NEWS">
-            <StickyText text="NEWS" marginTop={105}></StickyText>
+            <StickyText text="NEWS" marginTop={105} fixedColor={false}></StickyText>
 
             <Div>
                 <RefDiv ref={ref}></RefDiv>

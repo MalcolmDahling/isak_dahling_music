@@ -25,15 +25,41 @@ const StickyContainer = styled('div', {
 
     transform:'rotate(-90deg)',
     transformOrigin:'top left',
-    mixBlendMode:'difference',
+    
+    variants:{
+        fixedColor:{
+            true:{
+                mixBlendMode:'difference',
+            },
+            false:{
+                mixBlendMode:'difference',
+            }
+        }
+    }
 });
 
 const P = styled('p', {
 
+    position:'relative',
     whiteSpace:'nowrap',
     fontSize:24,
     fontWeight:'bold',
     userSelect:'none',
+
+    variants:{
+        color:{
+            'black':{
+
+                
+            },
+            'white':{
+                
+            },
+            false:{
+
+            }
+        }
+    }
 });
 
 const LineDiv = styled('div', {
@@ -58,6 +84,7 @@ const HideLine = styled('div', {
 interface props{
     text:string;
     marginTop?:number;
+    fixedColor:'black' | 'white' | false;
 }
 
 export default function StickyText(props:props){
@@ -69,9 +96,9 @@ export default function StickyText(props:props){
         <>
             {breakpoint !== 'mobile' &&
                 <Outer>
-                    <StickyContainer ref={ref} style={{top:`calc(50% + ${ref.current?.offsetWidth / 2}px)` || 0, marginTop: props.marginTop ||0}}>
+                    <StickyContainer ref={ref} fixedColor={props.fixedColor === false ? false : true} style={{top:`calc(50% + ${ref.current?.offsetWidth / 2}px)` || 0, marginTop: props.marginTop ||0}}>
 
-                        <P>{props.text}</P>
+                        <P color={props.fixedColor}>{props.text}</P>
                         
                         <LineDiv>
                             <HideLine></HideLine>

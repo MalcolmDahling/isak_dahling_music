@@ -21,7 +21,6 @@ import StickyText from "../components/StickyText";
 import Contact from "../components/Contact/Contact";
 import About from "../components/About/About";
 import { ToggleScrolling } from "../atoms/ToggleScrolling";
-import AboutAnimation from "../components/AboutAnimation/AboutAnimation";
 import Footer from "../components/Footer/Footer";
 
 export default function Home() {
@@ -89,7 +88,7 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            { showIntro && <Intro></Intro> }
+            {/* { showIntro && <Intro></Intro> } */}
 
             <Hamburger breakpoint={breakpoint}></Hamburger>
             <Menu></Menu>
@@ -98,7 +97,7 @@ export default function Home() {
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
                 <VerticalLine top={true}></VerticalLine>
-                <StickyText text="ISAK&nbsp; DAHLING&nbsp; MUSIC"></StickyText>
+                <StickyText text="ISAK&nbsp; DAHLING&nbsp; MUSIC" fixedColor="white"></StickyText>
                 <Hero image={breakpoint === "desktop" ? profilePictures[3]?.fields.image.fields.file.url : profilePictures[2]?.fields.image.fields.file.url}></Hero>
             </Section>
 

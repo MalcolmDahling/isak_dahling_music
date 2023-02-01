@@ -8,12 +8,12 @@ import H2 from "../H2";
 import StickyText from "../StickyText";
 import { useInView } from "react-intersection-observer";
 import { ToggleAboutAnimation } from "../../atoms/ToggleAboutAnimation";
+import Background from "./Background";
 
 const OuterDiv = styled('div', {
 
     position:'relative',
     width:'100%',
-    paddingTop:100,
 });
 
 const ContentDiv = styled('div', {
@@ -21,7 +21,7 @@ const ContentDiv = styled('div', {
     position:'relative',
     maxWidth:800,
     margin:'auto',
-
+    paddingTop:100,
     paddingLeft:60,
     paddingRight:60,
 
@@ -102,7 +102,9 @@ export default function About(){
     return(
         <OuterDiv>
 
-            <StickyText text="ABOUT" marginTop={220}></StickyText>
+            <StickyText text="ABOUT" marginTop={220} fixedColor="black"></StickyText>
+
+            <Background></Background>
 
             <ContentDiv id="ABOUT">
                 <RefDiv ref={ref}></RefDiv>
