@@ -9,6 +9,7 @@ import SoundCloudIFrame from "./IFrames/SoundCloudIFrame";
 import SpotifyIFrame from "./IFrames/SpotifyIFrame";
 import YoutubeIFrame from "./IFrames/YoutubeIFrame";
 import SelectStream from "./SelectStream";
+import Spinner from "../../public/images/spinner.svg";
 
 const FadeOut = keyframes({
 
@@ -88,6 +89,16 @@ const IFrameWrapper = styled('div', {
     height:0,
 });
 
+const StyledSpinner = styled(Spinner, {
+
+    position:'absolute',
+    left:'50%',
+    top:'50%',
+    '-webkit-transform':'translate(-50%, -50%)',
+    transform:'translate(-50%, -50%) scale(2.5)',
+
+    filter: 'invert(100%) sepia(100%) saturate(0%) hue-rotate(307deg) brightness(102%) contrast(101%)'
+});
 
 const BottomDiv = styled('div', {
 
@@ -183,6 +194,7 @@ export default function MusicPopup(props:props){
                         }
 
                         <IFrameWrapper>
+                            <StyledSpinner></StyledSpinner>
                             {selectedStream === 'spotify' && <SpotifyIFrame id={currentSong?.fields.spotifyID || ''}></SpotifyIFrame>}
                             {selectedStream === 'youtube' && <YoutubeIFrame id={currentSong?.fields.youtubeID || ''}></YoutubeIFrame>}
                             {selectedStream === 'soundCloud' && <SoundCloudIFrame link={currentSong?.fields.soundCloudLink || ''}></SoundCloudIFrame>}

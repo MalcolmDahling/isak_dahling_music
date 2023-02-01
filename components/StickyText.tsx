@@ -6,7 +6,8 @@ import { BREAKPOINTS } from "../variables/breakpoints";
 const Outer = styled('div', {
 
     position:'absolute',
-    inset:0
+    inset:0,
+    
 });
 
 const StickyContainer = styled('div', {
@@ -25,41 +26,17 @@ const StickyContainer = styled('div', {
 
     transform:'rotate(-90deg)',
     transformOrigin:'top left',
-    
-    variants:{
-        fixedColor:{
-            true:{
-                mixBlendMode:'difference',
-            },
-            false:{
-                mixBlendMode:'difference',
-            }
-        }
-    }
+    mixBlendMode:'difference',
 });
 
 const P = styled('p', {
 
     position:'relative',
+
     whiteSpace:'nowrap',
     fontSize:24,
     fontWeight:'bold',
     userSelect:'none',
-
-    variants:{
-        color:{
-            'black':{
-
-                
-            },
-            'white':{
-                
-            },
-            false:{
-
-            }
-        }
-    }
 });
 
 const LineDiv = styled('div', {
@@ -70,7 +47,7 @@ const LineDiv = styled('div', {
     width:'100%',
     height:1,
 
-    mixBlendMode:'difference'
+    mixBlendMode:'difference',
 });
 
 const HideLine = styled('div', {
@@ -96,9 +73,9 @@ export default function StickyText(props:props){
         <>
             {breakpoint !== 'mobile' &&
                 <Outer>
-                    <StickyContainer ref={ref} fixedColor={props.fixedColor === false ? false : true} style={{top:`calc(50% + ${ref.current?.offsetWidth / 2}px)` || 0, marginTop: props.marginTop ||0}}>
+                    <StickyContainer ref={ref} style={{top:`calc(50% + ${ref.current?.offsetWidth / 2}px)` || 0, marginTop: props.marginTop || 0}}>
 
-                        <P color={props.fixedColor}>{props.text}</P>
+                        <P>{props.text}</P>
                         
                         <LineDiv>
                             <HideLine></HideLine>
