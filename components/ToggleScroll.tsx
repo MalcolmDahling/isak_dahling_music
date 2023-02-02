@@ -16,11 +16,11 @@ export default function ToggleScroll(){
     useEffect(() => {
 
         document.addEventListener('wheel', disableScrolling, { passive: false });
-        document.addEventListener('ontouchmove', disableScrolling, { passive: false });
+        document.addEventListener('touchmove', disableScrolling, { passive: false });
 
         return () => {
             document.removeEventListener('wheel', disableScrolling);
-            document.addEventListener('ontouchmove', disableScrolling);
+            document.addEventListener('touchmove', disableScrolling);
         }
     }, [toggleScrolling]);
 
