@@ -34,8 +34,11 @@ const RefDiv = styled('div', {
 
 const CardContainer = styled('div', {
 
+    position:'relative',
     maxWidth:800,
     margin:'auto',
+    paddingTop:60,
+    paddingBottom:60,
 
     display:'flex',
     flexWrap:'wrap',
@@ -89,10 +92,10 @@ export default function Releases(){
         <Div id="RELEASES">
 
             <StickyText text="RELEASES" marginTop={150} fixedColor={false}></StickyText>
-
             <RefDiv ref={ref}></RefDiv>
 
             <H2 text="- RELEASES -" color="black"></H2>
+            
             
             <CardContainer>
                 <>

@@ -88,7 +88,7 @@ export default function ZoomEffect(props:props){
 
             setComponentInView(prev => ({...prev, threshold: [0, 0.2, 0.4, 0.6, 0.7, 0.9]}));
             setMaskSizes([200, 500, 1500, 3000, 6000, 10000]);
-            setBlurSizes([12, 9, 4, 2, 1, 0]);
+            setBlurSizes([12, 9, 4, 2, 0, 0]);
         }
 
     }, [breakpoint]);

@@ -9,10 +9,12 @@ const StyledArticle = styled('article', {
     marginBottom:20
 });
 
-const H2 = styled('h2', {
+const H3 = styled('h3', {
 
     margin:0,
     marginBottom:20,
+
+    fontSize:24
 });
 
 const Div = styled('div', {
@@ -59,7 +61,7 @@ export default function Article(props:props){
 
     return(
         <StyledArticle>
-            <H2>{props.newsItem.fields.title}</H2>
+            <H3>{props.newsItem.fields.title}</H3>
 
             <Div>
             
