@@ -20,7 +20,7 @@ export default function ToggleScroll(){
 
         return () => {
             document.removeEventListener('wheel', disableScrolling);
-            document.addEventListener('touchmove', disableScrolling);
+            document.removeEventListener('touchmove', disableScrolling);
         }
     }, [toggleScrolling]);
 
