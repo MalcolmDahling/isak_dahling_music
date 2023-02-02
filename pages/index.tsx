@@ -51,19 +51,21 @@ export default function Home() {
         getProfilePictures();
         getSocialMedia();
 
+        //always start the website at the top.
         setTimeout(() => {
-
-            setShowIntro(false);
-        }, 7500);
-    }, []);
-
-    useEffect(() => {
+            window.scrollTo(0,0);
+        }, 250);
 
         setTimeout(() => {
 
             //enable scroll slightly before intro is finished.
             setToggleScrolling(true);
         }, 7000);
+
+        setTimeout(() => {
+
+            setShowIntro(false);
+        }, 7500);
     }, []);
 
     return (
