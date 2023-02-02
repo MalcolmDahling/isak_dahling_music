@@ -146,7 +146,11 @@ interface email{
     message:string;
 }
 
-export default function Contact(){
+interface props{
+    showIntro:boolean;
+}
+
+export default function Contact(props:props){
 
     const [toggleContact, setToggleContact] = useRecoilState(ToggleContact);
     const [showContact, setShowContact] = useState(true);
@@ -198,11 +202,14 @@ export default function Contact(){
 
         else{
 
-            setTimeout(() => {
+            if(props.showIntro === false){
 
-                //enables scrolling
-                setToggleScrolling(true);
-            }, 250);
+                setTimeout(() => {
+
+                    //enables scrolling
+                    setToggleScrolling(true);
+                }, 250);
+            }
 
             setTimeout(() => {
 

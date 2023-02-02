@@ -85,7 +85,11 @@ const Img = styled('img', {
     maxHeight:600
 });
 
-export default function Menu(){
+interface props{
+    showIntro:boolean;
+}
+
+export default function Menu(props:props){
 
     const toggleMenu = useRecoilValue(ToggleMenu);
     const [showMenu, setShowMenu] = useState(false);
@@ -105,11 +109,13 @@ export default function Menu(){
 
         else{
 
-            setTimeout(() => {
+            if(props.showIntro === false){
+                setTimeout(() => {
 
-                //enables scrolling
-                setToggleScrolling(true);
-            }, 250);
+                    //enables scrolling
+                    setToggleScrolling(true);
+                }, 250);
+            }
 
             setTimeout(() => {
 

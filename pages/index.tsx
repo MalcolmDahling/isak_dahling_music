@@ -22,6 +22,7 @@ import Contact from "../components/Contact/Contact";
 import About from "../components/About/About";
 import { ToggleScrolling } from "../atoms/ToggleScrolling";
 import Footer from "../components/Footer/Footer";
+import ToggleScroll from "../components/ToggleScroll";
 
 export default function Home() {
 
@@ -58,29 +59,12 @@ export default function Home() {
 
     useEffect(() => {
 
-        if(showIntro){
+        setTimeout(() => {
 
-            //document.body.style.overflow = 'hidden';
-
-            setTimeout(() => {
-
-                //enable scroll slightly before intro is finished.
-                setToggleScrolling(true);
-                //document.body.style.overflow = 'auto';
-            }, 7000);
-        }
-
-        else{
-            
-            if(toggleScrolling){
-                //document.body.style.overflow = 'auto';
-            }
-            else{
-                //document.body.style.overflow = 'hidden';
-            }
-        }
-
-    }, [toggleScrolling]);
+            //enable scroll slightly before intro is finished.
+            setToggleScrolling(true);
+        }, 7000);
+    }, []);
 
     return (
         <>
@@ -88,12 +72,13 @@ export default function Home() {
                 <title>Isak Dahling Music</title>
             </Head>
 
-            {/* { showIntro && <Intro></Intro> } */}
+            { showIntro && <Intro></Intro> }
 
             <Hamburger breakpoint={breakpoint}></Hamburger>
-            <Menu></Menu>
+            <Menu showIntro={showIntro}></Menu>
             <MusicPopup breakpoint={breakpoint}></MusicPopup>
-            <Contact></Contact>
+            <Contact showIntro={showIntro}></Contact>
+            <ToggleScroll></ToggleScroll>
 
             <Section viewHeight100={true} overflowXHidden={true} backgroundColor="black">
                 <VerticalLine top={true}></VerticalLine>

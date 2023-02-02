@@ -94,7 +94,6 @@ export default function About(){
         if(entry.boundingClientRect.top > 0){ //positive below viewport, negative when above viewport
             
             setToggleAboutAnimation(inView);
-            console.log(inView);
         }
         
     }, [entry]);
