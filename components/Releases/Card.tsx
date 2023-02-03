@@ -8,7 +8,8 @@ const Div = styled('div', {
 
     position:'relative',
     maxWidth:300,
-
+    
+    aspectRatio:'1/1',
     backgroundSize:'cover',
     userSelect:'none',
     border:'2px solid $black',
@@ -138,7 +139,7 @@ export default function Card(props:props){
                     <Title>{props.title}</Title>
                     <ReleaseDate>{releaseDate}</ReleaseDate>
                 </div>
-                <Icon src="/images/icons/play.svg"></Icon>
+                <Icon src="/images/icons/play.svg" alt="Play"></Icon>
             </BottomDiv>
         </Div>
     );

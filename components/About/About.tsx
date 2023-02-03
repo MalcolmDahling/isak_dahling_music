@@ -111,7 +111,7 @@ export default function About(){
                 <H2 text="- ABOUT -" color="black"></H2>
 
                 <InnerDiv>
-                    <Img src={profilePictures[0]?.fields.image.fields.file.url}></Img>
+                    <Img src={profilePictures[0]?.fields.image.fields.file.url} alt={profilePictures[0]?.fields.name}></Img>
 
                     <P>
                         {about?.fields.text.content.map((text, i) => {

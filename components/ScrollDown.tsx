@@ -82,8 +82,8 @@ export default function ScrollDown(){
             {showComponent &&
                 <Outer fadeOut={fadeOut}>
                     <Inner>
-                        <Arrow src="/images/icons/arrow_right.svg"></Arrow>
-                        <Arrow src="/images/icons/arrow_right.svg"></Arrow>
+                        <Arrow src="/images/icons/arrow_right.svg" alt="Scroll Down"></Arrow>
+                        <Arrow src="/images/icons/arrow_right.svg" alt="Scroll Down"></Arrow>
                     </Inner>
                 </Outer>
             }

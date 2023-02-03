@@ -34,7 +34,7 @@ export default function Hero(props:props){
 
     return(
         <Div id="HOME">
-            <Img src={props.image} draggable={false}></Img>
+            <Img src={props.image} draggable={false} alt="ISAK DAHLING MUSIC"></Img>
             <ScrollDown></ScrollDown>
         </Div>
     );
