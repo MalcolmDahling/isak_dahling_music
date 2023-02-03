@@ -87,6 +87,8 @@ const IFrameWrapper = styled('div', {
     position:'relative',
     paddingBottom:'56.25%',
     height:0,
+
+    backgroundColor:'#282828',
 });
 
 const StyledSpinner = styled(Spinner, {

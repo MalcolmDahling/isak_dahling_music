@@ -1,21 +1,8 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { keyframes, styled } from "../../stitches.config";
+import { styled } from "../../stitches.config";
 import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
 import { useInView } from "react-intersection-observer";
-
-const FadeIn = keyframes({
-
-    '0%':{
-        filter:'blur(12px)',
-        opacity:0,
-    },
-
-    '100%':{
-        filter:'blur(0px)',
-        opacity:1,
-    }
-});
 
 const Div = styled('div', {
 
@@ -25,13 +12,14 @@ const Div = styled('div', {
     backgroundSize:'cover',
     userSelect:'none',
     border:'2px solid $black',
-    transition:'all 250ms',
     cursor:'pointer',
     overflow:'hidden',
     pointerEvents:'auto',
     boxShadow:'0px 0px 10px 5px rgba(0,0,0,0.3)',
 
+    transition:'all 500ms',
     opacity:0,
+    filter:'blur(12px)',
 
     '@desktop':{
 
@@ -44,19 +32,16 @@ const Div = styled('div', {
     variants:{
         fadeIn:{
             true:{
-                animation:`${FadeIn} 1000ms forwards`
+                opacity:1,
+                filter:'blur(0px)'
+            }
+        },
+        transitionTime:{
+            true:{
+                transition:'all 250ms'
             }
         }
     }
-});
-
-const RefDiv = styled('div', {
-
-    position:'absolute',
-    top:0,
-    left:0,
-    width:1,
-    height:'50%',
 });
 
 const Overlay = styled('div', {
@@ -117,6 +102,7 @@ export default function Card(props:props){
     const [toggleMusicPopup, setToggleMusicPopup] = useRecoilState(ToggleMusicPopup);
     const {ref, entry, inView} = useInView({threshold:1});
     const [cardInView, setCardInView] = useState(false);
+    const [transitionTime, setTransitionTime] = useState(false);
 
     useEffect(() => {
 
@@ -127,8 +113,16 @@ export default function Card(props:props){
     useEffect(() => {
 
         if(inView){
+
             setCardInView(true);
+
+            setTimeout(() => {
+            
+                setTransitionTime(true);
+            }, 500);
         }
+
+        console.log(inView)
     }, [inView]);
 
     function handleClick(){
@@ -137,9 +131,8 @@ export default function Card(props:props){
     }
 
     return(
-        <Div onClick={handleClick} fadeIn={cardInView}>
-            <RefDiv ref={ref}></RefDiv>
-            <Overlay></Overlay> 
+        <Div onClick={handleClick} fadeIn={cardInView} transitionTime={transitionTime} ref={ref}>
+            <Overlay className="overlay"></Overlay> 
             <Img src={props.image} alt={props.title}></Img>
 
             <BottomDiv>
