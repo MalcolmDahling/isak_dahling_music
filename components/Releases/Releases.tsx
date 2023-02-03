@@ -37,8 +37,6 @@ const CardContainer = styled('div', {
     position:'relative',
     maxWidth:800,
     margin:'auto',
-    paddingTop:60,
-    paddingBottom:60,
 
     display:'flex',
     flexWrap:'wrap',

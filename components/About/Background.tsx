@@ -4,9 +4,9 @@ const Div = styled('div', {
 
     position:'relative',
     width:'100%',
-    height:300,
+    height:200,
 
-    backgroundImage:'url(images/logo_black_small.svg)',
+    backgroundImage:'url(images/logo_small_black.svg)',
     backgroundRepeat:'repeat',
     backgroundPosition:'center',
     backgroundSize:75,

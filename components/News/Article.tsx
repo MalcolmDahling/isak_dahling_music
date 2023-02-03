@@ -22,8 +22,17 @@ const MoveInAnim = keyframes({
 
 const StyledArticle = styled('article', {
 
-    marginBottom:20,
-    
+    position:'relative',
+    marginBottom:20
+});
+
+const RefDiv = styled('div', {
+
+    position:'absolute',
+    top:0,
+    left:0,
+    height:200,
+    width:10
 });
 
 const Content = styled('div', {
@@ -88,7 +97,7 @@ export default function Article(props:props){
 
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
     const date = new Date(props.newsItem.sys.createdAt);
-    const {ref, inView, entry} = useInView();
+    const {ref, inView, entry} = useInView({threshold:1});
     const [articleInView, setArticleInView] = useState(false);
     
     useEffect(() => {
@@ -100,7 +109,7 @@ export default function Article(props:props){
     
     return(
         <StyledArticle>
-            <div ref={ref}></div>
+            <RefDiv ref={ref}></RefDiv>
 
             <Content inView={articleInView}>
                 <H3>{props.newsItem.fields.title}</H3>

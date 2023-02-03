@@ -1,7 +1,23 @@
 import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
-import { styled } from "../../stitches.config";
+import { keyframes, styled } from "../../stitches.config";
 import { ToggleMusicPopup } from "../../atoms/ToggleMusicPopup";
+import { useInView } from "react-intersection-observer";
+
+const FadeIn = keyframes({
+
+    '0%':{
+        transform:'scale(0)',
+        filter:'blur(12px)',
+        opacity:0,
+    },
+
+    '100%':{
+        transform:'scale(1)',
+        filter:'blur(0px)',
+        opacity:1,
+    }
+});
 
 const Div = styled('div', {
 
@@ -17,13 +33,31 @@ const Div = styled('div', {
     pointerEvents:'auto',
     boxShadow:'0px 0px 10px 5px rgba(0,0,0,0.3)',
 
+    transform:'scale(0)',
+
     '@desktop':{
 
         '&:hover':{
             transform:'scale(1.1)',
             filter:'blur(0px) grayscale(0) !important',
         }
+    },
+
+    variants:{
+        fadeIn:{
+            true:{
+                animation:`${FadeIn} 1000ms forwards`
+            }
+        }
     }
+});
+
+const RefDiv = styled('div', {
+
+    position:'absolute',
+    top:0,
+    left:0,
+    height:200
 });
 
 const Overlay = styled('div', {
@@ -82,6 +116,8 @@ export default function Card(props:props){
 
     const [releaseDate, setReleaseDate] = useState('');
     const [toggleMusicPopup, setToggleMusicPopup] = useRecoilState(ToggleMusicPopup);
+    const {ref, entry, inView} = useInView({threshold:1});
+    const [cardInView, setCardInView] = useState(false);
 
     useEffect(() => {
 
@@ -89,13 +125,21 @@ export default function Card(props:props){
         setReleaseDate(date.getFullYear().toString());
     }, []);
 
+    useEffect(() => {
+
+        if(inView){
+            setCardInView(true);
+        }
+    }, [inView]);
+
     function handleClick(){
 
         setToggleMusicPopup({show:true, title:props.title});
     }
 
     return(
-        <Div onClick={handleClick}>
+        <Div onClick={handleClick} fadeIn={cardInView}>
+            <RefDiv ref={ref}></RefDiv>
             <Overlay></Overlay> 
             <Img src={props.image} alt={props.title}></Img>
 
