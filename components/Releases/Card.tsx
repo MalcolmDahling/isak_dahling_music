@@ -121,8 +121,6 @@ export default function Card(props:props){
                 setTransitionTime(true);
             }, 500);
         }
-
-        console.log(inView)
     }, [inView]);
 
     function handleClick(){
