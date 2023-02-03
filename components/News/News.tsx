@@ -95,7 +95,7 @@ export default function News(){
     const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
     const {ref, inView, entry} = useInView({threshold:componentInView.threshold});
     const [limit, setLimit] = useState(5);
-    const [fadeOutButtons, setFadeOutButtons] = useState(false);
+    const [everythingIsFetched, setEverythingIsFetched] = useState(false);
 
     async function getNews(){
 
@@ -104,10 +104,11 @@ export default function News(){
         });
 
         setNews(res.data.items);
+        
 
         if(res.data.total === res.data.items.length){
            
-            setFadeOutButtons(true);
+            setEverythingIsFetched(true);
         }
     }
 
@@ -128,8 +129,7 @@ export default function News(){
 
     function loadFiveMore(){
         
-        //if all is not already fetched
-        if(limit !== 0){
+        if(!everythingIsFetched){
 
             setLimit(limit + 5);
             getNews();
@@ -138,8 +138,7 @@ export default function News(){
 
     function loadAll(){
         
-        //if all is not already fetched
-        if(limit !== 0){
+        if(!everythingIsFetched){
 
             setLimit(0);
             getNews();
@@ -165,7 +164,7 @@ export default function News(){
                 }
             </Div>
 
-            <ButtonContainer fadeOut={fadeOutButtons}>
+            <ButtonContainer fadeOut={everythingIsFetched}>
                 <Button onClick={loadFiveMore}>
                     LOAD MORE
                     <ExpandingLine position="bottom"></ExpandingLine>
