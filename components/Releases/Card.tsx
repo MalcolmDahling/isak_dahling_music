@@ -7,13 +7,11 @@ import { useInView } from "react-intersection-observer";
 const FadeIn = keyframes({
 
     '0%':{
-        transform:'scale(0)',
         filter:'blur(12px)',
         opacity:0,
     },
 
     '100%':{
-        transform:'scale(1)',
         filter:'blur(0px)',
         opacity:1,
     }
@@ -33,7 +31,7 @@ const Div = styled('div', {
     pointerEvents:'auto',
     boxShadow:'0px 0px 10px 5px rgba(0,0,0,0.3)',
 
-    transform:'scale(0)',
+    opacity:0,
 
     '@desktop':{
 
