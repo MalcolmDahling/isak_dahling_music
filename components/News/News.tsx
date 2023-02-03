@@ -94,28 +94,29 @@ export default function News(){
     const [news, setNews] = useState<INews[]>([]);
     const [componentInView, setComponentInView] = useRecoilState(ComponentInView);
     const {ref, inView, entry} = useInView({threshold:componentInView.threshold});
-    const [limit, setLimit] = useState(5);
-    const [everythingIsFetched, setEverythingIsFetched] = useState(false);
+    const [fadeOutButtons, setFadeOutButtons] = useState(false);
+    const [numberToDisplay, setNumberToDisplay] = useState(4);
+    const [total, setTotal] = useState(9999999999);
 
     async function getNews(){
 
-        let res = await axios.post('api/getNews', {
-            limit:limit
-        });
-
+        let res = await axios.get('api/getNews');
         setNews(res.data.items);
-        
-
-        if(res.data.total === res.data.items.length){
-           
-            setEverythingIsFetched(true);
-        }
+        setTotal(res.data.total);
     }
 
     useEffect(() => {
 
+        if(numberToDisplay >= total){
+
+            setFadeOutButtons(true);
+        }
+    }, [numberToDisplay]);
+
+    useEffect(() => {
+
         getNews();
-    }, [limit]);
+    }, []);
    
     useEffect(() => {
 
@@ -129,20 +130,12 @@ export default function News(){
 
     function loadFiveMore(){
         
-        if(!everythingIsFetched){
-
-            setLimit(limit + 5);
-            getNews();
-        }  
+       setNumberToDisplay(numberToDisplay + 5);
     }
 
     function loadAll(){
         
-        if(!everythingIsFetched){
-
-            setLimit(0);
-            getNews();
-        }
+        setNumberToDisplay(9999999999);
     }
 
     return(
@@ -157,14 +150,17 @@ export default function News(){
                 {
                     news.map((newsItem, i) => {
 
-                        return(
-                            <Article newsItem={newsItem} key={i}></Article>
-                        );
+                        if(i <= numberToDisplay){
+
+                            return(
+                                <Article newsItem={newsItem} key={i}></Article>
+                            );
+                        }
                     })
                 }
             </Div>
 
-            <ButtonContainer fadeOut={everythingIsFetched}>
+            <ButtonContainer fadeOut={fadeOutButtons}>
                 <Button onClick={loadFiveMore}>
                     LOAD MORE
                     <ExpandingLine position="bottom"></ExpandingLine>
@@ -175,6 +171,7 @@ export default function News(){
                     <ExpandingLine position="bottom"></ExpandingLine>
                 </Button>
             </ButtonContainer>
+            
         </OuterDiv>
     );
 }

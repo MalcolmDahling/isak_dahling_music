@@ -7,23 +7,6 @@ const client = require('contentful').createClient({
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse){
 
-    //fetch all
-    if(req.body.limit === 0){
-
-        const news = await client.getEntries({content_type:"news"});
-        res.send(news); 
-    }
-
-    //fetch 5
-    else{
-
-        const news = await client.getEntries({
-            content_type:"news",
-            limit: req.body.limit
-        });
-        res.send(news);
-    }
-
-    
-    
+    const news = await client.getEntries({content_type:"news"});
+    res.send(news); 
 }

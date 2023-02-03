@@ -55,7 +55,8 @@ const RefDiv = styled('div', {
     position:'absolute',
     top:0,
     left:0,
-    height:200
+    width:1,
+    height:'50%',
 });
 
 const Overlay = styled('div', {
