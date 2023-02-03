@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 import { useBreakpoint } from "use-breakpoint";
 import { INews } from "../../models/INews";
-import { styled } from "../../stitches.config";
+import { keyframes, styled } from "../../stitches.config";
 import { BREAKPOINTS } from "../../variables/breakpoints";
+
+const MoveInAnim = keyframes({
+
+    '0%':{
+        transform:'translateX(-100vw)',
+        opacity:0,
+        filter:'blur(12px)'
+    },
+
+    '100%':{
+        transform:'translateX(0px)',
+        opacity:1,
+        filter:'blur(0px)'
+    }
+})
 
 const StyledArticle = styled('article', {
 
-    marginBottom:20
+    marginBottom:20,
+    
+});
+
+const Content = styled('div', {
+
+    transform:'translateX(-100vw)',
+
+    variants:{
+        inView:{
+            true:{
+                animation:`${MoveInAnim} 1000ms forwards`
+            }
+        }
+    }
 });
 
 const H3 = styled('h3', {
@@ -58,39 +88,52 @@ export default function Article(props:props){
 
     const {breakpoint} = useBreakpoint(BREAKPOINTS, 'desktop');
     const date = new Date(props.newsItem.sys.createdAt);
+    const {ref, inView, entry} = useInView();
+    const [articleInView, setArticleInView] = useState(false);
+    
+    useEffect(() => {
 
+        if(inView){
+            setArticleInView(true);
+        }
+    }, [inView]);
+    
     return(
         <StyledArticle>
-            <H3>{props.newsItem.fields.title}</H3>
+            <div ref={ref}></div>
 
-            <Div>
-            
-                <P>
-                    {props.newsItem.fields.text.content.map((content, i) => {
+            <Content inView={articleInView}>
+                <H3>{props.newsItem.fields.title}</H3>
 
-                        return(
-                            <React.Fragment key={i}>
-                                <Span>
-                                    {content.content[0].value}
-                                </Span>
-                                <br/>
-                            </React.Fragment>
-                        );
-                    })}
+                <Div>
+                
+                    <P>
+                        {props.newsItem.fields.text.content.map((content, i) => {
 
-                    
-                </P>
+                            return(
+                                <React.Fragment key={i}>
+                                    <Span>
+                                        {content.content[0].value}
+                                    </Span>
+                                    <br/>
+                                </React.Fragment>
+                            );
+                        })}
 
-                {props.newsItem.fields.image && breakpoint === 'desktop' ? 
-                    <Img src={props.newsItem.fields.image.fields.file.url}></Img>
+                        
+                    </P>
+
+                    {props.newsItem.fields.image && breakpoint === 'desktop' ? 
+                        <Img src={props.newsItem.fields.image.fields.file.url}></Img>
+                    : null}
+                </Div>
+
+                {props.newsItem.fields.image && breakpoint !== 'desktop' ? 
+                        <Img src={props.newsItem.fields.image.fields.file.url}></Img>
                 : null}
-            </Div>
 
-            {props.newsItem.fields.image && breakpoint !== 'desktop' ? 
-                    <Img src={props.newsItem.fields.image.fields.file.url}></Img>
-            : null}
-
-            <DateP>{date.toLocaleDateString()}</DateP>
+                <DateP>{date.toLocaleDateString()}</DateP>
+            </Content>
         </StyledArticle>
     );
 }

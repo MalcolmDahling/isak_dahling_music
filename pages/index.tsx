@@ -56,11 +56,11 @@ export default function Home() {
             window.scrollTo(0,0);
         }, 250);
 
-        setTimeout(() => {
+        // setTimeout(() => {
 
             //enable scroll slightly before intro is finished.
             setToggleScrolling(true);
-        }, 7000);
+        // }, 7000);
 
         setTimeout(() => {
 
