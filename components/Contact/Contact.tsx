@@ -194,6 +194,11 @@ export default function Contact(props:props){
 
         if(toggleContact){
 
+            //fixes a bug where scrolling occured when focusing the textarea on mobile.
+            if(breakpoint === 'mobile'){
+                document.body.style.overflowY = 'hidden';
+            }
+
             //disables scrolling
             setToggleScrolling(false);
 
@@ -203,6 +208,10 @@ export default function Contact(props:props){
         else{
 
             if(props.showIntro === false){
+
+                if(breakpoint === 'mobile'){
+                    document.body.style.overflowY = 'auto';
+                }
 
                 setTimeout(() => {
 

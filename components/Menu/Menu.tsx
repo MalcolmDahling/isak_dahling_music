@@ -101,6 +101,8 @@ export default function Menu(props:props){
 
         if(toggleMenu){
 
+            
+
             //disables scrolling
             setToggleScrolling(false);
 
