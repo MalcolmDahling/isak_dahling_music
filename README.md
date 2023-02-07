@@ -57,3 +57,28 @@ It is relevant because all my brothers work is now collected in a single locatio
 <strong>Describe what kind of value your project brought.</strong>
 
 <p>It brought value to my brother because he has something nice to show off. It brought value to me because I have something to show future employers. It brought value to fans of my brother’s music because they can now listen to all his songs from one place. It brought value to other artists and record labels because they can now listen to his music and contact him through the email form.</p>
+
+</br>
+</br>
+</br>
+
+<h2>Personas and user stories</h2>
+<strong>Summarize your user stories.</strong>
+
+<p>
+  <strong>UIfnar, 28, current user.</strong>
+  A regular listener to my brother’s music looking to find the latest song to listen to it.
+
+  <strong>Rotheim, 33, new user.</strong>
+  Discovered the website on google and decides to look around and listen to a song or two. He wants the content easily available as the chance for him to leave the page is very high.
+
+  <strong>Wulfborg, 19, artist.</strong>
+  Another artist looking to collaborate and wants to get in contact with my brother.
+
+  <strong>Harrnard, 42, record label.</strong>
+  Works for a record label and is looking to find new artists to sign. Needs content and contact information easily available.
+
+  <strong>Rognar, 37, wants information.</strong>
+  A CEO for a company looking to book my brother for a live performance, needs more information about the artist and an email address.
+
+</p>
