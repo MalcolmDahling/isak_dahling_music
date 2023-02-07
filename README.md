@@ -38,3 +38,7 @@ Overall, I’m very happy with the results and other people find my work impress
   
   Live: https://isak-dahling-music.vercel.app/
 </p>
+
+
+
+<h2>Background</h2>
