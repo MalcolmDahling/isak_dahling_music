@@ -2,11 +2,11 @@
 
 <p>
   <strong>HOW TO START</strong></br>
-  Clone the repository.</br>
-  Navigate to the folder in the terminal.</br>
-  Type "npm i" to install all required packages.</br>
-  Type "npm run dev" to run.</br>
-  Note: this website will NOT run locally without the .env file that is NOT provided in this repository.</br>
+  • Clone the repository.</br>
+  • Navigate to the folder in the terminal.</br>
+  • Type "npm i" to install all required packages.</br>
+  • Type "npm run dev" to run.</br>
+  • Note: this website will NOT run locally without the .env file that is NOT provided in this repository.</br>
 </p>
 
 </br>
