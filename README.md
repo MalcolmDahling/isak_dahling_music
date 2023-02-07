@@ -69,19 +69,37 @@ It is relevant because all my brothers work is now collected in a single locatio
 </br>
 
 <p>
-  <strong>UIfnar, 28, current user.</strong></br>
+  <strong>UIfnar, 28, current user.</strong>
+  </br>
   A regular listener to my brother’s music looking to find the latest song to listen to it.
 
-  <strong>Rotheim, 33, new user.</strong></br>
+  <strong>Rotheim, 33, new user.</strong>
+  </br>
   Discovered the website on google and decides to look around and listen to a song or two. He wants the content easily available as the chance for him to leave the page is very high.
 
-  <strong>Wulfborg, 19, artist.</strong></br>
+  <strong>Wulfborg, 19, artist.</strong>
+  </br>
   Another artist looking to collaborate and wants to get in contact with my brother.
 
-  <strong>Harrnard, 42, record label.</strong></br>
+  <strong>Harrnard, 42, record label.</strong>
+  </br>
   Works for a record label and is looking to find new artists to sign. Needs content and contact information easily available.
 
-  <strong>Rognar, 37, wants information.</strong></br>
+  <strong>Rognar, 37, wants information.</strong>
+  </br>
   A CEO for a company looking to book my brother for a live performance, needs more information about the artist and an email address.
 
 </p>
+
+</br>
+</br>
+</br>
+
+<h2>Results</h2>
+<strong>Summarize the results of your 6-week project.</strong>
+
+</br>
+</br>
+
+<strong>Results from user stories</strong>
+</br>
