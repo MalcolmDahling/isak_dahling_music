@@ -1,4 +1,4 @@
-## ISAK DAHLING MUSIC
+<h1 align="center">ISAK DAHLING MUSIC</h1>
 
 TABLE OF CONTENTS</br>
 • Project idea summary</br>
