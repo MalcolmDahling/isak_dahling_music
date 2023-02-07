@@ -116,4 +116,73 @@ It is relevant because all my brothers work is now collected in a single locatio
   
   </br>
   
+  <strong>Technical evaluation and results</strong>
+  
+  </br>
+  
+  <strong>Include a summary of your database, site map, function analysis, and how it panned out compared to the plan. Also, include a summary of your tech stack.</strong>
+  </br>
+  
+  I do not have a site map as everything is on the same page, but I do have links in the menu that scrolls down the page when you click them.
+
+  What is function analysis?
+
+  I use Contentful CMS as kind of a database, I use it to store images, news, links to music, etc. It will be easy for my brother to log in and update content.
+  My tech stack is: React, Next, Typescript, Stitches, Sass, Contentful and various other libraries. I use Vercel to host the website.
+
+  </br>
+  
+  <strong>Review and summarize your test plan; how did it work - did you find it useful?</strong>
+  </br>
+  I tested the website with my brother throughout the project and implemented his ideas. Not all of his feedback was useful as some of it involved changes that were too big and would have taken too long to implement but overall, I would say it was useful.
+  I also let friends and family test the website both when it was done and throughout the project. Their feedback was different to my brothers as they focused more on accessibility than visuals. I would say it was even more useful than my brother’s feedback and I implemented most of the changes they suggested.
+  I also got feedback from the people at my LIA which was not as useful as previous feedback. This was because the website was mostly done at that point so there was not much to improve. I did however implement some small changes that was suggested to me from them.
+
+  </br>
+  
+  <strong>Here are some of the changes I implemented in response to feedback I was given:</strong>
+  </br>
+  The top of the image and text in the menu was not lined up properly, fixed.
+  Icons in the menu were too big in desktop mode, fixed.
+  The layout in the menu did not work properly in certain laptop resolutions, fixed.
+  The menu didn’t cover the whole page height in some resolutions, fixed.
+  Disable scrolling after opening the menu, fixed.
+  Intro was too long, fixed.
+  Added arrow on hero page to show that there is content when you scroll down, fixed.
+  Menu animation was too long, fixed.
+  Improved performance of the “zoom in” animation, fixed.
+  Changed the layout of Releases, fixed.
+  Added animations to make the news section look better, fixed.
+  Added a visual transition between the news and about page, fixed.
+  Increased font size, fixed.
+  Increased contrast in the menu, fixed.
+  Changed the gap between links in the menu, fixed.
+  Changed the hamburger icon to a solid white in mobile mode to fix issues with mix-blend-mode, fixed.
+</p>
+
+</br>
+</br>
+</br>
+
+<h2>Lessons learned</h2>
+<p>
+  <strong>Summarize 5 lessons learned during the project.</strong>
+  </br>
+  Make sure to often take breaks.</br>
+  Don’t be afraid to change things that already work.</br>
+  Try to make the design uniform across the whole page.</br>
+  Use existing libraries instead of writing all the code yourself.</br>
+  Ask experienced people for advice.</br>
+</p>
+
+</br>
+</br>
+</br>
+
+<h2>References</h2>
+<p>
+  <strong>Add references and credits where due.</strong>
+  </br>
+  Thanks to my brother, parents, friends and LIA-colleagues for their feedback.</br>
+  Thanks to https://martingarrix.com/ for the inspiration for the design.
 </p>
