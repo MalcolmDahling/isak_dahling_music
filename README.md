@@ -1,6 +1,6 @@
 <h1 align="center">ISAK DAHLING MUSIC</h1>
 
-TABLE OF CONTENTS</br>
+<h2>TABLE OF CONTENTS</h2>
 • Project idea summary</br>
 • Background</br>
 &nbsp;&nbsp;&nbsp;• Personas and user stories</br>
