@@ -106,7 +106,6 @@ It is relevant because all my brothers work is now collected in a single locatio
   I tried to make the website fit all the user stories so that the website will be appropriate for all audiences. I believe that I did just that and I am happy with my work.
   
   </br>
-  
   <strong>Activity and time plan</strong>
   
   </br>
