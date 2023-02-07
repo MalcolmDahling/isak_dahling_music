@@ -125,7 +125,7 @@ It is relevant because all my brothers work is now collected in a single locatio
   
   I do not have a site map as everything is on the same page, but I do have links in the menu that scrolls down the page when you click them.
 
-  What is function analysis?
+  I would say the function analysis was successful. I managed to implement all the functionality that I wanted and everyone that tested the page found what they were looking for where they thought it would be.
 
   I use Contentful CMS as kind of a database, I use it to store images, news, links to music, etc. It will be easy for my brother to log in and update content.
   My tech stack is: React, Next, Typescript, Stitches, Sass, Contentful and various other libraries. I use Vercel to host the website.
