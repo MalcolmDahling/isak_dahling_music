@@ -39,6 +39,21 @@ Overall, I’m very happy with the results and other people find my work impress
   Live: https://isak-dahling-music.vercel.app/
 </p>
 
-
+</br>
+</br>
+</br>
 
 <h2>Background</h2>
+<strong>Describe your target audience and their interest in your project.</strong>
+
+<p>The target audience are other artists and record labels and this website will make it easy for them to listen to my brothers music and contact him about deals and collaborations.</p>
+
+<strong>Describe why you came up with the idea and why it was relevant for your target audience.</strong>
+
+<p>My brother wanted a website and my other idea of creating a chess AI website seemed too difficult to achieve in 6 weeks.
+
+It is relevant because all my brothers work is now collected in a single location which eliminates searching over many different platforms. It also contains an email form which makes it easier to contact him.</p>
+
+<strong>Describe what kind of value your project brought.</strong>
+
+<p>It brought value to my brother because he has something nice to show off. It brought value to me because I have something to show future employers. It brought value to fans of my brother’s music because they can now listen to all his songs from one place. It brought value to other artists and record labels because they can now listen to his music and contact him through the email form.</p>
