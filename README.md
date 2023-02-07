@@ -1,7 +1,7 @@
 <h1 align="center">ISAK DAHLING MUSIC</h1>
 
+<h2>HOW TO START</h2>
 <p>
-  <strong>HOW TO START</strong></br>
   • Clone the repository.</br>
   • Navigate to the folder in the terminal.</br>
   • Type "npm i" to install all required packages.</br>
@@ -13,9 +13,8 @@
 </br>
 </br>
 
+<h2>TABLE OF CONTENTS</h2>
 <p>
-  <strong>TABLE OF CONTENTS</strong>
-
   • <a href="#summary">Project idea summary</a>
 
   • <a href="#background">Background</a>
