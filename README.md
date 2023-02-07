@@ -9,7 +9,9 @@
 &nbsp;&nbsp;&nbsp;• Results from user stories</br>
 &nbsp;&nbsp;&nbsp;• Activity and time plan</br>
 &nbsp;&nbsp;&nbsp;• Technical evaluation and results</br>
+
 • Lessons learned
+
 • References
 </p>
 
