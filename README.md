@@ -1,16 +1,25 @@
 <h1 align="center">ISAK DAHLING MUSIC</h1>
 
 <p>
-  <strong>TABLE OF CONTENTS</strong></br>
-• Project idea summary</br>
-• Background</br>
-&nbsp;&nbsp;&nbsp;• Personas and user stories</br>
-• Results</br>
-&nbsp;&nbsp;&nbsp;• Results from user stories</br>
-&nbsp;&nbsp;&nbsp;• Activity and time plan</br>
-&nbsp;&nbsp;&nbsp;• Technical evaluation and results</br>
-• Lessons learned
-• References
+  <strong>TABLE OF CONTENTS</strong>
+
+  • Project idea summary
+
+  • Background
+
+  &nbsp;&nbsp;&nbsp;• Personas and user stories
+
+  • Results
+
+  &nbsp;&nbsp;&nbsp;• Results from user stories
+
+  &nbsp;&nbsp;&nbsp;• Activity and time plan
+
+  &nbsp;&nbsp;&nbsp;• Technical evaluation and results
+
+  • Lessons learned
+
+  • References
 </p>
 
 </br>
