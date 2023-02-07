@@ -101,7 +101,6 @@ It is relevant because all my brothers work is now collected in a single locatio
   <strong>Summarize the results of your 6-week project.</strong>
 
   </br>
-  </br>
 
   <strong>Results from user stories</strong>
   
