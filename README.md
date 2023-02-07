@@ -10,7 +10,8 @@
   • Navigate to the projects root folder in the terminal.</br>
   • Type "npm i" to install all required packages.</br>
   • Type "npm run dev" to run.</br>
-  • Note: this website will NOT run locally without the .env file that is NOT provided in this repository.</br>
+  </br>
+  Note: this website will NOT run locally without the .env file that is NOT provided in this repository.</br>
 </p>
 
 </br>
