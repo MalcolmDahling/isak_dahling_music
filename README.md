@@ -1,5 +1,5 @@
 <h1 align="center">ISAK DAHLING MUSIC</h1>
-<strong><a align="center" href="https://isak-dahling-music.vercel.app/">CLICK TO SEE THE LIVE WEBSITE</a></strong>
+<p align="center"><strong><a href="https://isak-dahling-music.vercel.app/">CLICK TO SEE THE LIVE WEBSITE</a></strong></p>
 
 </br>
 </br>
