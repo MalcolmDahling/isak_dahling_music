@@ -108,7 +108,9 @@ It is relevant because all my brothers work is now collected in a single locatio
   </br>
   
   <strong>Activity and time plan</strong>
+  
   </br>
+  
   <strong>Summarize your activity and time plan. How did you work? Did it go according to plan? Hiccups?</strong>
   </br>
   I was way ahead of schedule from the start until the end, so I had lots of time to improve and change things. I got stuck a few times but 10 hours of googling later I managed to solve it.
