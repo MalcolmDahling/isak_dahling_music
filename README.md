@@ -63,7 +63,10 @@ It is relevant because all my brothers work is now collected in a single locatio
 </br>
 
 <h2>Personas and user stories</h2>
-<strong>Summarize your user stories.</strong></br>
+<strong>Summarize your user stories.</strong>
+
+</br>
+</br>
 
 <p>
   <strong>UIfnar, 28, current user.</strong></br>
