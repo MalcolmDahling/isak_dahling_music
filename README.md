@@ -135,7 +135,7 @@ It is relevant because all my brothers work is now collected in a single locatio
   <strong>Review and summarize your test plan; how did it work - did you find it useful?</strong>
   </br>
   I tested the website with my brother throughout the project and implemented his ideas. Not all of his feedback was useful as some of it involved changes that were too big and would have taken too long to implement but overall, I would say it was useful.
-  I also let friends and family test the website both when it was done and throughout the project. Their feedback was different to my brothers as they focused more on accessibility than visuals. I would say it was even more useful than my brother’s feedback and I implemented most of the changes they suggested.
+  I also let friends and family test the website both when it was done and throughout the project. Their feedback was different to my brothers as they focused more on accessibility than visuals. I would say it was even more useful than my brothers feedback and I implemented most of the changes they suggested.
   I also got feedback from the people at my LIA which was not as useful as previous feedback. This was because the website was mostly done at that point so there was not much to improve. I did however implement some small changes that was suggested to me from them.
 
   </br>
