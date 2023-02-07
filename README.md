@@ -3,7 +3,7 @@
 <p>
   <strong>TABLE OF CONTENTS</strong>
 
-  <a href="#summary">• Project idea summary</a>
+  • <a href="#summary">Project idea summary</a>
 
   • Background
 
