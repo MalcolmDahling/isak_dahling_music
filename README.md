@@ -5,21 +5,21 @@
 
   • <a href="#summary">Project idea summary</a>
 
-  • Background
+  • <a href="#background">Background</a>
 
-  &nbsp;&nbsp;&nbsp;• Personas and user stories
+  &nbsp;&nbsp;&nbsp;• <a href="#personas">Personas and user stories</a>
 
-  • Results
+  • <a href="#results">Results</a>
 
-  &nbsp;&nbsp;&nbsp;• Results from user stories
+  &nbsp;&nbsp;&nbsp;• <a href="#resultsFromUserStories">Results from user stories</a>
 
-  &nbsp;&nbsp;&nbsp;• Activity and time plan
+  &nbsp;&nbsp;&nbsp;• <a href="#activity">Activity and time plan</a>
 
-  &nbsp;&nbsp;&nbsp;• Technical evaluation and results
+  &nbsp;&nbsp;&nbsp;• <a href="#technical">Technical evaluation and results</a>
 
-  • Lessons learned
+  • <a href="#lessons">Lessons learned</a>
 
-  • References
+  • <a href="#references">References</a>
 </p>
 
 </br>
@@ -43,7 +43,7 @@ Overall, I’m very happy with the results and other people find my work impress
 </br>
 </br>
 
-<h2>Background</h2>
+<h2 id="background">Background</h2>
 <strong>Describe your target audience and their interest in your project.</strong>
 
 <p>The target audience are other artists and record labels and this website will make it easy for them to listen to my brothers music and contact him about deals and collaborations.</p>
@@ -62,7 +62,7 @@ It is relevant because all my brothers work is now collected in a single locatio
 </br>
 </br>
 
-<h2>Personas and user stories</h2>
+<h2 id="personas">Personas and user stories</h2>
 <strong>Summarize your user stories.</strong>
 
 </br>
@@ -95,19 +95,19 @@ It is relevant because all my brothers work is now collected in a single locatio
 </br>
 </br>
 
-<h2>Results</h2>
+<h2 id="results">Results</h2>
 
 <p>
   <strong>Summarize the results of your 6-week project.</strong>
 
   </br>
 
-  <strong>Results from user stories</strong></br>
+  <strong id="resultsFromUserStories">Results from user stories</strong></br>
   I tried to make the website fit all the user stories so that the website will be appropriate for all audiences. I believe that I did just that and I am happy with my work.
   
   </br>
   
-  <strong>Activity and time plan</strong>
+  <strong id="activity">Activity and time plan</strong>
   </br>
   
   <strong>Summarize your activity and time plan. How did you work? Did it go according to plan? Hiccups?</strong>
@@ -116,7 +116,7 @@ It is relevant because all my brothers work is now collected in a single locatio
   
   </br>
   
-  <strong>Technical evaluation and results</strong>
+  <strong id="technical">Technical evaluation and results</strong>
   
   </br>
   
@@ -164,7 +164,7 @@ It is relevant because all my brothers work is now collected in a single locatio
 </br>
 </br>
 
-<h2>Lessons learned</h2>
+<h2 id="lessons">Lessons learned</h2>
 <p>
   <strong>Summarize 5 lessons learned during the project.</strong>
   </br>
@@ -179,7 +179,7 @@ It is relevant because all my brothers work is now collected in a single locatio
 </br>
 </br>
 
-<h2>References</h2>
+<h2 id="references">References</h2>
 <p>
   <strong>Add references and credits where due.</strong>
   </br>
