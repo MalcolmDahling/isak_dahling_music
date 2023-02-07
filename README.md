@@ -1,6 +1,19 @@
 <h1 align="center">ISAK DAHLING MUSIC</h1>
 
 <p>
+  <strong>HOW TO</strong>
+  Clone the repository.</br>
+  Navigate to the folder in the terminal.</br>
+  Type "npm i" to install all required packages.</br>
+  Type "npm run dev" to run.</br>
+  Note: this website will NOT run locally without the .env file that is NOT provided in this repository.</br>
+</p>
+
+</br>
+</br>
+</br>
+
+<p>
   <strong>TABLE OF CONTENTS</strong>
 
   • <a href="#summary">Project idea summary</a>
