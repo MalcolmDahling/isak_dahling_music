@@ -3,7 +3,7 @@
 <p>
   <strong>TABLE OF CONTENTS</strong>
 
-  • Project idea summary
+  <a href="#summary">• Project idea summary</a>
 
   • Background
 
@@ -26,7 +26,7 @@
 </br>
 </br>
 
-<h2>Project idea summary</h2>
+<h2 id="summary">Project idea summary</h2>
 <p>My project was to create a website for my brother to show off his music to other artists and record labels. I decided to use a CMS to make it as easy as possible to update content. The website is designed to automatically update when a new song or news article is added.
 
 I followed the plan with issues I had created on Trello and checked them off pretty quickly, but during the project new issues were often added. There were some parts I got stuck on like the “zoom” animations and sending emails from the email form but I eventually solved the problems after a lot of googling.
