@@ -11,7 +11,7 @@
   • Type "npm i" to install all required packages.</br>
   • Type "npm run dev" to run.</br>
   </br>
-  Note: this website will NOT run locally without the .env file that is NOT provided in this repository.</br>
+  Note: this website will NOT run as intended locally without the .env file that is NOT provided in this repository.</br>
 </p>
 
 </br>
