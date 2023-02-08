@@ -55,6 +55,7 @@ const HideLine = styled('div', {
     width:'100%',
     height:'100%',
     backdropFilter:'invert(100%)',
+    '-webkit-backdrop-filter':'invert(100%)',
     backgroundColor:'white'
 });
 

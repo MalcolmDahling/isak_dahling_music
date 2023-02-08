@@ -49,6 +49,7 @@ const BackgroundDiv = styled('div', {
     
     backgroundColor:'rgba(0,0,0,0.75)',
     backdropFilter:'blur(12px)',
+    '-webkit-backdrop-filter':'blur(12px)',
 
     '@mobile':{
         alignItems:'flex-start'

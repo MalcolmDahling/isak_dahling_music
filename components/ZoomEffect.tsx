@@ -22,9 +22,11 @@ const Blur = styled('div', {
         blur:{
             true:{
                 backdropFilter:'blur(0px)',
+                '-webkit-backdrop-filter':'blur(0px)'
             },
             false:{
-                backdropFilter:'blur(12px)'
+                backdropFilter:'blur(12px)',
+                '-webkit-backdrop-filter':'blur(12px)'
             }
         }
     }
@@ -119,7 +121,7 @@ export default function ZoomEffect(props:props){
     }, [componentInView]);
 
     return(
-        <Blur style={{backdropFilter:`blur(${blurSizes[currentSize]}px)`}}>
+        <Blur style={{backdropFilter:`blur(${blurSizes[currentSize]}px)`, WebkitBackdropFilter:`blur(${blurSizes[currentSize]}px)`}}>
             <Div backgroundColor={props.backgroundColor} style={{maskSize:maskSizes[currentSize] + 'vw', WebkitMaskSize:maskSizes[currentSize] + 'vw'}}>
             
             </Div>
