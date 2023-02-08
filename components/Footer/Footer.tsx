@@ -40,6 +40,7 @@ const Logo = styled(LogoSVG, {
     marginRight:-100,
     marginLeft:-115,
 
+    transform:'scale(0.25)',
     pointerEvents:'none',
     filter:'invert(100%)'
 });

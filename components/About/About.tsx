@@ -101,7 +101,7 @@ export default function About(){
     return(
         <OuterDiv>
 
-            <StickyText text="ABOUT" marginTop={515} fixedColor="black"></StickyText>
+            <StickyText text="ABOUT" marginTop={425} fixedColor="black"></StickyText>
 
             <Background></Background>
 
