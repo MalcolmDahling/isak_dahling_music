@@ -15,7 +15,7 @@ const Div = styled('div', {
 const WhiteGradient = styled('div', {
 
     width:'100%',
-    height:'100%',
+    height:200,
 
     background:'linear-gradient(180deg, rgba(255,255,255,0) 25%, rgba(255,255,255,1) 100%)',
 });
