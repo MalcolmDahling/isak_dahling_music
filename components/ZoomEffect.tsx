@@ -53,8 +53,6 @@ const Div = styled('div', {
 
     transition:'all 350ms ease-in-out',
 
-    opacity:0.5,
-
     variants:{
         backgroundColor:{
             black:{
