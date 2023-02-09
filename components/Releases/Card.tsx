@@ -7,7 +7,7 @@ import { useInView } from "react-intersection-observer";
 const Div = styled('div', {
 
     position:'relative',
-    maxWidth:300,
+    width:300,
     height:300,
 
     aspectRatio:'1/1',
