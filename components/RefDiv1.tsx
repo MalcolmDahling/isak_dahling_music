@@ -9,7 +9,7 @@ const RefDiv = styled('div', {
     position:'absolute',
     top:'80vh',
     left:0,
-    height:'100%',
+    height:'calc(100% - 80vh - 2px)',
     width:10
 });
 
@@ -26,14 +26,17 @@ export default function RefDiv1(props:props){
 
         if(!entry) return;
 
-        if(props.category === 'releases'){
-            setComponentInView(prev => ({...prev, releases:1}));
-        }
-        else{
-            setComponentInView(prev => ({...prev, news:1}));
+        if(inView){
+
+            if(props.category === 'releases'){
+                setComponentInView(prev => ({...prev, releases:1}));
+            }
+            else{
+                setComponentInView(prev => ({...prev, news:1}));
+            }
         }
         
-    }, [entry]);
+    }, [inView]);
 
     return(
         <RefDiv ref={ref}></RefDiv>
