@@ -9,8 +9,8 @@ const RefDiv = styled('div', {
     position:'absolute',
     top:'80vh',
     left:0,
-    height:1000,
-    width:10
+    height:'100%',
+    width:10,
 });
 
 interface props{
