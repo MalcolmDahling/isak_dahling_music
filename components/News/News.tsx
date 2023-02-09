@@ -9,6 +9,7 @@ import { useRecoilState } from "recoil";
 import { ComponentInView } from "../../atoms/ComponentInView";
 import StickyText from "../StickyText";
 import ExpandingLine from "../ExpandingLine";
+import RefDiv1 from "../RefDiv1";
 
 const OuterDiv = styled('div', {
 
@@ -32,13 +33,13 @@ const Div = styled('div', {
     }
 });
 
-const RefDiv = styled('div', {
+const RefDiv0 = styled('div', {
 
     position:'absolute',
     top:0,
     left:0,
     height:'80vh',
-    width:10,
+    width:10
 });
 
 const ButtonContainer = styled('div', {
@@ -144,7 +145,8 @@ export default function News(){
             <StickyText text="NEWS" marginTop={105} fixedColor={false}></StickyText>
 
             <Div>
-                <RefDiv ref={ref}></RefDiv>
+                <RefDiv0 ref={ref}></RefDiv0>
+                <RefDiv1 category="news"></RefDiv1>
 
                 <H2 text="- NEWS -" color="white"></H2>
                 {

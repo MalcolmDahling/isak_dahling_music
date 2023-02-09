@@ -122,9 +122,7 @@ export default function ZoomEffect(props:props){
 
     return(
         <Blur style={{backdropFilter:`blur(${blurSizes[currentSize]}px)`, WebkitBackdropFilter:`blur(${blurSizes[currentSize]}px)`}}>
-            <Div backgroundColor={props.backgroundColor} style={{maskSize:maskSizes[currentSize] + 'vw', WebkitMaskSize:maskSizes[currentSize] + 'vw'}}>
-            
-            </Div>
+            <Div backgroundColor={props.backgroundColor} style={{maskSize:maskSizes[currentSize] + 'vw', WebkitMaskSize:maskSizes[currentSize] + 'vw'}}></Div>
         </Blur>
     );
 }

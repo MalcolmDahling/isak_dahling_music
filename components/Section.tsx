@@ -16,7 +16,7 @@ const StyledSection = styled('section', {
 
         viewHeight100:{
             true:{
-                height:'100vh'
+                height:'99.99vh' //100vh doesnt allow "zoomEffect" to load while intro is playing since its not in the viewport, this causes flickering. 99.99vh fixes it.
             }
         },
 

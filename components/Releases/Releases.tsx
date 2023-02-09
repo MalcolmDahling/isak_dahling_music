@@ -9,6 +9,7 @@ import { Songs } from "../../atoms/Songs";
 import { useInView } from "react-intersection-observer";
 import { ComponentInView } from "../../atoms/ComponentInView";
 import StickyText from "../StickyText";
+import RefDiv1 from "../RefDiv1";
 
 const Div = styled('div', {
 
@@ -23,13 +24,13 @@ const Div = styled('div', {
     }
 });
 
-const RefDiv = styled('div', {
+const RefDiv0 = styled('div', {
 
     position:'absolute',
     top:0,
     left:0,
     height:'80vh',
-    width:10,
+    width:10
 });
 
 const CardContainer = styled('div', {
@@ -74,7 +75,7 @@ export default function Releases(){
     useEffect(() => {
 
         getSongs();
-    }, []);
+    }, []);+
 
     useEffect(() => {
 
@@ -90,7 +91,8 @@ export default function Releases(){
         <Div id="RELEASES">
 
             <StickyText text="RELEASES" marginTop={150} fixedColor={false}></StickyText>
-            <RefDiv ref={ref}></RefDiv>
+            <RefDiv0 ref={ref}></RefDiv0>
+            <RefDiv1 category="releases"></RefDiv1>
 
             <H2 text="- RELEASES -" color="black"></H2>
             
