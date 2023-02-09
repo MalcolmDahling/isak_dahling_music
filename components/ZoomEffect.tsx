@@ -39,8 +39,8 @@ const Div = styled('div', {
 
     pointerEvents:'none',
     
-    mask:'url(/images/logo.svg), linear-gradient(#fff 0 0)',
-    '-webkit-mask':'url(/images/logo.svg), linear-gradient(#fff 0 0)',
+    mask:'url(/images/logo/logo.svg), linear-gradient(#fff 0 0)',
+    '-webkit-mask':'url(/images/logo/logo.svg), linear-gradient(#fff 0 0)',
 
     maskRepeat:'no-repeat',
     '-webkit-mask-repeat':'no-repeat',

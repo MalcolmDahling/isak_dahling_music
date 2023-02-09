@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { styled } from "../../stitches.config";
-import LogoSVG from "../../public/images/logo.svg";
+import LogoSVG from "../../public/images/logo/logo.svg";
 
 const StyledFooter = styled('footer', {
 

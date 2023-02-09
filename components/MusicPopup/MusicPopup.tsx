@@ -9,7 +9,7 @@ import SoundCloudIFrame from "./IFrames/SoundCloudIFrame";
 import SpotifyIFrame from "./IFrames/SpotifyIFrame";
 import YoutubeIFrame from "./IFrames/YoutubeIFrame";
 import SelectStream from "./SelectStream";
-import Spinner from "../../public/images/spinner.svg";
+import Spinner from "../../public/images/icons/spinner.svg";
 
 const FadeOut = keyframes({
 

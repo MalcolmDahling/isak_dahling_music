@@ -6,7 +6,7 @@ const Div = styled('div', {
     width:'100%',
     height:200,
 
-    backgroundImage:'url(images/logo_small_black.svg)',
+    backgroundImage:'url(images/logo/logo_small_black.svg)',
     backgroundRepeat:'repeat',
     backgroundPosition:'center',
     backgroundSize:75,
