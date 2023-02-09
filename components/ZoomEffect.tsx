@@ -18,10 +18,6 @@ const Blur = styled('div', {
     transition:'all 350ms ease-in-out',
     pointerEvents:'none',
 
-    '@mobile':{
-        transition:'all 150ms ease-in-out',
-    },
-
     variants:{
         blur:{
             true:{
@@ -57,9 +53,7 @@ const Div = styled('div', {
 
     transition:'all 350ms ease-in-out',
 
-    '@mobile':{
-        transition:'all 150ms ease-in-out',
-    },
+    opacity:0.5,
 
     variants:{
         backgroundColor:{
@@ -96,7 +90,7 @@ export default function ZoomEffect(props:props){
         }
         else{
 
-            setComponentInView(prev => ({...prev, threshold: [0, 0.2, 0.4, 0.7, 0.9, 1]}));
+            setComponentInView(prev => ({...prev, threshold: [0, 0.1, 0.2, 0.3, 0.35, 0.4]}));
             setMaskSizes([200, 500, 1500, 3000, 6000, 10000]);
             setBlurSizes([12, 9, 4, 2, 0, 0]);
         }

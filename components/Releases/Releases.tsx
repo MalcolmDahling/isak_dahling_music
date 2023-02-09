@@ -30,7 +30,11 @@ const RefDiv0 = styled('div', {
     top:0,
     left:0,
     height:'80vh',
-    width:10
+    width:10,
+
+    '@mobile':{
+        height:'200vh'
+    }
 });
 
 const CardContainer = styled('div', {
