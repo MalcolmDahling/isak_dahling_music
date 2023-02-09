@@ -10,7 +10,7 @@ const RefDiv = styled('div', {
     top:'80vh',
     left:0,
     height:'100%',
-    width:10,
+    width:10
 });
 
 interface props{
@@ -26,14 +26,11 @@ export default function RefDiv1(props:props){
 
         if(!entry) return;
 
-        if(entry.boundingClientRect.top > 0){ //positive below viewport, negative when above viewport
-
-            if(props.category === 'releases'){
-                setComponentInView(prev => ({...prev, releases:1}));
-            }
-            else{
-                setComponentInView(prev => ({...prev, news:1}));
-            }
+        if(props.category === 'releases'){
+            setComponentInView(prev => ({...prev, releases:1}));
+        }
+        else{
+            setComponentInView(prev => ({...prev, news:1}));
         }
         
     }, [entry]);
