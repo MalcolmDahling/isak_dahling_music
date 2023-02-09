@@ -133,12 +133,12 @@ export default function Article(props:props){
                     </P>
 
                     {props.newsItem.fields.image && breakpoint === 'desktop' ? 
-                        <Img src={props.newsItem.fields.image.fields.file.url}></Img>
+                        <Img src={props.newsItem.fields.image.fields.file.url} alt={props.newsItem.fields.title}></Img>
                     : null}
                 </Div>
 
                 {props.newsItem.fields.image && breakpoint !== 'desktop' ? 
-                        <Img src={props.newsItem.fields.image.fields.file.url}></Img>
+                    <Img src={props.newsItem.fields.image.fields.file.url} alt={props.newsItem.fields.title}></Img>
                 : null}
 
                 <DateP>{date.toLocaleDateString()}</DateP>

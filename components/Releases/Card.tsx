@@ -8,8 +8,8 @@ const Div = styled('div', {
 
     position:'relative',
     maxWidth:300,
-    maxHeight:300,
-    
+    height:300,
+
     aspectRatio:'1/1',
     backgroundSize:'cover',
     userSelect:'none',
