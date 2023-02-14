@@ -1,7 +1,7 @@
 import { useRecoilState } from "recoil";
 import { ToggleMenu } from "../atoms/ToggleMenu";
 import { keyframes, styled } from "../stitches.config";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const FadeOut = keyframes({
 
@@ -45,11 +45,18 @@ const Button = styled('button', {
 
     backgroundColor:'transparent',
     border:'none',
-    mixBlendMode:'difference',
     userSelect:'none',
+
+    mixBlendMode:'difference',
 
     '@mobile':{
         mixBlendMode:'normal',
+    },
+
+    '&:focus':{
+        'div':{
+            opacity:1
+        }
     }
 });
 
@@ -78,7 +85,7 @@ const LineContainer = styled('div', {
         opacity:{
             true:{
                 '&:not(:hover)':{
-                    opacity:0.75,
+                    opacity:0.5,
                 }
             }
         }
@@ -161,6 +168,7 @@ export default function Hamburger(props:props){
     const [toggleMenu, setToggleMenu] = useRecoilState(ToggleMenu);
     const [rotate, setRotate] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
+    const ref = useRef<any>();
 
     function handleOnMouseEnter(){
 
@@ -182,6 +190,9 @@ export default function Hamburger(props:props){
     }
 
     function handleClick(e:React.MouseEvent){
+
+        //remove focus so button will fade out.
+        ref.current?.blur();
 
         if(!e.detail || e.detail == 1){ //prevents double clicking
 
@@ -216,7 +227,7 @@ export default function Hamburger(props:props){
     }, [toggleMenu]);
 
     return(
-        <Button>
+        <Button ref={ref}>
 
             <LineContainer 
                 rotate={toggleMenu}

@@ -9,7 +9,7 @@ const StyledNav = styled('nav', {
     display:'flex',
     flexDirection:'column',
 
-    '&:hover button':{
+    '&:hover button, &:focus-within button':{
 
         color:'$whiteHalfOpacity'
     },

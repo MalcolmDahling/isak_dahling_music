@@ -19,7 +19,7 @@ const Div = styled('div', {
     justifyContent:'center',
     gap:15,
 
-    '&:hover a':{
+    '&:hover a, &:focus-within a':{
         opacity:0.5
     }
 });
@@ -33,7 +33,7 @@ const StyledLink = styled(Link, {
     textDecoration:'none',
     transition:'all 250ms',
 
-    '&:hover':{
+    '&:hover, &:focus':{
         opacity:'1 !important'
     }
 });

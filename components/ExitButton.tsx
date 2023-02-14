@@ -14,7 +14,7 @@ const LineContainer = styled('button', {
     transition:'all 250ms',
     opacity:0.75,
 
-    '&:hover':{
+    '&:hover, &:focus':{
 
         opacity:1
     },

@@ -39,11 +39,11 @@ const StyledButton = styled('button', {
     animation:`${MoveRight} 1000ms forwards`,
     opacity:0,
 
-    '&:hover':{
+    '&:hover, &:focus':{
         color:'$white !important'
     },
 
-    '&:hover div':{
+    '&:hover div, &:focus div':{
         width:'100%'
     },
 
