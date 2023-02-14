@@ -75,7 +75,8 @@ const Span = styled('span', {
 
 const Img = styled('img', {
 
-    height:300,
+    maxHeight:300,
+    maxWidth:'100%',
     display:'block',
     marginLeft:'auto',
     marginRight:'auto',
