@@ -265,7 +265,8 @@ export default function Hamburger(props:props){
                 onFocus={handleFocus}
                 onBlur={handleBlur} 
                 onMouseEnter={handleOnMouseEnter}
-                onMouseLeave={handleOnMouseLeave}>
+                onMouseLeave={handleOnMouseLeave}
+            >
 
                 <LineContainer rotate={toggleMenu} opacity={toggleMenu}>
                     <Line rotateTop={rotate} border={!toggleMenu}></Line>
