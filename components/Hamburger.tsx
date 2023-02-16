@@ -29,12 +29,26 @@ const FadeIn = keyframes({
     }
 });
 
-const Button = styled('button', {
+const Div = styled('div', {
 
     position:'fixed',
     top:30,
     right:30,
     zIndex:9,
+
+    display:'flex',
+    flexDirection:'column',
+    gap:8,
+
+    mixBlendMode:'difference',
+
+    '@mobile':{
+        mixBlendMode:'normal',
+    }
+});
+
+const Button = styled('button', {
+
     padding:0,
 
     display:'flex',
@@ -45,13 +59,6 @@ const Button = styled('button', {
 
     backgroundColor:'transparent',
     border:'none',
-    userSelect:'none',
-
-    mixBlendMode:'difference',
-
-    '@mobile':{
-        mixBlendMode:'normal',
-    },
 
     '&:focus':{
         'div':{
@@ -84,9 +91,11 @@ const LineContainer = styled('div', {
 
         opacity:{
             true:{
-                '&:not(:hover)':{
-                    opacity:0.5,
-                }
+                '@desktop':{
+                    '&:not(:hover)':{
+                        opacity:0.5,
+                    }
+                } 
             }
         }
     },
@@ -189,12 +198,29 @@ export default function Hamburger(props:props){
         setIsHovering(false);
     }
 
+    function handleFocus(){
+
+        if(props.breakpoint === 'desktop'){
+            setRotate(true);
+        }
+
+        setIsHovering(true);
+    }
+
+    function handleBlur(){
+
+        if(toggleMenu === false && props.breakpoint === 'desktop'){
+
+            setRotate(false);
+        }
+        
+        setIsHovering(false);
+    }
+
     function handleClick(e:React.MouseEvent){
 
-        //remove focus so button will fade out.
-        ref.current?.blur();
-
-        if(!e.detail || e.detail == 1){ //prevents double clicking
+        //prevents double clicking
+        if(!e.detail || e.detail == 1){
 
             if(props.breakpoint !== 'desktop'){
                 
@@ -224,26 +250,31 @@ export default function Hamburger(props:props){
             }
         }
 
+        if(toggleMenu){
+            //remove focus so button will fade out.
+            ref.current?.blur();
+        }
+        
     }, [toggleMenu]);
 
     return(
-        <Button ref={ref}>
-
-            <LineContainer 
-                rotate={toggleMenu}
-                opacity={toggleMenu}
+        <Div>
+            <Button 
+                ref={ref}
                 onClick={handleClick}
+                onFocus={handleFocus}
+                onBlur={handleBlur} 
                 onMouseEnter={handleOnMouseEnter}
-                onMouseLeave={handleOnMouseLeave}
-            >
+                onMouseLeave={handleOnMouseLeave}>
 
-                <Line rotateTop={rotate} border={!toggleMenu}></Line>
-                <Line border={!toggleMenu}></Line>
-                <Line rotateBottom={rotate} border={!toggleMenu}></Line>
-                
-            </LineContainer>
+                <LineContainer rotate={toggleMenu} opacity={toggleMenu}>
+                    <Line rotateTop={rotate} border={!toggleMenu}></Line>
+                    <Line border={!toggleMenu}></Line>
+                    <Line rotateBottom={rotate} border={!toggleMenu}></Line>
+                </LineContainer>
+            </Button>
 
             <Text show={toggleMenu} marginTop={toggleMenu}>MENU</Text>
-        </Button>
+        </Div>
     );
 }

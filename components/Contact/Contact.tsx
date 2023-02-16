@@ -49,7 +49,6 @@ const BackgroundDiv = styled('div', {
     
     backgroundColor:'rgba(0,0,0,0.75)',
     backdropFilter:'blur(12px)',
-    '-webkit-backdrop-filter':'blur(12px)',
 
     '@mobile':{
         alignItems:'flex-start'
@@ -245,7 +244,7 @@ export default function Contact(props:props){
 
                         <FormProvider {...methods}>
                             <Form onSubmit={methods.handleSubmit(onSubmit)}>
-                                <Input 
+                                <Input
                                     name="name" 
                                     label="Your name" 
                                     errorMsg="Please enter your name." 
